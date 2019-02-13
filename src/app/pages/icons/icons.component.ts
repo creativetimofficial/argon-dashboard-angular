@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IconsComponent implements OnInit {
 
+  public copy: string;
+
   constructor() { }
 
   ngOnInit() {
   }
+  onClick(event){
+    var target = event.target;
 
+    target.addEventListener('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+    });
+    var ok = target.getAttribute('data-clipboard-text');
+    console.log(ok)
+    this.copy = ok;
+  }
 }
