@@ -31,6 +31,8 @@
               "src/assets/scss/argon.scss"
             ],
             "scripts": [
+              "node_modules/chart.js/dist/Chart.min.js",
+              "src/assets/vendor/chart/dist/Chart.extension.js",
               "node_modules/clipboard/dist/clipboard.min.js"
             ]
           },

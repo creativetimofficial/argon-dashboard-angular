@@ -3,4 +3,11 @@
   .dropdown-toggle::after{
       display: none;
     }
+    .dropdown-menu{
+      .dropdown-item.active{
+        background-color: inherit;
+        color: inherit;
+        text-decoration: inherit;
+      }
+    }
 }

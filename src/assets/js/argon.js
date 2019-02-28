@@ -24,6 +24,7 @@
 
 var Datepicker = (function() {
 
+
 	// Variables
 
 	var $datepicker = $('.datepicker');
@@ -507,6 +508,7 @@ var Tooltip = (function() {
 'use strict';
 
 var Charts = (function() {
+  console.log("aici");
 
 	// Variable
 
@@ -738,6 +740,7 @@ var Charts = (function() {
 				beginAtZero: true,
 				padding: 10,
 				callback: function(value) {
+          console.log("aici");
 					if (!(value % 10)) {
 						return value
 					}
@@ -955,7 +958,7 @@ var OrdersChart = (function() {
 							}
 
 							content += '<span class="popover-body-value">' + yLabel + '</span>';
-							
+
 							return content;
 						}
 					}
