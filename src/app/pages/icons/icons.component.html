@@ -103,7 +103,7 @@
         <div class="card-body">
           <div class="row icon-examples">
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'active-40'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'active-40' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'active-40'" (cbOnSuccess) = "copy = 'active-40'">
                 <div>
                   <i class="ni ni-active-40"></i>
                   <span>active-40</span>
@@ -111,7 +111,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'air-baloon'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'air-baloon' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'air-baloon'" (cbOnSuccess) = "copy = 'air-baloon'">
                 <div>
                   <i class="ni ni-air-baloon"></i>
                   <span>air-baloon</span>
@@ -119,7 +119,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'album-2'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'album-2' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'album-2'" (cbOnSuccess) = "copy = 'album-2'">
                 <div>
                   <i class="ni ni-album-2"></i>
                   <span>album-2</span>
@@ -127,7 +127,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'align-center'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'align-center' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'align-center'" (cbOnSuccess) = "copy = 'align-center'">
                 <div>
                   <i class="ni ni-align-center"></i>
                   <span>align-center</span>
@@ -135,7 +135,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'align-left-2'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'align-left-2' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'align-left-2'" (cbOnSuccess) = "copy = 'align-left-2'">
                 <div>
                   <i class="ni ni-align-left-2"></i>
                   <span>align-left-2</span>
@@ -143,7 +143,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'ambulance'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'ambulance' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'ambulance'" (cbOnSuccess) = "copy = 'ambulance'">
                 <div>
                   <i class="ni ni-ambulance"></i>
                   <span>ambulance</span>
@@ -151,7 +151,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'app'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'app' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'app'" (cbOnSuccess) = "copy = 'app'">
                 <div>
                   <i class="ni ni-app"></i>
                   <span>app</span>
@@ -159,7 +159,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'archive-2'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'archive-2' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'archive-2'" (cbOnSuccess) = "copy = 'archive-2'">
                 <div>
                   <i class="ni ni-archive-2"></i>
                   <span>archive-2</span>
@@ -167,7 +167,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'atom'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'atom' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'atom'" (cbOnSuccess) = "copy = 'atom'">
                 <div>
                   <i class="ni ni-atom"></i>
                   <span>atom</span>
@@ -175,7 +175,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'badge'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'badge' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'badge'" (cbOnSuccess) = "copy = 'badge'">
                 <div>
                   <i class="ni ni-badge"></i>
                   <span>badge</span>
@@ -183,7 +183,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bag-17'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'bag-17' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bag-17'" (cbOnSuccess) = "copy = 'bag-17'">
                 <div>
                   <i class="ni ni-bag-17"></i>
                   <span>bag-17</span>
@@ -191,7 +191,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'basket'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'basket' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'basket'" (cbOnSuccess) = "copy = 'basket'">
                 <div>
                   <i class="ni ni-basket"></i>
                   <span>basket</span>
@@ -199,7 +199,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bell-55'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'bell-55' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bell-55'" (cbOnSuccess) = "copy = 'bell-55'">
                 <div>
                   <i class="ni ni-bell-55"></i>
                   <span>bell-55</span>
@@ -207,7 +207,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bold-down'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'bold-down' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bold-down'" (cbOnSuccess) = "copy = 'bold-down'">
                 <div>
                   <i class="ni ni-bold-down"></i>
                   <span>bold-down</span>
@@ -215,7 +215,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bold-left'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'bold-left' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bold-left'" (cbOnSuccess) = "copy = 'bold-left'">
                 <div>
                   <i class="ni ni-bold-left"></i>
                   <span>bold-left</span>
@@ -223,7 +223,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bold-right'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'bold-right' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bold-right'" (cbOnSuccess) = "copy = 'bold-right'">
                 <div>
                   <i class="ni ni-bold-right"></i>
                   <span>bold-right</span>
@@ -231,7 +231,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bold-up'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'bold-up' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bold-up'" (cbOnSuccess) = "copy = 'bold-up'">
                 <div>
                   <i class="ni ni-bold-up"></i>
                   <span>bold-up</span>
@@ -239,7 +239,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bold'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'bold' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bold'" (cbOnSuccess) = "copy = 'bold'">
                 <div>
                   <i class="ni ni-bold"></i>
                   <span>bold</span>
@@ -247,7 +247,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'book-bookmark'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'book-bookmark' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'book-bookmark'" (cbOnSuccess) = "copy = 'book-bookmark'">
                 <div>
                   <i class="ni ni-book-bookmark"></i>
                   <span>book-bookmark</span>
@@ -255,7 +255,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'books'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'books' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'books'" (cbOnSuccess) = "copy = 'books'">
                 <div>
                   <i class="ni ni-books"></i>
                   <span>books</span>
@@ -263,7 +263,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'box-2'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'box-2' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'box-2'" (cbOnSuccess) = "copy = 'box-2'">
                 <div>
                   <i class="ni ni-box-2"></i>
                   <span>box-2</span>
@@ -271,7 +271,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'briefcase-24'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'briefcase-24' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'briefcase-24'" (cbOnSuccess) = "copy = 'briefcase-24'">
                 <div>
                   <i class="ni ni-briefcase-24"></i>
                   <span>briefcase-24</span>
@@ -279,7 +279,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'building'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'building' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'building'" (cbOnSuccess) = "copy = 'building'">
                 <div>
                   <i class="ni ni-building"></i>
                   <span>building</span>
@@ -287,7 +287,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bulb-61'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'bulb-61' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bulb-61'" (cbOnSuccess) = "copy = 'bulb-61'">
                 <div>
                   <i class="ni ni-bulb-61"></i>
                   <span>bulb-61</span>
@@ -295,7 +295,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bullet-list-67'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'bullet-list-67' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bullet-list-67'" (cbOnSuccess) = "copy = 'bullet-list-67'">
                 <div>
                   <i class="ni ni-bullet-list-67"></i>
                   <span>bullet-list-67</span>
@@ -303,7 +303,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bus-front-12'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'bus-front-12' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'bus-front-12'" (cbOnSuccess) = "copy = 'bus-front-12'">
                 <div>
                   <i class="ni ni-bus-front-12"></i>
                   <span>bus-front-12</span>
@@ -311,7 +311,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'button-pause'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'button-pause' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'button-pause'" (cbOnSuccess) = "copy = 'button-pause'">
                 <div>
                   <i class="ni ni-button-pause"></i>
                   <span>button-pause</span>
@@ -319,7 +319,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'button-play'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'button-play' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'button-play'" (cbOnSuccess) = "copy = 'button-play'">
                 <div>
                   <i class="ni ni-button-play"></i>
                   <span>button-play</span>
@@ -327,7 +327,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'button-power'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'button-power' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'button-power'" (cbOnSuccess) = "copy = 'button-power'">
                 <div>
                   <i class="ni ni-button-power"></i>
                   <span>button-power</span>
@@ -335,7 +335,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'calendar-grid-58'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'calendar-grid-58' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'calendar-grid-58'" (cbOnSuccess) = "copy = 'calendar-grid-58'">
                 <div>
                   <i class="ni ni-calendar-grid-58"></i>
                   <span>calendar-grid-58</span>
@@ -343,7 +343,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'camera-compact'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'camera-compact' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'camera-compact'" (cbOnSuccess) = "copy = 'camera-compact'">
                 <div>
                   <i class="ni ni-camera-compact"></i>
                   <span>camera-compact</span>
@@ -351,7 +351,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'caps-small'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'caps-small' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'caps-small'" (cbOnSuccess) = "copy = 'caps-small'">
                 <div>
                   <i class="ni ni-caps-small"></i>
                   <span>caps-small</span>
@@ -359,7 +359,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'cart'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'cart' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'cart'" (cbOnSuccess) = "copy = 'cart'">
                 <div>
                   <i class="ni ni-cart"></i>
                   <span>cart</span>
@@ -367,7 +367,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'chart-bar-32'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'chart-bar-32' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'chart-bar-32'" (cbOnSuccess) = "copy = 'chart-bar-32'">
                 <div>
                   <i class="ni ni-chart-bar-32"></i>
                   <span>chart-bar-32</span>
@@ -375,7 +375,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'chart-pie-35'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'chart-pie-35' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'chart-pie-35'" (cbOnSuccess) = "copy = 'chart-pie-35'">
                 <div>
                   <i class="ni ni-chart-pie-35"></i>
                   <span>chart-pie-35</span>
@@ -383,7 +383,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'chat-round'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'chat-round' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'chat-round'" (cbOnSuccess) = "copy = 'chat-round'">
                 <div>
                   <i class="ni ni-chat-round"></i>
                   <span>chat-round</span>
@@ -391,7 +391,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'check-bold'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'check-bold' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'check-bold'" (cbOnSuccess) = "copy = 'check-bold'">
                 <div>
                   <i class="ni ni-check-bold"></i>
                   <span>check-bold</span>
@@ -399,7 +399,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'circle-08'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'circle-08' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'circle-08'" (cbOnSuccess) = "copy = 'circle-08'">
                 <div>
                   <i class="ni ni-circle-08"></i>
                   <span>circle-08</span>
@@ -407,7 +407,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'cloud-download-95'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'cloud-download-95' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'cloud-download-95'" (cbOnSuccess) = "copy = 'cloud-download-95'">
                 <div>
                   <i class="ni ni-cloud-download-95"></i>
                   <span>cloud-download-95</span>
@@ -415,7 +415,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'cloud-upload-96'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'cloud-upload-96' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'cloud-upload-96'" (cbOnSuccess) = "copy = 'cloud-upload-96'">
                 <div>
                   <i class="ni ni-cloud-upload-96"></i>
                   <span>cloud-upload-96</span>
@@ -423,7 +423,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'compass-04'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'compass-04' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'compass-04'" (cbOnSuccess) = "copy = 'compass-04'">
                 <div>
                   <i class="ni ni-compass-04"></i>
                   <span>compass-04</span>
@@ -431,7 +431,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'controller'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'controller' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'controller'" (cbOnSuccess) = "copy = 'controller'">
                 <div>
                   <i class="ni ni-controller"></i>
                   <span>controller</span>
@@ -439,7 +439,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'credit-card'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'credit-card' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'credit-card'" (cbOnSuccess) = "copy = 'credit-card'">
                 <div>
                   <i class="ni ni-credit-card"></i>
                   <span>credit-card</span>
@@ -447,7 +447,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'curved-next'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'curved-next' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'curved-next'" (cbOnSuccess) = "copy = 'curved-next'">
                 <div>
                   <i class="ni ni-curved-next"></i>
                   <span>curved-next</span>
@@ -455,7 +455,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'delivery-fast'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'delivery-fast' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'delivery-fast'" (cbOnSuccess) = "copy = 'delivery-fast'">
                 <div>
                   <i class="ni ni-delivery-fast"></i>
                   <span>delivery-fast</span>
@@ -463,7 +463,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'diamond'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'diamond' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'diamond'" (cbOnSuccess) = "copy = 'diamond'">
                 <div>
                   <i class="ni ni-diamond"></i>
                   <span>diamond</span>
@@ -471,7 +471,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'email-83'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'email-83' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'email-83'" (cbOnSuccess) = "copy = 'email-83'">
                 <div>
                   <i class="ni ni-email-83"></i>
                   <span>email-83</span>
@@ -479,7 +479,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'fat-add'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'fat-add' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'fat-add'" (cbOnSuccess) = "copy = 'fat-add'">
                 <div>
                   <i class="ni ni-fat-add"></i>
                   <span>fat-add</span>
@@ -487,7 +487,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'fat-delete'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'fat-delete' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'fat-delete'" (cbOnSuccess) = "copy = 'fat-delete'">
                 <div>
                   <i class="ni ni-fat-delete"></i>
                   <span>fat-delete</span>
@@ -495,7 +495,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'fat-remove'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'fat-remove' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'fat-remove'" (cbOnSuccess) = "copy = 'fat-remove'">
                 <div>
                   <i class="ni ni-fat-remove"></i>
                   <span>fat-remove</span>
@@ -503,7 +503,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'favourite-28'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'favourite-28' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'favourite-28'" (cbOnSuccess) = "copy = 'favourite-28'">
                 <div>
                   <i class="ni ni-favourite-28"></i>
                   <span>favourite-28</span>
@@ -511,7 +511,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'folder-17'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'folder-17' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'folder-17'" (cbOnSuccess) = "copy = 'folder-17'">
                 <div>
                   <i class="ni ni-folder-17"></i>
                   <span>folder-17</span>
@@ -519,7 +519,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'glasses-2'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'glasses-2' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'glasses-2'" (cbOnSuccess) = "copy = 'glasses-2'">
                 <div>
                   <i class="ni ni-glasses-2"></i>
                   <span>glasses-2</span>
@@ -527,7 +527,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'hat-3'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'hat-3' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'hat-3'" (cbOnSuccess) = "copy = 'hat-3'">
                 <div>
                   <i class="ni ni-hat-3"></i>
                   <span>hat-3</span>
@@ -535,7 +535,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'headphones'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'headphones' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'headphones'" (cbOnSuccess) = "copy = 'headphones'">
                 <div>
                   <i class="ni ni-headphones"></i>
                   <span>headphones</span>
@@ -543,7 +543,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'html5'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'html5' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'html5'" (cbOnSuccess) = "copy = 'html5'">
                 <div>
                   <i class="ni ni-html5"></i>
                   <span>html5</span>
@@ -551,7 +551,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'istanbul'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'istanbul' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'istanbul'" (cbOnSuccess) = "copy = 'istanbul'">
                 <div>
                   <i class="ni ni-istanbul"></i>
                   <span>istanbul</span>
@@ -559,7 +559,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'circle-08'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'circle-08' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'circle-08'" (cbOnSuccess) = "copy = 'circle-08'">
                 <div>
                   <i class="ni ni-circle-08"></i>
                   <span>circle-08</span>
@@ -567,7 +567,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'key-25'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'key-25' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'key-25'" (cbOnSuccess) = "copy = 'key-25'">
                 <div>
                   <i class="ni ni-key-25"></i>
                   <span>key-25</span>
@@ -575,7 +575,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'laptop'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'laptop' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'laptop'" (cbOnSuccess) = "copy = 'laptop'">
                 <div>
                   <i class="ni ni-laptop"></i>
                   <span>laptop</span>
@@ -583,7 +583,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'like-2'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'like-2' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'like-2'" (cbOnSuccess) = "copy = 'like-2'">
                 <div>
                   <i class="ni ni-like-2"></i>
                   <span>like-2</span>
@@ -591,7 +591,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'lock-circle-open'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'lock-circle-open' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'lock-circle-open'" (cbOnSuccess) = "copy = 'lock-circle-open'">
                 <div>
                   <i class="ni ni-lock-circle-open"></i>
                   <span>lock-circle-open</span>
@@ -599,7 +599,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'map-big'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'map-big' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'map-big'" (cbOnSuccess) = "copy = 'map-big'">
                 <div>
                   <i class="ni ni-map-big"></i>
                   <span>map-big</span>
@@ -607,7 +607,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'mobile-button'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'mobile-button' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'mobile-button'" (cbOnSuccess) = "copy = 'mobile-button'">
                 <div>
                   <i class="ni ni-mobile-button"></i>
                   <span>mobile-button</span>
@@ -615,7 +615,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'money-coins'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'money-coins' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'money-coins'" (cbOnSuccess) = "copy = 'money-coins'">
                 <div>
                   <i class="ni ni-money-coins"></i>
                   <span>money-coins</span>
@@ -623,7 +623,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'note-03'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'note-03' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'note-03'" (cbOnSuccess) = "copy = 'note-03'">
                 <div>
                   <i class="ni ni-note-03"></i>
                   <span>note-03</span>
@@ -631,7 +631,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'notification-70'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'notification-70' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'notification-70'" (cbOnSuccess) = "copy = 'notification-70'">
                 <div>
                   <i class="ni ni-notification-70"></i>
                   <span>notification-70</span>
@@ -639,7 +639,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'palette'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'palette' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'palette'" (cbOnSuccess) = "copy = 'palette'">
                 <div>
                   <i class="ni ni-palette"></i>
                   <span>palette</span>
@@ -647,7 +647,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'paper-diploma'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'paper-diploma' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'paper-diploma'" (cbOnSuccess) = "copy = 'paper-diploma'">
                 <div>
                   <i class="ni ni-paper-diploma"></i>
                   <span>paper-diploma</span>
@@ -655,7 +655,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'pin-3'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'pin-3' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'pin-3'" (cbOnSuccess) = "copy = 'pin-3'">
                 <div>
                   <i class="ni ni-pin-3"></i>
                   <span>pin-3</span>
@@ -663,7 +663,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'planet'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'planet' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'planet'" (cbOnSuccess) = "copy = 'planet'">
                 <div>
                   <i class="ni ni-planet"></i>
                   <span>planet</span>
@@ -671,7 +671,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'ruler-pencil'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'ruler-pencil' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'ruler-pencil'" (cbOnSuccess) = "copy = 'ruler-pencil'">
                 <div>
                   <i class="ni ni-ruler-pencil"></i>
                   <span>ruler-pencil</span>
@@ -679,7 +679,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'satisfied'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'satisfied' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'satisfied'" (cbOnSuccess) = "copy = 'satisfied'">
                 <div>
                   <i class="ni ni-satisfied"></i>
                   <span>satisfied</span>
@@ -687,7 +687,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'scissors'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'scissors' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'scissors'" (cbOnSuccess) = "copy = 'scissors'">
                 <div>
                   <i class="ni ni-scissors"></i>
                   <span>scissors</span>
@@ -695,7 +695,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'send'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'send' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'send'" (cbOnSuccess) = "copy = 'send'">
                 <div>
                   <i class="ni ni-send"></i>
                   <span>send</span>
@@ -703,7 +703,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'settings-gear-65'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'settings-gear-65' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'settings-gear-65'" (cbOnSuccess) = "copy = 'settings-gear-65'">
                 <div>
                   <i class="ni ni-settings-gear-65"></i>
                   <span>settings-gear-65</span>
@@ -711,7 +711,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'settings'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'settings' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'settings'" (cbOnSuccess) = "copy = 'settings'">
                 <div>
                   <i class="ni ni-settings"></i>
                   <span>settings</span>
@@ -719,7 +719,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'single-02'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'single-02' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'single-02'" (cbOnSuccess) = "copy = 'single-02'">
                 <div>
                   <i class="ni ni-single-02"></i>
                   <span>single-02</span>
@@ -727,7 +727,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'single-copy-04'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'single-copy-04' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'single-copy-04'" (cbOnSuccess) = "copy = 'single-copy-04'">
                 <div>
                   <i class="ni ni-single-copy-04"></i>
                   <span>single-copy-04</span>
@@ -735,7 +735,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'sound-wave'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'sound-wave' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'sound-wave'" (cbOnSuccess) = "copy = 'sound-wave'">
                 <div>
                   <i class="ni ni-sound-wave"></i>
                   <span>sound-wave</span>
@@ -743,7 +743,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'spaceship'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'spaceship' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'spaceship'" (cbOnSuccess) = "copy = 'spaceship'">
                 <div>
                   <i class="ni ni-spaceship"></i>
                   <span>spaceship</span>
@@ -751,7 +751,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'square-pin'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'square-pin' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'square-pin'" (cbOnSuccess) = "copy = 'square-pin'">
                 <div>
                   <i class="ni ni-square-pin"></i>
                   <span>square-pin</span>
@@ -759,7 +759,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'support-16'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'support-16' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'support-16'" (cbOnSuccess) = "copy = 'support-16'">
                 <div>
                   <i class="ni ni-support-16"></i>
                   <span>support-16</span>
@@ -767,7 +767,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'tablet-button'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'tablet-button' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'tablet-button'" (cbOnSuccess) = "copy = 'tablet-button'">
                 <div>
                   <i class="ni ni-tablet-button"></i>
                   <span>tablet-button</span>
@@ -775,7 +775,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'tag'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'tag' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'tag'" (cbOnSuccess) = "copy = 'tag'">
                 <div>
                   <i class="ni ni-tag"></i>
                   <span>tag</span>
@@ -783,7 +783,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'tie-bow'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'tie-bow' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'tie-bow'" (cbOnSuccess) = "copy = 'tie-bow'">
                 <div>
                   <i class="ni ni-tie-bow"></i>
                   <span>tie-bow</span>
@@ -791,7 +791,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'time-alarm'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'time-alarm' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'time-alarm'" (cbOnSuccess) = "copy = 'time-alarm'">
                 <div>
                   <i class="ni ni-time-alarm"></i>
                   <span>time-alarm</span>
@@ -799,7 +799,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'trophy'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'trophy' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'trophy'" (cbOnSuccess) = "copy = 'trophy'">
                 <div>
                   <i class="ni ni-trophy"></i>
                   <span>trophy</span>
@@ -807,7 +807,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'tv-2'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'tv-2' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'tv-2'" (cbOnSuccess) = "copy = 'tv-2'">
                 <div>
                   <i class="ni ni-tv-2"></i>
                   <span>tv-2</span>
@@ -815,7 +815,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'umbrella-13'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'umbrella-13' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'umbrella-13'" (cbOnSuccess) = "copy = 'umbrella-13'">
                 <div>
                   <i class="ni ni-umbrella-13"></i>
                   <span>umbrella-13</span>
@@ -823,7 +823,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'user-run'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'user-run' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'user-run'" (cbOnSuccess) = "copy = 'user-run'">
                 <div>
                   <i class="ni ni-user-run"></i>
                   <span>user-run</span>
@@ -831,7 +831,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'vector'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'vector' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'vector'" (cbOnSuccess) = "copy = 'vector'">
                 <div>
                   <i class="ni ni-vector"></i>
                   <span>vector</span>
@@ -839,7 +839,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'watch-time'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'watch-time' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'watch-time'" (cbOnSuccess) = "copy = 'watch-time'">
                 <div>
                   <i class="ni ni-watch-time"></i>
                   <span>watch-time</span>
@@ -847,7 +847,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'world'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'world' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'world'" (cbOnSuccess) = "copy = 'world'">
                 <div>
                   <i class="ni ni-world"></i>
                   <span>world</span>
@@ -855,7 +855,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'zoom-split-in'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'zoom-split-in' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'zoom-split-in'" (cbOnSuccess) = "copy = 'zoom-split-in'">
                 <div>
                   <i class="ni ni-zoom-split-in"></i>
                   <span>zoom-split-in</span>
@@ -863,7 +863,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'collection'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'collection' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'collection'" (cbOnSuccess) = "copy = 'collection'">
                 <div>
                   <i class="ni ni-collection"></i>
                   <span>collection</span>
@@ -871,7 +871,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'image'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'image' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'image'" (cbOnSuccess) = "copy = 'image'">
                 <div>
                   <i class="ni ni-image"></i>
                   <span>image</span>
@@ -879,7 +879,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'shop'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'shop' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'shop'" (cbOnSuccess) = "copy = 'shop'">
                 <div>
                   <i class="ni ni-shop"></i>
                   <span>shop</span>
@@ -887,7 +887,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'ungroup'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'ungroup' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'ungroup'" (cbOnSuccess) = "copy = 'ungroup'">
                 <div>
                   <i class="ni ni-ungroup"></i>
                   <span>ungroup</span>
@@ -895,7 +895,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'world-2'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'world-2' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'world-2'" (cbOnSuccess) = "copy = 'world-2'">
                 <div>
                   <i class="ni ni-world-2"></i>
                   <span>world-2</span>
@@ -903,7 +903,7 @@
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <button type="button" placement="top-center" ngbPopover="Copied!" ngbTooltip="Copy to clipboard"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'ui-04'">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{copy === 'ui-04' ? 'Copied':'Copy to clipboard'}}"  class="btn-icon-clipboard" ngxClipboard [cbContent]="'ui-04'" (cbOnSuccess) = "copy = 'ui-04'">
                 <div>
                   <i class="ni ni-ui-04"></i>
                   <span>ui-04</span>
