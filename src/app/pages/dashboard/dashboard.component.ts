@@ -35,8 +35,6 @@ export class DashboardComponent implements OnInit {
 
     var chartOrders = document.getElementById('chart-orders');
 
-    console.log(parseOptions);
-
     parseOptions(Chart, chartOptions());
 
 
