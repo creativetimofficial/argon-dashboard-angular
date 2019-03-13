@@ -89,8 +89,8 @@
       </form>
       <!-- Navigation -->
       <ul class="navbar-nav">
-          <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
-              <a [routerLink]="[menuItem.path]" class="nav-link">
+          <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+              <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
                   <i class="ni {{menuItem.icon}}"></i>
                   {{menuItem.title}}
               </a>
