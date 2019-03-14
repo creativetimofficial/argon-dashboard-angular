@@ -1,0 +1,13 @@
+.dropdown,
+.dropup{
+  .dropdown-toggle::after{
+      display: none !important;
+    }
+    .dropdown-menu{
+      .dropdown-item.active{
+        background-color: inherit;
+        color: inherit;
+        text-decoration: inherit;
+      }
+    }
+}
