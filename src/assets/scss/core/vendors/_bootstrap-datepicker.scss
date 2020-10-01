@@ -277,3 +277,25 @@
         vertical-align: middle;
     }
 }
+
+ngb-datepicker,
+ngb-datepicker .ngb-dp-header,
+ngb-datepicker .ngb-dp-month,
+ngb-datepicker .ngb-dp-month-name,
+ngb-datepicker .ngb-dp-day,
+ngb-datepicker .ngb-dp-week-number,
+ngb-datepicker .ngb-dp-weekday,
+ngb-datepicker .ngb-dp-weekdays{
+  background: $white;
+}
+
+.ngb-dp-week.ngb-dp-weekdays{
+  border: none;
+}
+
+ngb-datepicker .ngb-dp-weekday{
+  color: $primary;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+}
