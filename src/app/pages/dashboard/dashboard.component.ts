@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
-import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
 // core components
 import {
