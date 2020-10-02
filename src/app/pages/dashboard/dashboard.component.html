@@ -2,33 +2,6 @@
   <div class="container-fluid">
     <div class="header-body">
       <!-- Card stats -->
-
-      <div class="input-daterange datepicker row align-items-center">
-        <div class="form-group">
-    <div class="input-group input-group-alternative">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-      </div>
-      <input class="form-control datepicker" placeholder="Select date" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" type="text"/>
-    </div>
-  </div>
-  
-    <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t">
-    </ngb-datepicker>
-    <ng-template #t let-date let-focused="focused" >
-     <span class="custom-day"
-           [class.focused]="focused"
-           [class.range]="isRange(date)"
-           [class.faded]="isHovered(date) || isInside(date)"
-           [class.range-start]="date && fromDate && date.day === fromDate.day && date.month === fromDate.month"
-           [class.range-end]="date && toDate && date.day === toDate.day && date.month === toDate.month"
-           (mouseenter)="hoveredDate = date"
-           (mouseleave)="hoveredDate = null">
-       {{ date.day }}
-     </span>
-   </ng-template>
-  </div>
-
       <div class="row">
         <div class="col-xl-3 col-lg-6">
           <div class="card card-stats mb-4 mb-xl-0">
