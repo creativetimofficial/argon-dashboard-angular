@@ -50,8 +50,9 @@
 
 
 html:not([dir="rtl"]) .noUi-horizontal .noUi-origin {
-    left: auto;
     right: 0;
+    width: 10%;
+    left: auto;
 }
 
 .noUi-vertical .noUi-origin {

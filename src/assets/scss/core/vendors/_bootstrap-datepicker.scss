@@ -277,3 +277,70 @@
         vertical-align: middle;
     }
 }
+
+ngb-datepicker,
+ngb-datepicker .ngb-dp-header,
+ngb-datepicker .ngb-dp-month,
+ngb-datepicker .ngb-dp-month-name,
+ngb-datepicker .ngb-dp-day,
+ngb-datepicker .ngb-dp-week-number,
+ngb-datepicker .ngb-dp-weekday,
+ngb-datepicker .ngb-dp-weekdays{
+  background: $white;
+  text-align: center;
+}
+
+ngb-datepicker .ngb-dp-month .ngb-dp-week .ngb-dp-day{
+  font-size: .875rem;
+  width: 36px;
+  height: 36px;
+  transition: all .15s ease;
+  text-align: center;
+  border: none;
+  border-radius: 50%;
+}
+
+ngb-datepicker .ngb-dp-months .ngb-dp-week .ngb-dp-day .btn-light,
+ngb-datepicker .ngb-dp-months  .ngb-dp-week .ngb-dp-day .custom-day {
+    width: 36px;
+    height: 36px;
+    box-shadow: none;
+    color: #525f7f;
+    border-radius: 50%;
+    align-items: center;
+    display: grid;
+}
+
+ngb-datepicker .ngb-dp-months.ngb-dp-week .ngb-dp-day .btn-light.range-start,
+ngb-datepicker .ngb-dp-months .ngb-dp-week .ngb-dp-day .custom-day.range-start {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+ngb-datepicker .ngb-dp-months .ngb-dp-week .ngb-dp-day .btn-light.range,
+ngb-datepicker .ngb-dp-months .ngb-dp-week .ngb-dp-day .custom-day.range {
+    color: #fff;
+}
+
+ngb-datepicker .ngb-dp-months .ngb-dp-week .ngb-dp-day .btn-light.faded,
+ngb-datepicker .ngb-dp-months .ngb-dp-week .ngb-dp-day .custom-day.faded{
+  border-radius: 0;
+}
+
+ngb-datepicker .ngb-dp-months .ngb-dp-week .ngb-dp-day .btn-light.range-end,
+ngb-datepicker .ngb-dp-months .ngb-dp-week .ngb-dp-day .custom-day.range-end {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.ngb-dp-week.ngb-dp-weekdays{
+  border: none;
+}
+
+ngb-datepicker .ngb-dp-weekday{
+  color: $primary;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  width: 36px;
+}

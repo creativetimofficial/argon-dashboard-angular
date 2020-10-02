@@ -22,8 +22,6 @@ export class DashboardComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
 
-  constructor() { }
-
   ngOnInit() {
 
     this.datasets = [
@@ -52,9 +50,6 @@ export class DashboardComponent implements OnInit {
 			data: chartExample1.data
 		});
   }
-
-
-
 
 
   public updateOptions() {
