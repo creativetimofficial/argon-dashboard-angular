@@ -38,13 +38,14 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": false,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
               "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
@@ -52,8 +53,26 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
-            }
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+             "buildOptimizer": false,
+             "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": false,
+                  "inlineCritical": true
+                },
+                "fonts": true
+              },
+             "outputHashing": "all",
+           }
           }
         },
         "serve": {
@@ -64,8 +83,12 @@
           "configurations": {
             "production": {
               "browserTarget": "argon-dashboard-angular:build:production"
+            },
+            "development": {
+              "browserTarget": "argon-dashboard-angular:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "production",
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
