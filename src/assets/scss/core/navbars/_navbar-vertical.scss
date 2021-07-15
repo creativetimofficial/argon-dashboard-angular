@@ -1,3 +1,5 @@
+@use "sass:math";
+
 //
 // Vertical navbar
 //
@@ -8,7 +10,7 @@
 // Creates a vertically aligned version of the navbar
 .navbar-vertical {
     box-shadow: $navbar-vertical-box-shadow;
-    
+
     .navbar {
         border-width: 0 0 1px 0;
         border-style: solid;
@@ -98,7 +100,7 @@
                 border: none;
 
                 .dropdown-menu {
-                    margin-left: $dropdown-item-padding-x / 2;
+                    margin-left: math.div($dropdown-item-padding-x, 2);
                 }
             }
         }
