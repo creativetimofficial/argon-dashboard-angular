@@ -236,7 +236,8 @@ export function chartOptions() {
       color: (mode == 'dark') ? colors.gray[900] : colors.gray[300],
       drawBorder: false,
       drawTicks: false,
-      lineWidth: 0,
+      drawOnChartArea: (mode == 'dark') ? false : true,
+      lineWidth: 1,
       zeroLineWidth: 0,
       zeroLineColor: (mode == 'dark') ? colors.gray[900] : colors.gray[300],
       zeroLineBorderDash: [2],
@@ -288,7 +289,8 @@ export const chartExample1 = {
       yAxes: [{
         gridLines: {
           color: colors.gray[900],
-          zeroLineColor: colors.gray[900]
+          zeroLineColor: colors.gray[900],
+          drawOnChartArea: false
         },
         ticks: {
           callback: function(value) {
