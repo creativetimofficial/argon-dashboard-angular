@@ -22,7 +22,9 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "allowedCommonJsDependencies": ["chart.js"],
+            "allowedCommonJsDependencies": [
+              "chart.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -60,13 +62,12 @@
               ]
             },
             "development": {
-  
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,
-             "buildOptimizer": false,
-             "optimization": {
+              "buildOptimizer": false,
+              "optimization": {
                 "scripts": true,
                 "styles": {
                   "minify": false,
@@ -74,8 +75,8 @@
                 },
                 "fonts": true
               },
-             "outputHashing": "all"
-           }
+              "outputHashing": "all"
+            }
           }
         },
         "serve": {
