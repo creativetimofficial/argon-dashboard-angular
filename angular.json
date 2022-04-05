@@ -22,7 +22,9 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "allowedCommonJsDependencies": ["chart.js"],
+            "allowedCommonJsDependencies": [
+              "chart.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -49,7 +51,6 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -61,8 +62,12 @@
               ]
             },
             "development": {
-             "buildOptimizer": false,
-             "optimization": {
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "buildOptimizer": false,
+              "optimization": {
                 "scripts": true,
                 "styles": {
                   "minify": false,
@@ -70,8 +75,8 @@
                 },
                 "fonts": true
               },
-             "outputHashing": "all",
-           }
+              "outputHashing": "all"
+            }
           }
         },
         "serve": {
@@ -87,7 +92,7 @@
               "browserTarget": "argon-dashboard-angular:build:development"
             }
           },
-          "defaultConfiguration": "production",
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
