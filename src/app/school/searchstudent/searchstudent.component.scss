@@ -1,0 +1,31 @@
+// $formbackground:transparent;
+// .search-student{
+//     position: relative;
+//     top: 70px;
+// }
+// form{
+//     background-color: $formbackground;
+// }
+.form-name{
+    position: relative;
+    padding: 10px;
+    left: 60px;
+    width: 325px;
+    top: 20px;
+    display: block;
+}
+mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    width: 300px;
+    align-items: center;
+    left: 70px;
+}
+.search-student{
+    position: relative;
+    top: 30px;
+    left: 30px;
+    width: 450px;
+    padding: 10px;
+}
