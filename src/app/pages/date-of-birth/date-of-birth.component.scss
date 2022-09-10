@@ -1,0 +1,64 @@
+.choose-birth{
+    top: 50px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.dateOfBirth{
+    height: 40px;
+    font-size: 20px;
+    position: absolute;
+    right: 170px;
+    top: 110px;
+    padding: 20px;
+    z-index: 0;
+    
+}
+.dob{
+    position: absolute;
+    top: 70px;
+    color:brown;
+}
+
+.form-name{
+    width: 300px;
+    position: relative;
+    left: 110px;
+    top: 20px;
+}
+
+.search-button{
+    position: relative;
+    bottom: 45px;
+    right: 20px;
+
+
+    &:hover {
+        box-shadow: 0 7px 14px rgb(50 50 93 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
+        transform: translateY(-5px);
+    }
+}
+
+.invalid{
+    position: relative;
+    right: 5px;
+    bottom: 60px;
+    color: red;
+    font-size: 20px;
+}
+
+.invalid1{
+color: linear-gradient(87deg, #f5365c 0, #f56036 100%) !important;;
+font-weight: 500;
+font-size: 17px;
+padding: 0px 170px 0px;
+}
+.single-search{
+    position: absolute;
+    bottom: 35px;
+    right: 230px;
+
+}

@@ -78,7 +78,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "argon-dashboard-angular:build"
+            "browserTarget": "argon-dashboard-angular:build",
+           
+           
           },
           "configurations": {
             "production": {

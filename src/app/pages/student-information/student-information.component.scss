@@ -1,0 +1,36 @@
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    background: linear-gradient(87deg, #f5365c 0, #f56036 100%) !important;
+}
+
+.fees{
+    font-weight: 900;
+    font-size: 15px;
+    margin-right: 14px;
+    padding: 10px;
+}
+.proceed-pay{
+    padding: 10px;
+    color: antiquewhite;
+    font-size: 14px;
+}
+.proceed{
+    white-space: nowrap;
+    margin-left: -20px;
+}
+.student-name{
+    font-size: 25px;
+    margin-right: 17px;
+    position: relative;
+    top: 30px;
+    text-shadow: 1px 1px #364ce9;
+}
+
+.school{
+    padding-right: 15px;
+    padding-top: 30px;
+}

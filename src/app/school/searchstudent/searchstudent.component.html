@@ -22,23 +22,34 @@
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8">
         <div class="card bg-secondary shadow border-0 search-student">
-            <form role="form" >
-              <div class="form-group">
-                
-                 <div class="form-name">
-                  <input class="form-control" placeholder="Name" type="text">
-               
-                </div>
+            <form role="form" [formGroup]="StudentForm" >
+              <div *ngIf="errormessage" class="invalid">{{errormessage}}</div>
+              <div *ngIf="StudentForm.get('fullname').invalid && (StudentForm.get('fullname').dirty || StudentForm.get('fullname').touched)
+              ||StudentForm.get('classgrade').invalid && (StudentForm.get('classgrade').dirty || StudentForm.get('classgrade').touched)"
+              
+               >
+              <div *ngIf="StudentForm.get('fullname').errors.required ||StudentForm.get('classgrade').errors.required"  class="invalid1">
+                 * All fields is required.
               </div>
+            
+            
+            </div>
+              <div class="form-group">
+                 <div class="form-name">
+                  <input class="form-control" placeholder="Name" id="full" type="text" formControlName="fullname" />
+                 
+              </div>
+              </div>
+              
               <div class="form-group">
                   <div class="input-group-prepend">
                   </div>
                   <div class="mat-form">
-                    <mat-form-field appearance="fill">
-                      <mat-label>Favorite food</mat-label>
-                      <mat-select>
-                        <mat-option *ngFor="let food of foods" [value]="food.value">
-                          {{food.viewValue}}
+                    <mat-form-field appearance="fill" >
+                      <mat-label>Select Class</mat-label>
+                      <mat-select  formControlName="classgrade">
+                        <mat-option *ngFor="let grade of grades" [value]="grade.classgrade">
+                          {{grade.classgrade}}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
@@ -46,7 +57,7 @@
               </div>
              
               <div class="text-center">
-                <button type="button" class="btn btn-primary mt-4 search-student">Search Student</button>
+                <button type="button" class="btn btn-primary mt-4 single-search"  (click)="searchStudent()" [disabled]="StudentForm.invalid">Search</button> 
               </div>
             </form>
           </div>
