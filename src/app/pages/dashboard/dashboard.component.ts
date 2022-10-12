@@ -5,7 +5,7 @@ import Chart from 'chart.js';
 import {
   chartOptions,
   parseOptions,
-  chartExample1,
+  chartSatisfaction,
   chartExample2
 } from "../../variables/charts";
 
@@ -31,23 +31,16 @@ export class DashboardComponent implements OnInit {
     this.data = this.datasets[0];
 
 
-    var chartOrders = document.getElementById('chart-orders');
-
     parseOptions(Chart, chartOptions());
 
 
-    var ordersChart = new Chart(chartOrders, {
-      type: 'bar',
-      options: chartExample2.options,
-      data: chartExample2.data
-    });
 
     var chartSales = document.getElementById('chart-sales');
 
     this.salesChart = new Chart(chartSales, {
 			type: 'line',
-			options: chartExample1.options,
-			data: chartExample1.data
+			options: chartSatisfaction.options,
+			data: chartSatisfaction.data
 		});
   }
 
