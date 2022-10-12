@@ -7,5 +7,5 @@ import {MapsComponent} from '../../pages/maps/maps.component';
 export const AuthLayoutRoutes: Routes = [
     { path: 'login',          component: LoginComponent },
     { path: 'register',       component: RegisterComponent },
-    { path: 'maps',           component: MapsComponent}
+    { path: 'quizz',           component: MapsComponent}
 ];
