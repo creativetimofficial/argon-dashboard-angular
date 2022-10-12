@@ -176,7 +176,10 @@
         </div>
         <!-- Submit button -->
         <div class="col-md-12 text-center">
-          <button type="button" class="btn btn-primary btn-lg">Envoyer les questions</button>
+
+          <a routerLinkActive="active" [routerLink]="['/ok']">
+            <button type="button" class="btn btn-primary btn-lg">Envoyer les questions</button>
+          </a>
         </div>
       </form>
     </div>
