@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare const google: any;
 
 @Component({
   selector: 'app-maps',
@@ -7,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapsComponent implements OnInit {
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
+
   }
 
 }
