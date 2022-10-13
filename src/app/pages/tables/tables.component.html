@@ -10,16 +10,21 @@
   <div class="row">
     <div class="col">
       <div class="card shadow">
+        <form>
         <div class="card-header border-0">
           <h3 class="mb-0">Card tables</h3>
+          <!-- Send Mail button -->
+          <div class="col-md-12 text-right">
+            <button class="btn btn-primary" type="button" (click)="submit()">Envoyer le Quizz</button>
+          </div>
         </div>
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th scope="col">Prénom</th>
-                <th scope="col">Nom</th>
                 <th scope="col">Adresse e-mail</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -27,15 +32,15 @@
               <tr>
                 <td>
                   <div class="custom-control custom-checkbox mb-3">
-                    <input class="custom-control-input" id="customCheck1" type="checkbox">
-                    <label class="custom-control-label" for="customCheck1">Mathieu</label>
+                    <input class="custom-control-input" id="customCheck1" type="checkbox" (change)="onCheck('henri.spaulding@epsi.fr')">
+                    <label class="custom-control-label" for="customCheck1">henri.spaulding@epsi.fr</label>
                   </div>
                 </td>
                 <td>
-                  Godefroy
+                  Spaulding
                 </td>
                 <td>
-                  mathieu.godefroy@epsi.fr
+                  Henri
                 </td>
                 <td class="text-right">
                   <div ngbDropdown placement="bottom-right">
@@ -53,15 +58,15 @@
               <tr>
                 <td>
                   <div class="custom-control custom-checkbox mb-3">
-                    <input class="custom-control-input" id="customCheck2" type="checkbox">
-                    <label class="custom-control-label" for="customCheck2">Cécile</label>
+                    <input class="custom-control-input" id="customCheck2" type="checkbox" (change)="onCheck('thibault.lepoivre@epsi.fr')">
+                    <label class="custom-control-label" for="customCheck2">thibault.lepoivre@epsi.fr</label>
                   </div>
                 </td>
                 <td>
-                  Delamarre
+                  Lepoivre
                 </td>
                 <td>
-                  cecile.delamarre@epsi.fr
+                  Thibault
                 </td>
                 <td class="text-right">
                   <div ngbDropdown  placement="bottom-right">
@@ -79,15 +84,15 @@
               <tr>
                 <td>
                   <div class="custom-control custom-checkbox mb-3">
-                    <input class="custom-control-input" id="customCheck3" type="checkbox">
-                    <label class="custom-control-label" for="customCheck3">Tanina</label>
+                    <input class="custom-control-input" id="customCheck3" type="checkbox" (change)="onCheck('tanina.debussy@epsi.fr')">
+                    <label class="custom-control-label" for="customCheck3">tanina.debussy@epsi.fr</label>
                   </div>
                 </td>
                 <td>
                   Debussy
                 </td>
                 <td>
-                  tanina.debussy@epsi.fr
+                  Tanina
                 </td>
                 <td class="text-right">
                   <div ngbDropdown  placement="top-right">
@@ -105,15 +110,15 @@
               <tr>
                 <td>
                   <div class="custom-control custom-checkbox mb-3">
-                    <input class="custom-control-input" id="customCheck4" type="checkbox">
-                    <label class="custom-control-label" for="customCheck4">Richard</label>
+                    <input class="custom-control-input" id="customCheck4" type="checkbox" (change)="onCheck('richard.tamlberg@epsi.fr')">
+                    <label class="custom-control-label" for="customCheck4">richard.tamlberg@epsi.fr</label>
                   </div>
                 </td>
                 <td>
                   Tamlberg
                 </td>
                 <td>
-                  richard.tamlberg@epsi.fr
+                  Richard
                 </td>
                 <td class="text-right">
                   <div ngbDropdown   placement="top-right">
@@ -131,15 +136,15 @@
               <tr>
                 <td>
                   <div class="custom-control custom-checkbox mb-3">
-                    <input class="custom-control-input" id="customCheck5" type="checkbox">
-                    <label class="custom-control-label" for="customCheck5">Serge</label>
+                    <input class="custom-control-input" id="customCheck5" type="checkbox" (change)="onCheck('serge.debernard@epsi.fr')">
+                    <label class="custom-control-label" for="customCheck5">serge.debernard@epsi.fr</label>
                   </div>
                 </td>
                 <td>
                   Debernard
                 </td>
                 <td>
-                  serge.debernard@epsi.fr
+                  Serge
                 </td>
                 <td class="text-right">
                   <div ngbDropdown   placement="top-right">
@@ -182,6 +187,7 @@
             </ul>
           </nav>
         </div>
+        </form>
       </div>
     </div>
   </div>
