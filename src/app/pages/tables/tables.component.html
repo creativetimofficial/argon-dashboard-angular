@@ -17,9 +17,9 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th scope="col">Prénom</th>
-                <th scope="col">Nom</th>
                 <th scope="col">Adresse e-mail</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -27,15 +27,15 @@
               <tr>
                 <td>
                   <div class="custom-control custom-checkbox mb-3">
-                    <input class="custom-control-input" id="customCheck1" type="checkbox">
-                    <label class="custom-control-label" for="customCheck1">Mathieu</label>
+                    <input class="custom-control-input" id="customCheck1" type="checkbox" (click)="postMail('henri.spaulding@epsi.fr')">
+                    <label class="custom-control-label" for="customCheck1">henri.spaulding@epsi.fr</label>
                   </div>
                 </td>
                 <td>
-                  Godefroy
+                  Spaulding
                 </td>
                 <td>
-                  mathieu.godefroy@epsi.fr
+                  Henri
                 </td>
                 <td class="text-right">
                   <div ngbDropdown placement="bottom-right">
@@ -54,14 +54,14 @@
                 <td>
                   <div class="custom-control custom-checkbox mb-3">
                     <input class="custom-control-input" id="customCheck2" type="checkbox">
-                    <label class="custom-control-label" for="customCheck2">Cécile</label>
+                    <label class="custom-control-label" for="customCheck2">thibault.lepoivre@epsi.fr</label>
                   </div>
                 </td>
                 <td>
-                  Delamarre
+                  Lepoivre
                 </td>
                 <td>
-                  cecile.delamarre@epsi.fr
+                  Thibault
                 </td>
                 <td class="text-right">
                   <div ngbDropdown  placement="bottom-right">
@@ -80,14 +80,14 @@
                 <td>
                   <div class="custom-control custom-checkbox mb-3">
                     <input class="custom-control-input" id="customCheck3" type="checkbox">
-                    <label class="custom-control-label" for="customCheck3">Tanina</label>
+                    <label class="custom-control-label" for="customCheck3">tanina.debussy@epsi.fr</label>
                   </div>
                 </td>
                 <td>
                   Debussy
                 </td>
                 <td>
-                  tanina.debussy@epsi.fr
+                  Tanina
                 </td>
                 <td class="text-right">
                   <div ngbDropdown  placement="top-right">
@@ -106,14 +106,14 @@
                 <td>
                   <div class="custom-control custom-checkbox mb-3">
                     <input class="custom-control-input" id="customCheck4" type="checkbox">
-                    <label class="custom-control-label" for="customCheck4">Richard</label>
+                    <label class="custom-control-label" for="customCheck4">richard.tamlberg@epsi.fr</label>
                   </div>
                 </td>
                 <td>
                   Tamlberg
                 </td>
                 <td>
-                  richard.tamlberg@epsi.fr
+                  Richard
                 </td>
                 <td class="text-right">
                   <div ngbDropdown   placement="top-right">
@@ -132,14 +132,14 @@
                 <td>
                   <div class="custom-control custom-checkbox mb-3">
                     <input class="custom-control-input" id="customCheck5" type="checkbox">
-                    <label class="custom-control-label" for="customCheck5">Serge</label>
+                    <label class="custom-control-label" for="customCheck5">serge.debernard@epsi.fr</label>
                   </div>
                 </td>
                 <td>
                   Debernard
                 </td>
                 <td>
-                  serge.debernard@epsi.fr
+                  Serge
                 </td>
                 <td class="text-right">
                   <div ngbDropdown   placement="top-right">
