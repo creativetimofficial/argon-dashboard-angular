@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-tables',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tables.component.scss']
 })
 export class TablesComponent implements OnInit {
+  postId;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.http.post<any>('http://localhost:8080/api/rest/answer/quizz', { title: 'Quizz Answers' }).subscribe(data => {
+      this.postId = data.id;
+    });
   }
 
 }
