@@ -20,6 +20,8 @@ export class TablesComponent implements OnInit {
     for (let i = 0; i < this.mailList.length; i++) {
       if (string === this.mailList[i]) {
         foo = true;
+        this.mailList.splice(i, 1);
+        i--;
       }
     }
     if (foo === false) {
@@ -30,6 +32,7 @@ export class TablesComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.mailList);
     this.http.post<any>('http://localhost:8080/api/rest/answer/quizz', { title: 'Mail list' }).subscribe(data => {
       this.mailList = data.id;
     });
