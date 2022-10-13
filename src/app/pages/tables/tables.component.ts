@@ -30,7 +30,6 @@ export class TablesComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.mailList);
     this.http.post<any>('http://localhost:8080/api/rest/answer/quizz', { title: 'Mail list' }).subscribe(data => {
       this.mailList = data.id;
     });
