@@ -10,12 +10,13 @@ import { RegisterComponent } from '../../pages/register/register.component';
 import {MapsComponent} from '../../pages/maps/maps.component';
 import {CheckComponent} from '../../pages/Check/check.component';
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(AuthLayoutRoutes),
-    FormsModule
-    // NgbModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(AuthLayoutRoutes),
+        FormsModule,
+        ReactiveFormsModule,
+        // NgbModule
+    ],
   declarations: [
     LoginComponent,
     RegisterComponent,
