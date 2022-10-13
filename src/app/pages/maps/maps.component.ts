@@ -8,29 +8,31 @@ declare const google: any;
   styleUrls: ['./maps.component.scss']
 })
 export class MapsComponent implements OnInit {
-  answers: Array<string>;
+  answersList: Array<Answer>;
+  input: Array<string>;
 
   constructor(private http: HttpClient) {
-    this.answers = [];
+    this.input = [];
+    this.answersList = new Array<Answer>();
   }
   onClick(string) {
     let foo = false;
-    for (let i = 0; i < this.answers.length; i++) {
-      if (string === this.answers[i] || string.charAt(0) === this.answers[i].charAt(0)) {
+    for (let i = 0; i < this.input.length; i++) {
+      if (string === this.input[i] || string.charAt(0) === this.input[i].charAt(0)) {
         foo = true;
-        this.answers.splice(i, 1);
+        this.input.splice(i, 1);
         i--;
       }
     }
     if (foo === false) {
-      this.answers.push(string);
+      this.answersList.push({idQuestion: parseInt(string.charAt(0), 10), idAnswer: parseInt(string.charAt(1), 10)});
     }
   }
 
   submit() {
-    console.log(this.answers);
+    console.log(this.answersList);
     this.http.post<any>('http://localhost:8080/api/rest/answer/quizz', { title: 'answers list' }).subscribe(data => {
-      this.answers = data.id;
+      this.answersList = data.id;
     });
   }
 
@@ -38,4 +40,9 @@ export class MapsComponent implements OnInit {
 
   }
 
+}
+
+class Answer {
+  idQuestion: number;
+  idAnswer: number;
 }
