@@ -30,7 +30,6 @@ export class MapsComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.answersList);
     this.http.post<any>('http://localhost:8080/api/rest/answer/quizz', { title: 'answers list' }).subscribe(data => {
       this.answersList = data.id;
     });
