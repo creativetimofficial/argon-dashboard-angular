@@ -9,7 +9,8 @@ import {Element} from '@angular/compiler';
   styleUrls: ['./tables.component.scss'],
 })
 export class TablesComponent implements OnInit {
-  mailList: Array<string>;
+  mailList: string[];
+  token: string;
 
   constructor(private http: HttpClient) {
     this.mailList = [];
@@ -32,8 +33,9 @@ export class TablesComponent implements OnInit {
   }
 
   submit() {
-    this.http.post<any>('http://localhost:8080/api/rest/send/mail/quizz', { title: 'Mail list' }).subscribe(data => {
-      this.mailList = data.id;
+    console.log(this.mailList);
+    this.http.post<any>('http://localhost:8080/api/rest/send/mail/quizz', this.mailList).subscribe(data => {
+      this.token = data;
     });
   }
 
