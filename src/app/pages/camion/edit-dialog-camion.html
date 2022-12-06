@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Modifier le camion</h2>
+
+<mat-dialog-content class="mat-typography">
+<form >
+      <div class="form-group">
+        <label for="immatriculation">Immatriculation</label>
+        <input  class="form-control" [(ngModel)]="data.immatriculation" name="immatriculation" id="immatriculation">
+      </div>
+      <div class="form-group">
+        <label for="numCarteGrise">N° Carte Grise</label>
+        <input  class="form-control" [(ngModel)]="data.numCarteGrise" name="numCarteGrise" id="numCarteGrise">
+      </div>
+
+      
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="btn btn-outline-success" (click)="submitEdit()">Enregistrer</button>
+
+</mat-dialog-actions>

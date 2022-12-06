@@ -2,19 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 declare interface RouteInfo {
-    path: string;
-    title: string;
-    icon: string;
-    class: string;
+  path: string;
+  title: string;
+  icon: string;
+  class: string;
 }
+
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'ni-planet text-blue', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-orange', class: '' },
-    { path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
-    { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },
-    { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' }
+  { path: '/mission', title: 'Mission',  icon: 'ni ni-single-copy-04 text-blue', class: '' },
+  { path: '/chauffeur', title: 'Chauffeurs',  icon: 'ni ni-single-02 text-blue', class: '' },
+  { path: '/camion', title: 'Camions',  icon: 'ni ni-delivery-fast text-blue', class: '' },
+  { path: '/client', title: 'Clients',  icon: 'ni ni-box-2 text-blue', class: '' },
+  { path: '/facture', title: 'Factures',  icon: 'ni ni-credit-card text-blue', class: '' },
+  { path: '/fiche-de-paie', title: 'Fiches de paie',  icon: 'ni ni-money-coins text-blue', class: '' },
+  { path: '/intervention-preventif', title: 'Intervention Preventif',  icon: 'ni ni-settings text-blue', class: '' },
+  { path: '/intervention-curatif', title: 'Intervention Curatif',  icon: 'ni ni-settings text-blue', class: '' },
+  { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
 ];
 
 @Component({
