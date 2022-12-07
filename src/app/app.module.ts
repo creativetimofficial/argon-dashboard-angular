@@ -14,8 +14,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { CamionComponent, DialogCamion } from './pages/camion/camion.component';
+import { CamionComponent, DialogCamion, EditDialogCamion } from './pages/camion/camion.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ChauffeurComponent, DialogChauffeur } from './pages/chauffeur/chauffeur.component';
 
 
 @NgModule({
@@ -33,11 +34,16 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    DialogCamion
+    DialogCamion,
+    EditDialogCamion,
+    DialogChauffeur
+    
   ],
   providers: [],
   entryComponents:[
-    DialogCamion
+    DialogCamion,
+    EditDialogCamion,
+    DialogChauffeur
   ],
   bootstrap: [AppComponent]
 })

@@ -13,6 +13,7 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CamionComponent } from 'src/app/pages/camion/camion.component';
+import { ChauffeurComponent } from 'src/app/pages/chauffeur/chauffeur.component';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -31,7 +32,8 @@ import { CamionComponent } from 'src/app/pages/camion/camion.component';
     TablesComponent,
     IconsComponent,
     MapsComponent,
-    CamionComponent
+    CamionComponent,
+    ChauffeurComponent
     
   ]
 })
