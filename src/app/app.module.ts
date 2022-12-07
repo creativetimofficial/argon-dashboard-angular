@@ -40,8 +40,9 @@ import { ClientComponent, DialogClient, EditDialogClient } from './pages/client/
     EditDialogCamion,
     DialogChauffeur,
     EditDialogClient,
-    EditDialogChauffeur
-    
+    EditDialogChauffeur,
+    DialogClient,
+    EditDialogClient
     
   ],
   entryComponents:[
