@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Ajouter un chauffeur</h2>
+
+<mat-dialog-content class="mat-typography">
+<form >
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input  class="form-control" [(ngModel)]="data.nom" name="nom" id="nom">
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input  class="form-control" [(ngModel)]="data.prenom" name="prenom" id="prenom">
+      </div>
+      <div class="form-group">
+        <label for="numCompte">N° Compte Bancaire</label>
+        <input  class="form-control" [(ngModel)]="data.numCompte" name="numCompte" id="numCompte">
+      </div>
+      <div class="form-group">
+        <label for="codeCNSS">N° CNSS</label>
+        <input  class="form-control" [(ngModel)]="data.codeCNSS" name="codeCNSS" id="codeCNSS">
+      </div>
+      <div class="form-group">
+        <label for="numTel">N° Tel</label>
+        <input  class="form-control" [(ngModel)]="data.numTel" name="numTel" id="numTel">
+      </div>
+      <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input  class="form-control" [(ngModel)]="data.adresse" name="adresse" id="adresse">
+      </div>
+      
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="btn btn-outline-success" (click)="submit()">Valider</button>
+
+</mat-dialog-actions>

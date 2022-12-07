@@ -14,9 +14,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { CamionComponent, DialogCamion } from './pages/camion/camion.component';
+import { CamionComponent, DialogCamion, EditDialogCamion } from './pages/camion/camion.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthInterceptor, authInterceptorProviders } from './pages/helpers/auth.interceptor';
+import { DialogChauffeur } from './pages/chauffeur/chauffeur.component';
 
 
 @NgModule({
@@ -34,13 +35,18 @@ import { AuthInterceptor, authInterceptorProviders } from './pages/helpers/auth.
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    DialogCamion
+    DialogCamion,
+    EditDialogCamion,
+    DialogChauffeur
+    
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, 
     { provide: 'HEADERS', useValue: new HttpHeaders({'Content-Type': 'application/json'})}
   ],
   entryComponents:[
-    DialogCamion
+    DialogCamion,
+    EditDialogCamion,
+    DialogChauffeur
   ],
   bootstrap: [AppComponent]
 })
