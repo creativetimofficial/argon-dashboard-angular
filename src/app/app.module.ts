@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpHeaders, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 
@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { CamionComponent, DialogCamion } from './pages/camion/camion.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AuthInterceptor, authInterceptorProviders } from './pages/helpers/auth.interceptor';
 
 
 @NgModule({
@@ -35,7 +36,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     AuthLayoutComponent,
     DialogCamion
   ],
-  providers: [],
+  providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, 
+    { provide: 'HEADERS', useValue: new HttpHeaders({'Content-Type': 'application/json'})}
+  ],
   entryComponents:[
     DialogCamion
   ],
