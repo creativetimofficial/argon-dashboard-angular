@@ -7,12 +7,13 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { CamionComponent } from 'src/app/pages/camion/camion.component';
 import { ChauffeurComponent } from 'src/app/pages/chauffeur/chauffeur.component';
+import { ClientComponent } from 'src/app/pages/client/client.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'camion',      component: CamionComponent},
     { path: 'chauffeur',      component: ChauffeurComponent},
 
-    
+    { path: 'client',      component: ClientComponent},
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'tables',         component: TablesComponent },

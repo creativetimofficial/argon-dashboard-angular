@@ -18,6 +18,7 @@ import { CamionComponent, DialogCamion, EditDialogCamion } from './pages/camion/
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthInterceptor, authInterceptorProviders } from './pages/helpers/auth.interceptor';
 import { DialogChauffeur } from './pages/chauffeur/chauffeur.component';
+import { ClientComponent, DialogClient, EditDialogClient } from './pages/client/client.component';
 
 
 @NgModule({
@@ -37,7 +38,10 @@ import { DialogChauffeur } from './pages/chauffeur/chauffeur.component';
     AuthLayoutComponent,
     DialogCamion,
     EditDialogCamion,
-    DialogChauffeur
+    DialogChauffeur,
+    DialogClient,
+    EditDialogClient
+    
     
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, 
@@ -46,7 +50,10 @@ import { DialogChauffeur } from './pages/chauffeur/chauffeur.component';
   entryComponents:[
     DialogCamion,
     EditDialogCamion,
-    DialogChauffeur
+    DialogChauffeur,
+    DialogClient,
+    EditDialogClient
+
   ],
   bootstrap: [AppComponent]
 })
