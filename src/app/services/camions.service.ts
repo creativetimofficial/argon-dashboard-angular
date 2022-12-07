@@ -17,10 +17,16 @@ export class CamionsService {
     return this.http.get(environment.url+"/api/camions", { headers });
   }
   getCamion(id){
-    return this.http.get(environment.url+"/api/camions/"+id)
+    let headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + this.token.getToken())
+    .set('Content-Type', 'application/json');
+    return this.http.get(environment.url+"/api/camions/"+id, { headers })
   }
   updateCamion(id,camion){
-    return this.http.put(environment.url+"/api/camions/"+id,camion)
+    let headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + this.token.getToken())
+    .set('Content-Type', 'application/json');
+    return this.http.put(environment.url+"/api/camions/"+id,camion, { headers })
   }
   addCamion(camion:any){
     let headers = new HttpHeaders()
@@ -29,6 +35,9 @@ export class CamionsService {
     return this.http.post(environment.url+"/api/camions",camion, { headers });
   }
   deleteCamion(id){
-    return this.http.delete(environment.url+"/api/camions/"+id)
+    let headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + this.token.getToken())
+    .set('Content-Type', 'application/json');
+    return this.http.delete(environment.url+"/api/camions/"+id, { headers })
   }
 }
