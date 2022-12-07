@@ -1,27 +1,43 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { TokenStorageService } from './token-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChauffeursService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private token: TokenStorageService) { }
 
   getAllChauffeurs(){
-    return this.http.get(environment.url+"/api/chauffeurs")
+    let headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + this.token.getToken())
+    .set('Content-Type', 'application/json');
+    return this.http.get(environment.url+"/api/chauffeurs", { headers })
   }
   getChauffeur(id){
-    return this.http.get(environment.url+"/api/chauffeurs/"+id)
+    let headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + this.token.getToken())
+    .set('Content-Type', 'application/json');
+    return this.http.get(environment.url+"/api/chauffeurs/"+id, { headers })
   }
   updateChauffeur(id,chauffeur){
-    return this.http.put(environment.url+"/api/camions/"+id,chauffeur)
+    let headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + this.token.getToken())
+    .set('Content-Type', 'application/json');
+    return this.http.put(environment.url+"/api/chauffeurs/"+id,chauffeur, { headers })
   }
   addChauffeur(chauffeur:any){
-    return this.http.post(environment.url+"/api/chauffeurs",chauffeur)
+    let headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + this.token.getToken())
+    .set('Content-Type', 'application/json');
+    return this.http.post(environment.url+"/api/chauffeurs",chauffeur, { headers })
   }
   deleteChauffeur(id){
-    return this.http.delete(environment.url+"/api/chauffeurs/"+id)
+    let headers = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + this.token.getToken())
+    .set('Content-Type', 'application/json');
+    return this.http.delete(environment.url+"/api/chauffeurs/"+id, { headers })
   }
 }
