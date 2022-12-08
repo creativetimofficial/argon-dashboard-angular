@@ -25,13 +25,10 @@
                       <thead class="thead-light">
                         <tr>
                           <th scope="col">DateMission</th>
-                          <th scope="col">Client</th>                
-
+                          <th scope="col">Camion</th>
+                          <th scope="col">Chauffeur</th>
+                          <th scope="col">Client</th>               
                           <th scope="col">Destination</th>
-                          <th scope="col">Description</th>
-                          <th scope="col">QTE</th>
-                          <th scope="col">PrixHT</th>
-                          <th scope="col">Pourcentage</th>
                           <th scope="col">PrixTotale</th>
                         </tr>
                       </thead>
@@ -41,26 +38,22 @@
                             {{item.dateMission   | date:'shortDate'}}
                           </td>
                           <td>
-                            {{item.destination }}
+                            <div *ngIf="item.camion"> {{item.camion.immatriculation}}</div>
                           </td>
                           <td>
-                            {{item.description }}
-                          </td>
-                          <td>
-                            {{item.qte }}
-                          </td>
-                          <td>
-                            {{item.prixHT }}
-                          </td>
-                          <td>
-                            {{item.pourcentageTVA  }}
-                          </td>
-                          <td>
-                            {{item.prixTotale   }}
+                            <div *ngIf="item.chauffeur"> {{item.chauffeur.nom}}</div>
                           </td>
                           <td>
                             <div *ngIf="item.client"> {{item.client.nom}}</div>
                           </td>
+                          <td>
+                            {{item.destination }}
+                          </td>
+                     
+                          <td>
+                            {{item.prixTotale   }}
+                          </td>
+                          
                           <td class="text-right">
                             <a class="btn btn-primary btn-sm" (click)="openEditDialog(item.id, item.dateMission , item.destination,item.description,item.qte,item.prixHT,item.pourcentageTVA,item.prixTotale)"><i class="fas fa-edit"></i></a>
                             <a class="btn btn-danger btn-sm" (click)="supprimerMission(item.id)"><i class="fas fa-trash-alt" ></i></a>

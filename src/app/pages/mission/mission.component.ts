@@ -3,6 +3,8 @@ import { MissionsService } from 'src/app/services/missions.service';
 import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MissionModel} from 'src/app/models/missionModel';
 import { ClientsService } from 'src/app/services/client.service';
+import { CamionsService } from 'src/app/services/camions.service';
+import { ChauffeursService } from 'src/app/services/chauffeurs.service';
 
 declare var $: any;
 
@@ -125,19 +127,31 @@ export class MissionComponent implements OnInit {
 
 export class DialogMission {
   clients=[];
+  camions=[];
+  chauffeurs=[]
   constructor(
     public dialogRef: MatDialogRef<DialogMission>,
     @Inject(MAT_DIALOG_DATA) public data: MissionModel,
     private clientService:ClientsService,
+    private camionService:CamionsService,
+    private chauffeurService:ChauffeursService,
     private missionService: MissionsService) {
       this.clientService.getAllClients().subscribe(res=>{
         this.clients=res as any;
+      })
+      this.chauffeurService.getAllChauffeurs().subscribe(res=>{
+        this.chauffeurs=res as any;
+      })
+      this.camionService.getAllCamions().subscribe(res=>{
+        this.camions=res as any;
       })
   }
   onNoClick(): void {
     this.dialogRef.close();
   }
   submit() {
+    console.log(this.data.client);
+    
     var cam = {
       'dateMission': this.data.dateMission,
       'destination': this.data.destination,
@@ -146,10 +160,12 @@ export class DialogMission {
       'prixHT': this.data.prixHT ,
       'pourcentageTVA': this.data.pourcentageTVA,
       'prixTotale': this.data.prixTotale,
-      'client': this.data.client
+      "camion": JSON.parse(this.data.camion),
+      "chauffeur": JSON.parse(this.data.chauffeur),
+      'client': JSON.parse(this.data.client)
     };
-    
-    console.log("ok"+cam.client);
+    console.log(cam.client);
+ console.log(cam);
 
     this.missionService.addMission(cam).subscribe((res: any) => {
       

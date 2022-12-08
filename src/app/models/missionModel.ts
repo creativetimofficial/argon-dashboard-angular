@@ -9,7 +9,7 @@ export interface MissionModel{
     prixTotale:number;
     etat:boolean;
     client:any;
-     camion:any;
+    camion:any;
     chauffeur:any;
     
     
