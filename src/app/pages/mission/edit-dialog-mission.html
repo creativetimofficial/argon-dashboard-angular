@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Modifier la mission</h2>
+
+<mat-dialog-content class="mat-typography">
+<form >
+  <div class="form-group">
+    <label for="dateMission ">DateMission </label>
+    <input  class="form-control" [(ngModel)]="data.dateMission " name="dateMission " id="dateMission ">
+  </div>
+  <div class="form-group">
+    <label for="destination ">Destination </label>
+    <input  class="form-control" [(ngModel)]="data.destination " name="destination " id="destination ">
+  </div>
+  <div class="form-group">
+    <label for="description ">Description </label>
+    <input  class="form-control" [(ngModel)]="data.description " name="description " id="description ">
+  </div>
+  <div class="form-group">
+    <label for="qte ">Qte </label>
+    <input  class="form-control" [(ngModel)]="data.qte " name="qte " id="qte ">
+  </div>
+  <div class="form-group">
+    <label for="prixHT ">PrixHT </label>
+    <input  class="form-control" [(ngModel)]="data.prixHT " name="prixHT " id="prixHT ">
+  </div>
+  <div class="form-group">
+    <label for="pourcentageTVA  ">PourcentageTVA  </label>
+    <input  class="form-control" [(ngModel)]="data.pourcentageTVA  " name="pourcentageTVA  " id="pourcentageTVA  ">
+  </div>
+  <div class="form-group">
+    <label for="prixTotale   ">PrixTotale   </label>
+    <input  class="form-control" [(ngModel)]="data.prixTotale   " name="prixTotale   " id="prixTotale   ">
+  </div>
+
+
+      
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="btn btn-outline-success" (click)="submitEdit()">Enregistrer</button>
+
+</mat-dialog-actions>

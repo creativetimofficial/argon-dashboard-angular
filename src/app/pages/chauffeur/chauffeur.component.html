@@ -1,0 +1,73 @@
+<div class="header bg-gradient-info pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header bg-transparent">
+            <h3 class="mb-0">Chauffeur</h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <div class="card shadow">
+                  <div class="card-header border-0 align-self-end ">
+                    <button type="button" class="btn btn-outline-info" (click)="openDialog()" ><i class="fas fa-truck" style="margin-right: 10px;"></i>Ajouter un chauffeur</button>
+                </div>
+                  <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col">Nom</th>
+                          <th scope="col">prénom</th>
+                          <th scope="col">N° Compte Bancaire</th>
+                          <th scope="col">N° CNSS</th>
+                          <th scope="col">N° Tel</th>
+                          <th scope="col">Adresse</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of dataSource">
+                          <td>
+                            {{item.nom}}
+                          </td>
+                          <td>
+                            {{item.prenom}}
+                          </td>
+                          <td>
+                            {{item.numCompte}}
+                          </td>
+                          <td>
+                            {{item.codeCNSS}}
+                          </td>
+                          <td>
+                            {{item.numTel}}
+                          </td>
+                          <td>
+                            {{item.adresse}}
+                          </td>
+                          <td class="text-right">
+                            <a class="btn btn-primary btn-sm" (click)="openEditDialog(item.id, item.nom, item.prenom, item.numCompte, item.codeCNSS, item.numTel, item.codeCNSS, item.numTel, item.adresse)"><i class="fas fa-edit" ></i></a>
+                            <a class="btn btn-danger btn-sm" (click)="supprimerChauffeur(item.id)"><i class="fas fa-trash-alt" ></i></a>
+                          </td>
+                        </tr>
+                     
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

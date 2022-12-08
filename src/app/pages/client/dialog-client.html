@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Ajouter un client</h2>
+
+<mat-dialog-content class="mat-typography">
+<form >
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input  class="form-control" [(ngModel)]="data.nom" name="nom" id="nom">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input  class="form-control" [(ngModel)]="data.email" name="email" id="email">
+      </div>
+      <div class="form-group">
+        <label for="email">NumTel</label>
+        <input  class="form-control" [(ngModel)]="data.numTel" name="numTel" id="numTel">
+      </div>
+      <div class="form-group">
+        <label for="address">Addresse</label>
+        <input  class="form-control" [(ngModel)]="data.address" name="address" id="address">
+      </div>
+
+      
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="btn btn-outline-success" (click)="submit()">Valider</button>
+
+</mat-dialog-actions>

@@ -1,0 +1,81 @@
+<div class="header bg-gradient-info pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header bg-transparent">
+            <h3 class="mb-0">Missions</h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <div class="card shadow">
+                  <div class="card-header border-0 align-self-end ">
+                    <button type="button" class="btn btn-outline-info" (click)="openDialog()" ><i class="fas fa-regular fa-paper-plane" style="margin-right: 10px;"></i>Ajouter une mission</button>
+                </div>
+                  <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col">DateMission</th>
+                          <th scope="col">Client</th>                
+
+                          <th scope="col">Destination</th>
+                          <th scope="col">PrixTotale</th>
+                          <th scope="col">Etat</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of dataSource">
+                          <td>
+                            {{item.dateMission   | date:'shortDate'}}
+                          </td>
+                          <td>
+                            <div *ngIf="item.client"> {{item.client.nom}}</div>
+                          </td>
+                          <td>
+                            <div *ngIf="item.camion"> {{item.camion.immatriculation}}</div>
+                          </td>
+                          <td>
+                            <div *ngIf="item.chauffeur"> {{item.chauffeur.nom}}</div>
+                          </td>
+                          <td>
+                            <div *ngIf="item.client"> {{item.client.nom}}</div>
+                          </td>
+                          <td>
+                            {{item.destination }}
+                          </td>
+                     
+                          <td>
+                            {{item.prixTotale   }}
+                          </td>
+                          <td>
+                            <div *ngIf="item.client"> {{item.client.nom}}</div>
+                          </td>
+                          <td class="text-right">
+                            <a class="btn btn-primary btn-sm" (click)="openEditDialog(item.id, item.dateMission , item.destination,item.description,item.qte,item.prixHT,item.pourcentageTVA,item.prixTotale)"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-danger btn-sm" (click)="supprimerMission(item.id)"><i class="fas fa-trash-alt" ></i></a>
+                          </td>
+
+                        </tr>
+                     
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
