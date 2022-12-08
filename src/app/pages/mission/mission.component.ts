@@ -146,11 +146,11 @@ export class DialogMission {
       'prixHT': this.data.prixHT ,
       'pourcentageTVA': this.data.pourcentageTVA,
       'prixTotale': this.data.prixTotale,
-      'client': this.data.client
+      'client': JSON.parse(this.data.client)
     };
-    
-    console.log("ok"+cam.client);
-
+    console.log(this.data.client)
+    console.log(cam.client);
+    console.log(cam);
     this.missionService.addMission(cam).subscribe((res: any) => {
       
       //this.showNotification('top', 'right', 'Le mission a été ajouter', 'success');
