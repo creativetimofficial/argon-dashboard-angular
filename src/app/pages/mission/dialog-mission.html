@@ -50,7 +50,7 @@
   <div class="form-group">
     <label for="clients">Client</label>
     <select  class="form-control" [(ngModel)]="data.client" name="clients" id="clients">
-       <option *ngFor="let item of clients" [value]="(item.id)">{{item.nom}}</option>
+       <option *ngFor="let item of clients" [value]="jsonToStr(item)">{{item.nom}}</option>
     </select>
   </div>
 

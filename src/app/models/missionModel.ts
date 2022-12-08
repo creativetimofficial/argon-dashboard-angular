@@ -12,7 +12,4 @@ export interface MissionModel{
     camion:any;
     chauffeur:any;
     
-    
-    
-    
 }
