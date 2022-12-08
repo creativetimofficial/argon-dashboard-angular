@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CamionComponent } from 'src/app/pages/camion/camion.component';
 import { ChauffeurComponent } from 'src/app/pages/chauffeur/chauffeur.component';
 import { ClientComponent } from 'src/app/pages/client/client.component';
+import { MissionComponent } from 'src/app/pages/mission/mission.component';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -35,7 +36,8 @@ import { ClientComponent } from 'src/app/pages/client/client.component';
     MapsComponent,
     CamionComponent,
     ChauffeurComponent,
-    ClientComponent
+    ClientComponent,
+    MissionComponent
   ]
 })
 

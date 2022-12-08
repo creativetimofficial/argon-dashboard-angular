@@ -17,8 +17,7 @@ export const ROUTES: RouteInfo[] = [
   { path: '/fiche-de-paie', title: 'Fiches de paie',  icon: 'ni ni-money-coins text-blue', class: '' },
   { path: '/intervention-preventif', title: 'Intervention Preventif',  icon: 'ni ni-settings text-blue', class: '' },
   { path: '/intervention-curatif', title: 'Intervention Curatif',  icon: 'ni ni-settings text-blue', class: '' },
-  { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
-];
+ ];
 
 @Component({
   selector: 'app-sidebar',

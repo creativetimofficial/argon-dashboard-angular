@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
         console.log('ok');
-        this.router.navigate(['/dashboard'] );    
+        this.router.navigate(['/mission'] );    
         },
       err => {
         this.alertMsg=err.error.detail

@@ -19,6 +19,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AuthInterceptor, authInterceptorProviders } from './pages/helpers/auth.interceptor';
 import { DialogChauffeur, EditDialogChauffeur } from './pages/chauffeur/chauffeur.component';
 import { ClientComponent, DialogClient, EditDialogClient } from './pages/client/client.component';
+import { MissionComponent } from './pages/mission/mission.component';
+import { DialogMission, EditDialogMission } from './pages/mission/mission.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { ClientComponent, DialogClient, EditDialogClient } from './pages/client/
     EditDialogClient,
     EditDialogChauffeur,
     DialogClient,
-    EditDialogClient
+    EditDialogClient,
+    DialogMission,
+    EditDialogMission
     
   ],
   entryComponents:[
@@ -51,7 +55,9 @@ import { ClientComponent, DialogClient, EditDialogClient } from './pages/client/
     DialogChauffeur,
     DialogClient,
     EditDialogClient,
-    EditDialogChauffeur
+    EditDialogChauffeur,
+    DialogMission,
+    EditDialogMission
 
 
 
