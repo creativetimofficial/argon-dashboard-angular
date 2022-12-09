@@ -9,11 +9,17 @@ import { CamionComponent } from 'src/app/pages/camion/camion.component';
 import { ChauffeurComponent } from 'src/app/pages/chauffeur/chauffeur.component';
 import { ClientComponent } from 'src/app/pages/client/client.component';
 import { MissionComponent } from 'src/app/pages/mission/mission.component';
+import { FactureComponent } from 'src/app/pages/facture/facture.component';
+import { InterventionPreventifComponent } from 'src/app/pages/InterventionPreventif/intervention-preventif.component';
+import { InterventionCuratifComponent } from 'src/app/pages/interventionCuratif/intervention-curatif.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'camion',      component: CamionComponent},
     { path: 'chauffeur',      component: ChauffeurComponent},
     { path: 'mission',      component: MissionComponent},
+    { path: 'facture',      component: FactureComponent},
+    { path: 'interventionPreventif',component: InterventionPreventifComponent},
+    { path: 'interventionCuratif', component: InterventionCuratifComponent},
     { path: 'client',      component: ClientComponent},
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },

@@ -21,7 +21,8 @@ import { DialogChauffeur, EditDialogChauffeur } from './pages/chauffeur/chauffeu
 import { ClientComponent, DialogClient, EditDialogClient } from './pages/client/client.component';
 import { MissionComponent } from './pages/mission/mission.component';
 import { DialogMission, EditDialogMission } from './pages/mission/mission.component';
-
+import { DialogInterventionPreventif, EditDialogInterventionPreventif } from './pages/InterventionPreventif/intervention-preventif.component';
+ 
 
 @NgModule({
   imports: [
@@ -46,8 +47,14 @@ import { DialogMission, EditDialogMission } from './pages/mission/mission.compon
     DialogClient,
     EditDialogClient,
     DialogMission,
-    EditDialogMission
+    EditDialogMission,
+    DialogInterventionPreventif,
+    EditDialogInterventionPreventif,
+    DialogInterventionPreventif,
+    EditDialogInterventionPreventif,
     
+
+  
   ],
   entryComponents:[
     DialogCamion,
@@ -57,7 +64,13 @@ import { DialogMission, EditDialogMission } from './pages/mission/mission.compon
     EditDialogClient,
     EditDialogChauffeur,
     DialogMission,
-    EditDialogMission
+    EditDialogMission,
+    DialogInterventionPreventif,
+    EditDialogInterventionPreventif,
+    DialogInterventionPreventif,
+    EditDialogInterventionPreventif,
+   
+    
 
 
 

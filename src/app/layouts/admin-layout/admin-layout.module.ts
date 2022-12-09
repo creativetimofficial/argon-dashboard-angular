@@ -16,6 +16,9 @@ import { CamionComponent } from 'src/app/pages/camion/camion.component';
 import { ChauffeurComponent } from 'src/app/pages/chauffeur/chauffeur.component';
 import { ClientComponent } from 'src/app/pages/client/client.component';
 import { MissionComponent } from 'src/app/pages/mission/mission.component';
+import { FactureComponent } from 'src/app/pages/facture/facture.component';
+import { InterventionCuratifComponent } from 'src/app/pages/interventionCuratif/intervention-curatif.component';
+import { InterventionPreventifComponent } from 'src/app/pages/InterventionPreventif/intervention-preventif.component';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -37,7 +40,11 @@ import { MissionComponent } from 'src/app/pages/mission/mission.component';
     CamionComponent,
     ChauffeurComponent,
     ClientComponent,
-    MissionComponent
+    MissionComponent,
+    FactureComponent,
+    InterventionCuratifComponent,
+    InterventionPreventifComponent
+    
   ]
 })
 

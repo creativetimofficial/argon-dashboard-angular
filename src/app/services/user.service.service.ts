@@ -17,9 +17,7 @@ export class UserService {
   getUserBoard(): Observable<any> {
     return this.http.get(API_URL + 'user', { responseType: 'text' });
   }
-  getUser(): Observable<any> {
-    return this.http.get(API_URL + 'login', { responseType: 'text' });
-  }
+  
 
   getModeratorBoard(): Observable<any> {
     return this.http.get(API_URL + 'mod', { responseType: 'text' });

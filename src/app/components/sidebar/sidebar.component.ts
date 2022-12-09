@@ -15,8 +15,8 @@ export const ROUTES: RouteInfo[] = [
   { path: '/client', title: 'Clients',  icon: 'ni ni-box-2 text-blue', class: '' },
   { path: '/facture', title: 'Factures',  icon: 'ni ni-credit-card text-blue', class: '' },
   { path: '/fiche-de-paie', title: 'Fiches de paie',  icon: 'ni ni-money-coins text-blue', class: '' },
-  { path: '/intervention-preventif', title: 'Intervention Preventif',  icon: 'ni ni-settings text-blue', class: '' },
-  { path: '/intervention-curatif', title: 'Intervention Curatif',  icon: 'ni ni-settings text-blue', class: '' },
+  { path: '/interventionPreventif', title: 'Intervention Preventif',  icon: 'ni ni-settings text-blue', class: '' },
+  { path: '/interventionCuratif', title: 'Intervention Curatif',  icon: 'ni ni-settings text-blue', class: '' },
  ];
 
 @Component({

@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Ajouter une intervention</h2>
+
+<mat-dialog-content class="mat-typography">
+<form >
+  <div class="form-group">
+    <label for="dateMission ">DateIntervention</label>
+    <input  type="date" class="form-control" [(ngModel)]="data.dateInt " name="dateInt " id="dateInt ">
+  </div>
+  <div class="form-group">
+    <label for="destination ">Kilometrage </label>
+    <input  class="form-control" [(ngModel)]="data.kilometrage " name="kilometrage " id="kilometrage ">
+  </div>
+  <div class="form-group">
+    <label for="description ">ProchaineKm </label>
+    <input  class="form-control" [(ngModel)]="data.prochaineKm " name="prochaineKm " id="prochaineKm ">
+  </div>
+  <div class="form-group">
+    <label for="qte ">Description </label>
+    <input  class="form-control" [(ngModel)]="data.description " name="description " id="description ">
+  </div>
+   
+   
+  <div class="form-group">
+    <label for="camions">Camion</label>
+    <select  class="form-control" [(ngModel)]="data.camion" name="camions" id="camions">
+        <option value="null" selected>---</option>
+
+      <option *ngFor="let item of camions" [value]="jsonToStr(item)">{{item.immatriculation}}</option>
+      
+    </select>
+   </div>
+
+
+      
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="btn btn-outline-success" (click)="submit()">Valider</button>
+
+</mat-dialog-actions>

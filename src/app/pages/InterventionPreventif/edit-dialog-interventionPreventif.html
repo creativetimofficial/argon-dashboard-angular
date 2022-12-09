@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Modifier la mission</h2>
+
+<mat-dialog-content class="mat-typography">
+<form >
+  <div class="form-group">
+
+  <label for="dateInt ">DateIntervention</label>
+  <input  type="date" class="form-control" [(ngModel)]="data.dateInt " name="dateInt " id="dateInt ">
+</div>
+<div class="form-group">
+  <label for="destination ">Kilometrage </label>
+  <input  class="form-control" [(ngModel)]="data.kilometrage " name="kilometrage " id="kilometrage ">
+</div>
+<div class="form-group">
+  <label for="description ">ProchaineKm </label>
+  <input  class="form-control" [(ngModel)]="data.prochaineKm " name="prochaineKm " id="prochaineKm ">
+</div>
+<div class="form-group">
+  <label for="qte ">Description </label>
+  <input  class="form-control" [(ngModel)]="data.description " name="description " id="description ">
+</div>
+ 
+ 
+ 
+
+      
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="btn btn-outline-success" (click)="submitEdit()">Enregistrer</button>
+
+</mat-dialog-actions>
