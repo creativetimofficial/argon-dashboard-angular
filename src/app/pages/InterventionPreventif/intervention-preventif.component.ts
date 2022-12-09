@@ -2,7 +2,7 @@
  import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {InterventionPreventifModel} from 'src/app/models/interventionPreventifModel';
  import { CamionsService } from 'src/app/services/camions.service';
- 
+
 declare var $: any;
 import { InterventionPreventifService } from 'src/app/services/inte-intervention-preventif.service';
  @Component({
@@ -58,7 +58,7 @@ this.showNotification('top', 'right', 'Le interventionPreventif a été supprime
 openDialog(): void {
   const dialogRef = this.dialog.open(DialogInterventionPreventif, {
     width: '500px',
-    data: {dateInterventionPreventif : '', dateInt : '', kilometrage : '',prochaineKm:'',description:'',camion:'' }
+    data: {dateInterventionPreventif : '', dateInt : '', kilometrage : '', prochaineKm: '', description: '', camion: '' }
   });
 
   dialogRef.afterClosed().subscribe(result => {
@@ -67,14 +67,14 @@ openDialog(): void {
   });
 }
 
-openEditDialog(i, dm, des, dec,qt,ph): void {
+openEditDialog(i, dm, des, dec, qt, ph): void {
   const dialogRef = this.dialog.open(EditDialogInterventionPreventif, {
 
     width: '500px',
-    data: {id: i, dateInterventionPreventif: dm, kilometrage: des, prochaineKm: dec,description:qt,camion:ph }
+    data: {id: i, dateInterventionPreventif: dm, kilometrage: des, prochaineKm: dec, description:qt, camion:ph }
   });
   this.getInterventionPreventif(i);
-  
+
   console.log(this.dataInterventionPreventif);
 
   dialogRef.afterClosed().subscribe(result => {
@@ -120,16 +120,17 @@ selector: 'dialog-interventionPreventif',
 templateUrl: 'dialog-interventionPreventif.html',
 })
 
+// tslint:disable-next-line:component-class-suffix
 export class DialogInterventionPreventif {
- 
+
 camions=[];
- 
+
 constructor(
   public dialogRef: MatDialogRef<DialogInterventionPreventif>,
   @Inject(MAT_DIALOG_DATA) public data: InterventionPreventifModel,
    private camionService:CamionsService,
    private interventionPreventifService: InterventionPreventifService) {
-   
+
     this.camionService.getAllCamions().subscribe(res=>{
       this.camions=res as any;
     })
@@ -139,27 +140,27 @@ onNoClick(): void {
 }
 submit() {
   console.log(this.data.camion);
-  
+
   var cam = {
     'dateInt': this.data.dateInt,
     'kilometrage': this.data.kilometrage,
     'prochaineKm': this.data.prochaineKm,
     'description': this.data.description,
-    "camion": JSON.parse(this.data.camion),
-     
+    'camion': JSON.parse(this.data.camion)
+
   };
-  
+
 console.log(cam);
 
   this.interventionPreventifService.addInterventionPreventif(cam).subscribe((res: any) => {
-    
+
     //this.showNotification('top', 'right', 'Le interventionPreventif a été ajouter', 'success');
 
     this.dialogRef.close();
   });
 }
 jsonToStr(data){
-  return JSON.stringify(data);}  
+  return JSON.stringify(data);}
 
 showNotification(from, align, message, tpe) {
   // const type = ['','info','success','warning','danger'];
@@ -203,7 +204,10 @@ export class EditDialogInterventionPreventif {
   constructor(
     public dialogRef: MatDialogRef<EditDialogInterventionPreventif>,
     @Inject(MAT_DIALOG_DATA) public data: InterventionPreventifModel,
-    private interventionPreventifService: InterventionPreventifService,) {
+    private interventionPreventifService: InterventionPreventifService,
+    ) {
+
+
   }
 
 
@@ -214,18 +218,17 @@ export class EditDialogInterventionPreventif {
   submitEdit() {
     // nibha el id mel data interventionPreventif
     var id = this.data.id;
-    
+
     var cam = {
       'dateInt': this.data.dateInt,
       'kilometrage': this.data.kilometrage,
       'prochaineKm': this.data.prochaineKm,
       'description': this.data.description,
-      "camion": JSON.parse(this.data.camion),
+
     };
     this.interventionPreventifService.updateInterventionPreventif(id, cam).subscribe((res: any) => {
      // this.showNotification('top', 'right', 'Le interventionPreventif a été modifier', 'success');
-
-      this.dialogRef.close();
+       this.dialogRef.close();
 
     });
   }
@@ -264,4 +267,4 @@ export class EditDialogInterventionPreventif {
 
 
 
- 
+

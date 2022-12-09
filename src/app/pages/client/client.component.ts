@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
- 
+
 import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {ClientModel} from 'src/app/models/clientModel';
 import { ClientsService } from 'src/app/services/client.service';
@@ -13,10 +13,10 @@ declare var $: any;
 })
 
 export class ClientComponent implements OnInit {
-  
+
   dataSource = [];
   dataClient = [];
-  
+
   constructor(private clientService: ClientsService,
               public dialog: MatDialog) { }
 
@@ -57,7 +57,7 @@ export class ClientComponent implements OnInit {
       this.showNotification('top', 'right', 'Le client a été supprimer', 'danger');
     });
   }
-  
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogClient, {
       width: '500px',
@@ -70,14 +70,14 @@ export class ClientComponent implements OnInit {
     });
   }
 
-  openEditDialog(i, nm, em,tl, ad): void {
+  openEditDialog(i, nm, em, tl, ad): void {
     const dialogRef = this.dialog.open(EditDialogClient, {
 
       width: '500px',
-      data: {id: i, nom: nm, email: em,numTel:tl, address: ad}
+      data: {id: i, nom: nm, email: em, numTel: tl, address: ad}
     });
     this.getClient(i);
-    
+
     console.log(this.dataClient);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -182,25 +182,25 @@ export class DialogClient {
     selector: 'edit-dialog-client',
     templateUrl: 'edit-dialog-client.html',
   })
-  
+
   export class EditDialogClient {
-  
-  
+
+
     constructor(
       public dialogRef: MatDialogRef<EditDialogClient>,
       @Inject(MAT_DIALOG_DATA) public data: ClientModel,
       private clientService: ClientsService,) {
     }
-  
-  
+
+
     onNoClick(): void {
       this.dialogRef.close();
     }
-  
+
     submitEdit() {
       // nibha el id mel data client
       var id = this.data.id;
-      
+
       var cl = {
         'nom': this.data.nom,
         'email': this.data.email,
@@ -209,22 +209,22 @@ export class DialogClient {
       };
       this.clientService.updateClient(id, cl).subscribe((res: any) => {
        // this.showNotification('top', 'right', 'Le client a été modifier', 'success');
-  
+
         this.dialogRef.close();
-  
+
       });
     }
-  
-  
+
+
     showNotification(from, align, message, tpe) {
       // const type = ['','info','success','warning','danger'];
-  
+
       const color = Math.floor((Math.random() * 4) + 1);
-  
+
       $.notify({
         icon: 'notifications',
         message: message
-  
+
       }, {
         type: tpe,
         timer: 100,
@@ -245,6 +245,5 @@ export class DialogClient {
       });
     }
   }
-  
 
-  
+

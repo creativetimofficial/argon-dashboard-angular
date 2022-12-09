@@ -15,10 +15,10 @@ declare var $: any;
 })
 
 export class MissionComponent implements OnInit {
-  
+
   dataSource = [];
   dataMission = [];
-  
+
   constructor(private missionService: MissionsService,
               public dialog: MatDialog) { }
 
@@ -59,11 +59,11 @@ export class MissionComponent implements OnInit {
       this.showNotification('top', 'right', 'Le mission a été supprimer', 'danger');
     });
   }
-  
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogMission, {
       width: '500px',
-      data: {dateMission : '', destination : '', description : '',qte:'',prixHT:'',pourcentageTVA:'',prixTotale:''}
+      data: {dateMission : '', destination : '', description : '', qte: '', prixHT: '', pourcentageTVA: '', prixTotale: ''}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -72,14 +72,14 @@ export class MissionComponent implements OnInit {
     });
   }
 
-  openEditDialog(i, dm, des, dec,qt,ph,ptva,pt): void {
+  openEditDialog(i, dm, des, dec, qt, ph, ptva, pt): void {
     const dialogRef = this.dialog.open(EditDialogMission, {
 
       width: '500px',
-      data: {id: i, dateMission: dm, destination: des, description: dec,qte:qt,prixHT:ph,pourcentageTVA:ptva,prixTotale:pt}
+      data: {id: i, dateMission: dm, destination: des, description: dec, qte: qt, prixHT: ph, pourcentageTVA: ptva, prixTotale: pt}
     });
     this.getMission(i);
-    
+
     console.log(this.dataMission);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -126,33 +126,33 @@ export class MissionComponent implements OnInit {
 })
 
 export class DialogMission {
-  clients=[];
-  camions=[];
-  chauffeurs=[]
+  clients = [];
+  camions = [];
+  chauffeurs = [];
   constructor(
     public dialogRef: MatDialogRef<DialogMission>,
     @Inject(MAT_DIALOG_DATA) public data: MissionModel,
-    private clientService:ClientsService,
-    private camionService:CamionsService,
-    private chauffeurService:ChauffeursService,
+    private clientService: ClientsService,
+    private camionService: CamionsService,
+    private chauffeurService: ChauffeursService,
     private missionService: MissionsService) {
-      this.clientService.getAllClients().subscribe(res=>{
-        this.clients=res as any;
-      })
-      this.chauffeurService.getAllChauffeurs().subscribe(res=>{
-        this.chauffeurs=res as any;
-      })
-      this.camionService.getAllCamions().subscribe(res=>{
-        this.camions=res as any;
-      })
+      this.clientService.getAllClients().subscribe(res => {
+        this.clients = res as any;
+      });
+      this.chauffeurService.getAllChauffeurs().subscribe(res => {
+        this.chauffeurs = res as any;
+      });
+      this.camionService.getAllCamions().subscribe(res => {
+        this.camions = res as any;
+      });
   }
   onNoClick(): void {
     this.dialogRef.close();
   }
   submit() {
     console.log(this.data.client);
-    
-    var cam = {
+
+    const cam = {
       'dateMission': this.data.dateMission,
       'destination': this.data.destination,
       'description': this.data.description,
@@ -160,22 +160,20 @@ export class DialogMission {
       'prixHT': this.data.prixHT ,
       'pourcentageTVA': this.data.pourcentageTVA,
       'prixTotale': this.data.prixTotale,
-      "camion": JSON.parse(this.data.camion),
-      "chauffeur": JSON.parse(this.data.chauffeur),
-      'client': JSON.parse(this.data.client)
+      'camion': JSON.parse(this.data.camion),
+      'chauffeur': JSON.parse(this.data.chauffeur),
+      'client': JSON.parse(this.data.client),
+      'etat': false
     };
     console.log(cam.client);
- console.log(cam);
+    console.log(cam);
 
     this.missionService.addMission(cam).subscribe((res: any) => {
-      
-      //this.showNotification('top', 'right', 'Le mission a été ajouter', 'success');
-
       this.dialogRef.close();
     });
   }
-  jsonToStr(data){
-    return JSON.stringify(data);}  
+  jsonToStr(data) {
+    return JSON.stringify(data); }
 
   showNotification(from, align, message, tpe) {
     // const type = ['','info','success','warning','danger'];
@@ -209,29 +207,31 @@ export class DialogMission {
 
 
   @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'edit-dialog-mission',
     templateUrl: 'edit-dialog-mission.html',
   })
-  
+
+  // tslint:disable-next-line:component-class-suffix
   export class EditDialogMission {
-  
-  
+
+
     constructor(
       public dialogRef: MatDialogRef<EditDialogMission>,
       @Inject(MAT_DIALOG_DATA) public data: MissionModel,
-      private missionService: MissionsService,) {
+      private missionService: MissionsService, ) {
     }
-  
-  
+
+
     onNoClick(): void {
       this.dialogRef.close();
     }
-  
+
     submitEdit() {
       // nibha el id mel data mission
-      var id = this.data.id;
-      
-      var cam = {
+      const id = this.data.id;
+
+      const cam = {
         'dateMission': this.data.dateMission,
         'destination': this.data.destination,
         'description': this.data.description,
@@ -239,25 +239,26 @@ export class DialogMission {
         'prixHT': this.data.prixHT,
         'pourcentageTVA': this.data.pourcentageTVA,
         'prixTotale': this.data.prixTotale,
+        'etat': this.data.etat
       };
       this.missionService.updateMission(id, cam).subscribe((res: any) => {
        // this.showNotification('top', 'right', 'Le mission a été modifier', 'success');
-  
+
         this.dialogRef.close();
-  
+
       });
     }
-  
-  
+
+
     showNotification(from, align, message, tpe) {
       // const type = ['','info','success','warning','danger'];
-  
+
       const color = Math.floor((Math.random() * 4) + 1);
-  
+
       $.notify({
         icon: 'notifications',
         message: message
-  
+
       }, {
         type: tpe,
         timer: 100,
@@ -278,6 +279,5 @@ export class DialogMission {
       });
     }
   }
-  
 
-  
+

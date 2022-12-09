@@ -27,9 +27,9 @@
                           <th scope="col">dateIntervention</th>
                           <th scope="col">Camion</th>
                           <th scope="col">kilometrage</th>
-                          <th scope="col">prochaineKm</th>               
+                          <th scope="col">prochaineKm</th>
                           <th scope="col">Description</th>
-                       
+
                         </tr>
                       </thead>
                       <tbody>
@@ -49,15 +49,15 @@
                           <td>
                             {{item.description    }}
                           </td>
-                       
-                      
-                          
+
+
+
                           <td class="text-right">
-                            <a class="btn btn-primary btn-sm" (click)="openEditDialog(item.id, item.dateInt , item.camion,item.kilometrage, item.prochaineKm,item.description)"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-primary btn-sm" (click)="openEditDialog(item.id,item.dateInt,item.kilometrage, item.prochaineKm,item.description)"><i class="fas fa-edit"></i></a>
                             <a class="btn btn-danger btn-sm" (click)="supprimerInterventionPreventif(item.id)"><i class="fas fa-trash-alt" ></i></a>
                           </td>
                         </tr>
-                     
+
                       </tbody>
                     </table>
                   </div>
@@ -69,4 +69,4 @@
       </div>
     </div>
   </div>
-  
+

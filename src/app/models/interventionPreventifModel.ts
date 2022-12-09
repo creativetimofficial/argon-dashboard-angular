@@ -5,6 +5,4 @@ export interface InterventionPreventifModel{
     prochaineKm:String;
     description:string;
     camion:any;
-
-    
 }

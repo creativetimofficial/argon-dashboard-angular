@@ -17,10 +17,13 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'camion',      component: CamionComponent},
     { path: 'chauffeur',      component: ChauffeurComponent},
     { path: 'mission',      component: MissionComponent},
+    { path: 'fiche-de-paie',      component: MissionComponent},
     { path: 'facture',      component: FactureComponent},
-    { path: 'interventionPreventif',component: InterventionPreventifComponent},
+    { path: 'interventionPreventif', component: InterventionPreventifComponent},
     { path: 'interventionCuratif', component: InterventionCuratifComponent},
     { path: 'client',      component: ClientComponent},
+
+
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'tables',         component: TablesComponent },

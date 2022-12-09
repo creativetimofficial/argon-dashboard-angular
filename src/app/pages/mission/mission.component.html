@@ -24,12 +24,13 @@
                     <table class="table align-items-center table-flush">
                       <thead class="thead-light">
                         <tr>
-                          <th scope="col">DateMission</th>
+                          <th scope="col">Date Mission</th>
                           <th scope="col">Camion</th>
                           <th scope="col">Chauffeur</th>
-                          <th scope="col">Client</th>               
+                          <th scope="col">Client</th>
                           <th scope="col">Destination</th>
-                          <th scope="col">PrixTotale</th>
+                          <th scope="col">Prix Totale</th>
+                          <th scope="col">Etat</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -49,17 +50,19 @@
                           <td>
                             {{item.destination }}
                           </td>
-                     
                           <td>
                             {{item.prixTotale   }}
                           </td>
-                          
+                          <td>
+                            {{item.etat   }}
+                          </td>
+
                           <td class="text-right">
-                            <a class="btn btn-primary btn-sm" (click)="openEditDialog(item.id, item.dateMission , item.destination,item.description,item.qte,item.prixHT,item.pourcentageTVA,item.prixTotale)"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-primary btn-sm" (click)="openEditDialog(item.id, item.dateMission, item.destination, item.description, item.qte,item.prixHT,item.pourcentageTVA,item.prixTotale)"><i class="fas fa-edit"></i></a>
                             <a class="btn btn-danger btn-sm" (click)="supprimerMission(item.id)"><i class="fas fa-trash-alt" ></i></a>
                           </td>
                         </tr>
-                     
+
                       </tbody>
                     </table>
                   </div>
@@ -71,4 +74,4 @@
       </div>
     </div>
   </div>
-  
+

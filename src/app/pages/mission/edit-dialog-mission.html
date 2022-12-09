@@ -3,8 +3,8 @@
 <mat-dialog-content class="mat-typography">
 <form >
   <div class="form-group">
-    <label for="dateMission ">DateMission </label>
-    <input  class="form-control" [(ngModel)]="data.dateMission " name="dateMission " id="dateMission ">
+    <label for="dateMission ">Date Mission </label>
+    <input type="date" class="form-control" [(ngModel)]="data.dateMission " name="dateMission " id="dateMission ">
   </div>
   <div class="form-group">
     <label for="destination ">Destination </label>
@@ -30,9 +30,13 @@
     <label for="prixTotale   ">PrixTotale   </label>
     <input  class="form-control" [(ngModel)]="data.prixTotale   " name="prixTotale   " id="prixTotale   ">
   </div>
+  <div class="form-group">
+    <label for="etat   ">Etat   </label>
+    <input  class="form-control" [(ngModel)]="data.etat   " name="etat   " id="etat   ">
+  </div>
 
 
-      
+
 </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
