@@ -12,6 +12,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { LoginComponent } from './pages/login/login.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+
 
 
 @NgModule({
@@ -21,13 +24,17 @@ import { ComponentsModule } from './components/components.module';
     HttpClientModule,
     ComponentsModule,
     NgbModule,
-    RouterModule,
+    RouterModule.forRoot([
+      {path: '/login', component: LoginComponent},
+      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+    ]),
     AppRoutingModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

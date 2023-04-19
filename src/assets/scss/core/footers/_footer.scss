@@ -4,7 +4,9 @@
 
 
 // General styles
-
+.nav-footer{
+    display: none;
+}
 .footer {
     background: $footer-bg;
     padding: $footer-padding-y $footer-padding-x;
@@ -42,6 +44,7 @@
 
     .copyright {
         font-size: $font-size-sm;
+        display: none;
     }
 }
 
