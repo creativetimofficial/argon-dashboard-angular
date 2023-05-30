@@ -3,19 +3,26 @@
     <div class="header-body text-center mb-7">
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-6">
-          <h1 class="text-white">Welcome!</h1>
-          <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
+          <h1 class="text-white">Bienvenue!</h1>
+          <h1 class="title">ArZo - <span>GED</span></h1>
         </div>
       </div>
     </div>
   </div>
   <div class="separator separator-bottom separator-skew zindex-100">
-    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      x="0"
+      y="0"
+      viewBox="0 0 2560 100"
+      preserveAspectRatio="none"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
     </svg>
   </div>
 </div>
-<!-- Page content -->
+<!-- Page content
 <div class="container mt--8 pb-5">
   <div class="row justify-content-center">
     <div class="col-lg-5 col-md-7">
@@ -75,5 +82,53 @@
         </div>
       </div>
     </div>
+  </div>
+</div> -->
+
+<div class="container mt--9 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-transparent pb-5">
+          <div class="text-muted text-center mt-2 mb-3">
+            <h3>Connexion</h3>
+            <small>Entrez vos identifiants pour vous connecter</small>
+          </div>
+
+          <div class="card-body px-lg-5 py-lg-5">
+            <form class="form" action="/dashboard" method="get">
+              <div class="form-group w-[80%] ">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Nom d'utilisateur" name="user" type="text">
+                </div>
+              </div>
+              <div class="form-group w-[80%]">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Mot de passe" type="password">
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary">Sign in</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-6">
+          <a href="javascript:void(0)" class="text-light"><small>Forgot password?</small></a>
+        </div>
+        <!-- <div class="col-4 text-right">
+          <a href="javascript:void(0)" class="text-light"><small>Create new account</small></a>
+        </div> -->
+      </div>
+    </div>
+    
   </div>
 </div>
