@@ -11,11 +11,12 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "target": "es2020",
+    "target": "ES2022",
     "module": "es2020",
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "useDefineForClassFields": false
   }
 }
