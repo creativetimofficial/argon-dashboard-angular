@@ -159,7 +159,6 @@
       }
     }
   },
-  "defaultProject": "argon-dashboard-angular",
   "schematics": {
     "@schematics/angular:component": {
       "styleext": "scss"
