@@ -7,7 +7,8 @@
     </button>
     <!-- Brand -->
     <a class="navbar-brand pt-0" routerLinkActive="active" [routerLink]="['/dashboard']">
-      <img src="./assets/img/brand/red.png" class="navbar-brand-img" alt="...">
+      <h1 style="font-weight: bolder; color:#f55442;">ArZo GED</h1>
+      <!-- <img src="./assets/img/brand/red.png" class="navbar-brand-img" alt="..."> -->
     </a>
     <!-- User -->
     <ul class="nav align-items-center d-md-none">
@@ -65,7 +66,8 @@
         <div class="row">
           <div class="col-6 collapse-brand">
             <a  routerLinkActive="active" [routerLink]="['/dashboard']">
-              <img src="./assets/img/brand/blue.png">
+              <h1 style="font-weight: bolder; color: #5e72e4; font-size: 30px;">arzo GED</h1>
+              <!-- <img src="./assets/img/brand/blue.png"> -->
             </a>
           </div>
           <div class="col-6 collapse-close">
@@ -91,17 +93,17 @@
       <ul class="navbar-nav">
           <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
               <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
-                  <i class="ni {{menuItem.icon}}"></i>
+                  <i class="{{menuItem.icon}}"></i>
                   {{menuItem.title}}
               </a>
           </li>
       </ul>
       <!-- Divider -->
-      <hr class="my-3">
+      <!-- <hr class="my-3"> -->
       <!-- Heading -->
-      <h6 class="navbar-heading text-muted">Documentation</h6>
+      <!-- <h6 class="navbar-heading text-muted">Documentation</h6> -->
       <!-- Navigation -->
-      <ul class="navbar-nav mb-md-3">
+      <!-- <ul class="navbar-nav mb-md-3">
         <li class="nav-item">
           <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard-angular/documentation/tutorial">
             <i class="ni ni-spaceship"></i> Getting started
@@ -117,7 +119,7 @@
             <i class="ni ni-ui-04"></i> Components
           </a>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </nav>
