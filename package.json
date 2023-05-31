@@ -1,5 +1,5 @@
 {
-  "name": "ArZo GED",
+  "name": "arzo_ged",
   "version": "1.5.0",
   "scripts": {
     "ng": "ng",

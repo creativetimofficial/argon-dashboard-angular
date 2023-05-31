@@ -12,6 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { WorkflowsComponent } from './pages/workflows/workflows.component';
+import { DocumentsComponent } from './pages/documents/documents.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { ComponentsModule } from './components/components.module';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    WorkflowsComponent,
+    DocumentsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
