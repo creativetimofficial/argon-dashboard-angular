@@ -1,1 +1,170 @@
-<p>documents works!</p>
+<div
+  class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="max-height: 300px; margin-bottom: 10px"
+>
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-7 col-md-10">
+        <h1 class="display-2 text-white">Salut username</h1>
+        <p class="text-white mt-0 mb-5">
+          Ici vous avez la possibilité de voir tous les documents enregistrés
+          par catégorie; vous pouvez aussi ajouter des documents en cliquant sur
+          le boutton ci-desous.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="contrats row mt-3">
+    routerLinkActive="active"
+    [routerLink]="['#user-profile']"
+    
+    <div class="col-12 col-lg-4">
+        <small class="display-4">Contrats</small>
+        <div class="card shadow-none border radius-15">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="font-30 text-primary"><i class="bx bxs-folder"></i>
+                    </div>
+                    <div class="user-groups ms-auto">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="35" height="35" class="rounded-circle" alt="">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" width="35" height="35" class="rounded-circle" alt="">
+                    </div>
+                    <div class="user-plus">+</div>
+                </div>
+                <h6 class="mb-0 text-primary">Analytics</h6>
+                <small>15 files</small>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="col-12 col-lg-4">
+        <small class="display-4">Factures</small>
+        <div class="card shadow-none border radius-15">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="font-30 text-primary"><i class="bx bxs-folder"></i>
+                    </div>
+                    <div class="user-groups ms-auto">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="35" height="35" class="rounded-circle" alt="">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" width="35" height="35" class="rounded-circle" alt="">
+                    </div>
+                    <div class="user-plus">+</div>
+                </div>
+                <h6 class="mb-0 text-primary">Analytics</h6>
+                <small>15 files</small>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<form *ngIf="display == true" (submit)="onSubmit()" class="sign-form col">
+  <label class="form-label col">
+    Nom :
+
+    <input
+      [(ngModel)]="name"
+      class="form-control"
+      type="text"
+      placeholder="nom du fichier"
+      value="{{ name }}"
+    />
+  </label>
+  <label class="form-label col">
+    Type de document :
+
+    <select class="form-select" name="typeDoc" id="typeDoc" [(ngModel)]="typeDoc">
+      <option value="contrat">Contrat</option>
+      <option value="facture">Facture</option>
+      <option value="recrutement">Recrutement</option>
+    </select>
+  </label>
+
+  <label class="form-label col">
+    Mots clés :
+
+    <input
+      [(ngModel)]="mot_cle"
+      class="form-control"
+      id="mot_cle"
+      name="mot_cle"
+      type="text"
+      placeholder="séparez vos mots d'une virule sans espace."
+    />
+  </label>
+
+  <label class="form-label col">
+    Statut :
+
+    <select class="form-select" name="statut" id="statut" [(ngModel)]="statut">
+      <option value="nouveau">Nouveau</option>
+      <option value="approuve">Approuvé</option>
+      <option value="archive">Archivé</option>
+      <option value="signe">Signé</option>
+      <option value="finalise">Finalisé</option>
+    </select>
+  </label>
+
+  <button class="btn btn-primary col" type="submit">enregistrer</button>
+</form>
+
+<div class="col align-items-center" *ngIf="display == false">
+  <div
+    class="drop-zone row-reverse"
+    (drop)="fileDropped($event)"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+  >
+    <div class="glisser col">glisser-déposer</div>
+
+    <div class="button col">
+      <a class="nav-link" class="btn btn-info" (click)="selectFile()"
+        ><i class="fa fa-upload mr-2"></i> Importer</a
+      >
+    </div>
+  </div>
+
+  <table
+    class="table"
+    style="border-radius: 7px; box-shadow: 0px 1px 5px rgb(177, 177, 177)"
+  >
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Type doc</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Mots clés</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>Mark</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>Mark</td>
+        <td>@mdo</td>
+      </tr>
+      <tr ngFor="let document of documents">
+        <th scope="row">3</th>
+        <td>{{document.size}}</td>
+        <td> {{document.type}} </td>
+        <td>{{document.statut}}</td>
+        <td>{{document.mot_cles[0]}}</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>

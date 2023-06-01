@@ -10,10 +10,10 @@ import { DocumentsComponent } from 'src/app/pages/documents/documents.component'
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
+    { path: 'documents',      component: DocumentsComponent },
     { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'tables',         component: TablesComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'workflows',           component: WorkflowsComponent },
-    { path: 'documents',           component: DocumentsComponent }
+    { path: 'workflows',      component: WorkflowsComponent },
+    //{ path: 'tables',         component: TablesComponent },
+    //{ path: 'icons',          component: IconsComponent },
+    //{ path: 'maps',           component: MapsComponent },
 ];
