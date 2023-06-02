@@ -14,10 +14,12 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { WorkflowsComponent } from './pages/workflows/workflows.component';
 import { DocumentsComponent } from './pages/documents/documents.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
   imports: [
+    NgxPaginationModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,

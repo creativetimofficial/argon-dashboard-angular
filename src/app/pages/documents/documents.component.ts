@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-documents',
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.scss']
 })
-export class DocumentsComponent {
+export class DocumentsComponent implements OnInit {
   docPath: string = "";
   name: string = "";
   type: string = "";
@@ -13,11 +13,19 @@ export class DocumentsComponent {
   typeDoc: string = "";
   statut: string = "";
   mot_cle: string = "";
+  total: number;
+  page = 1; // Page initiale
   display: boolean = false;
+  displayInnerFolder: boolean = false;
   documents: any[] = [];
+  contratArray: any[] = [];
+  contratLenght: number;
+  
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   onDragOver(event: any) {
     event.preventDefault();
@@ -38,7 +46,7 @@ export class DocumentsComponent {
     this.name = file.name;
     console.log(this.name);
     this.type = file.type;
-    this.size = file.size+'Ko';
+    this.size = file.size+'ko';
     this.docPath = URL.createObjectURL(file);
     if (this.docPath !== "") {
       this.display = true;
@@ -55,7 +63,7 @@ export class DocumentsComponent {
       const file = event.target.files[0];
       this.name = file.name;
       this.type = file.type;
-      this.size = file.size+"Ko";
+      this.size = file.size+"ko";
       this.docPath = URL.createObjectURL(file);
 
       if (this.docPath !== "") {
@@ -67,14 +75,31 @@ export class DocumentsComponent {
 
   onSubmit() {
     const motCles = this.mot_cle.split(',')
-    this.documents.push({name: this.name, type: this.typeDoc, size: this.size+'ko', statut: this.statut, mot_cles: motCles})
-    console.log(this.documents);
+    this.documents.push({name: this.name, type: this.typeDoc, size: this.size, statut: this.statut, mot_cles: this.mot_cle})
+    //console.log(this.documents);
     
     this.name = "";
     this.typeDoc = "";
     this.size = "";
     this.statut = "";
     this.mot_cle = "";
+    this.total = this.documents.length; // Mettre à jour le nombre total d'éléments
     this.display = false;
+  }
+
+  clikedFolder() {
+    this.contratArray = this.documents.filter(document=>{
+      if(document.type === "contrat") {
+        return document;
+      }
+    })
+    this.display = true
+    this.displayInnerFolder = true;
+  }
+
+  countContrat() {
+    
+    return  this.contratLenght = this.contratArray.length
+    
   }
 }
