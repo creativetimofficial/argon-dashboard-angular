@@ -13,10 +13,16 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { WorkflowsComponent } from '../../pages/workflows/workflows.component';
+import { DocumentsComponent } from '../../pages/documents/documents.component';
+//import { NgxDocViewerModule } from 'ngx-doc-viewer/lib/document-viewer.module';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
+    NgxExtendedPdfViewerModule,
+    //NgxDocViewerModule,
     NgxPaginationModule,
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
@@ -30,7 +36,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     UserProfileComponent,
     TablesComponent,
     IconsComponent,
-    MapsComponent
+    MapsComponent, 
+    WorkflowsComponent,
+    DocumentsComponent
   ]
 })
 

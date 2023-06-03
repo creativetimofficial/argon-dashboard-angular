@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-documents',
-  templateUrl: './documents.component.html',
-  styleUrls: ['./documents.component.scss']
+  selector: "app-documents",
+  templateUrl: "./documents.component.html",
+  styleUrls: ["./documents.component.scss"],
 })
 export class DocumentsComponent implements OnInit {
   docPath: string = "";
@@ -20,24 +20,22 @@ export class DocumentsComponent implements OnInit {
   documents: any[] = [];
   contratArray: any[] = [];
   contratLenght: number;
-  
+
   constructor() {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   onDragOver(event: any) {
     event.preventDefault();
     event.stopPropagation();
   }
-  
+
   onDragLeave(event: any) {
     event.preventDefault();
     event.stopPropagation();
   }
 
-  fileDropped(event:any) {
+  fileDropped(event: any) {
     event.preventDefault();
     event.stopPropagation();
 
@@ -46,60 +44,86 @@ export class DocumentsComponent implements OnInit {
     this.name = file.name;
     console.log(this.name);
     this.type = file.type;
-    this.size = file.size+'ko';
+    this.size = file.size + "ko";
     this.docPath = URL.createObjectURL(file);
-    if (this.docPath !== "") {
+    if (this.name !== "") {
       this.display = true;
     }
   }
 
   selectFile(): void {
-    const input = document.createElement('input');
-    input.type= 'file';
-    input.style.display = 'none';
-    input.accept = 'pdf, docx, xls'
+    const input = document.createElement("input");
+    input.type = "file";
+    input.style.display = "none";
+    input.accept = "pdf, docx, xls";
     document.body.appendChild(input);
     input.onchange = (event: any) => {
       const file = event.target.files[0];
       this.name = file.name;
       this.type = file.type;
-      this.size = file.size+"ko";
+      this.size = file.size + "ko";
       this.docPath = URL.createObjectURL(file);
-
-      if (this.docPath !== "") {
+      console.log(this.docPath);
+      
+      if (this.name !== "") {
         this.display = true;
       }
-    }
+    };
     input.click();
   }
 
   onSubmit() {
-    const motCles = this.mot_cle.split(',')
-    this.documents.push({name: this.name, type: this.typeDoc, size: this.size, statut: this.statut, mot_cles: this.mot_cle})
-    //console.log(this.documents);
+    //const motCles = this.mot_cle.split(",");
+    console.log(this.docPath);
     
+    this.documents.push({
+      name: this.name,
+      type: this.typeDoc,
+      size: this.size,
+      statut: this.statut,
+      mot_cles: this.mot_cle,
+      filePath: this.docPath,
+    });
+    //console.log(this.documents);
+    this.contratArray = this.documents.filter((document) => {
+      if (document.type === "contrat") {
+        return document;
+      }
+    });
     this.name = "";
     this.typeDoc = "";
     this.size = "";
     this.statut = "";
     this.mot_cle = "";
+    this.docPath = "";
     this.total = this.documents.length; // Mettre à jour le nombre total d'éléments
     this.display = false;
   }
 
+  // view contaning file in a specific folder
   clikedFolder() {
-    this.contratArray = this.documents.filter(document=>{
-      if(document.type === "contrat") {
-        return document;
-      }
-    })
-    this.display = true
+    this.display = true;
     this.displayInnerFolder = true;
+    let selectFilesDiv = document.querySelector("#fileTest") as HTMLElement; //<htmlElement>
+    selectFilesDiv.style.minHeight = "90vh";
   }
 
+  // files in contrat
   countContrat() {
-    
-    return  this.contratLenght = this.contratArray.length
-    
+    return (this.contratLenght = this.contratArray.length);
+  }
+
+  // afficher un document dans la visionneuse
+  viewFile() {
+    let fileName = document.querySelector(".fileName").innerHTML;
+    console.log(fileName);
+    let fileSize = document.querySelector(".fileSize");
+    this.contratArray.find((contrat) => {
+      if (contrat.name === fileName) {
+        console.log(contrat.docPath);
+
+        return (this.docPath = contrat.docPath);
+      }
+    });
   }
 }

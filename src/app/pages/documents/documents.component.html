@@ -19,227 +19,246 @@
   </div>
 </div>
 
-<div class="d-flex wrap" *ngIf="displayInnerFolder == true">
-  <div class="file w-25" *ngFor="let contrat of contratArray">
-    <img
-      width="96"
-      height="96"
-      src="https://img.icons8.com/color/96/pdf-2--v1.png"
-      alt="pdf-2--v1"
-    />
-    <span> {{ contrat.name }} </span>
-    <span> {{ contrat.size }} </span>
+<div class="container-fuild">
+  <div class="d-flex wrap"  id="fileTest" *ngIf="displayInnerFolder == true">
+    <div class="file w-25" *ngFor="let contrat of contratArray">
+      <img
+        (click)="viewFile()"
+        width="96"
+        height="96"
+        src="https://img.icons8.com/color/96/pdf-2--v1.png"
+        alt="pdf-2--v1"
+      />
+      <span class="fileName"> {{ contrat.name }} </span>
+      <span class="fileSize"> {{ contrat.size }} </span>
+    </div>
+
+    <div class="visionneuse w-75">
+      visionneuse
+      <!-- <ngx-doc-viewer
+        [url]="docPath"
+        viewer="pdf"
+        style="width: 98%;"
+      ></ngx-doc-viewer> -->
+      <ngx-extended-pdf-viewer [src]="docPath">
+      </ngx-extended-pdf-viewer>
+    </div>
   </div>
 
-  <div class="visionneuse w-75"></div>
+  <form
+    *ngIf="display == true && displayInnerFolder == false"
+    (submit)="onSubmit()"
+    class="sign-form col"
+  >
+    <label class="form-label col">
+      Nom :
+
+      <input
+        [(ngModel)]="name"
+        class="form-control"
+        type="text"
+        placeholder="nom du fichier"
+        value="{{ name }}"
+      />
+    </label>
+    <label class="form-label col">
+      Type de document : <br>
+
+      <select
+        class="form-select"
+        name="typeDoc"
+        id="typeDoc"
+        [(ngModel)]="typeDoc"
+      >
+        <option value="contrat">Contrat</option>
+        <option value="facture">Facture</option>
+        <option value="recrutement">Recrutement</option>
+      </select>
+    </label>
+
+    <label class="form-label col">
+      Mots clés :
+
+      <input
+        [(ngModel)]="mot_cle"
+        class="form-control"
+        id="mot_cle"
+        name="mot_cle"
+        type="text"
+        placeholder="séparez vos mots d'une virule sans espace."
+      />
+    </label>
+
+    <label class="form-label col" for="statut"> 
+      Statut : <br>
+
+      <select class="form-select" name="statut" id="statut" [(ngModel)]="statut">
+        <option value="nouveau">Nouveau</option>
+        <option value="approuve">Approuvé</option>
+        <option value="archive">Archivé</option>
+        <option value="signe">Signé</option>
+        <option value="finalise">Finalisé</option>
+      </select>
+    </label> 
+    
+    <button class="btn btn-primary col" type="submit">enregistrer</button>
+  </form>
 </div>
 
-<form *ngIf="display == true && displayInnerFolder == false"(submit)="onSubmit()" class="sign-form col">
-  <label class="form-label col">
-    Nom :
-
-    <input
-      [(ngModel)]="name"
-      class="form-control"
-      type="text"
-      placeholder="nom du fichier"
-      value="{{ name }}"
-    />
-  </label>
-  <label class="form-label col">
-    Type de document :
-
-    <select
-      class="form-select"
-      name="typeDoc"
-      id="typeDoc"
-      [(ngModel)]="typeDoc"
+<div class="container-fluid mt--5">
+  <div class="col align-items-center" *ngIf="display == false">
+    <div
+      class="drop-zone row-reverse"
+      (drop)="fileDropped($event)"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
     >
-      <option value="contrat">Contrat</option>
-      <option value="facture">Facture</option>
-      <option value="recrutement">Recrutement</option>
-    </select>
-  </label>
+      <div class="glisser col">Glisser-déposer le fichier ici</div>
 
-  <label class="form-label col">
-    Mots clés :
-
-    <input
-      [(ngModel)]="mot_cle"
-      class="form-control"
-      id="mot_cle"
-      name="mot_cle"
-      type="text"
-      placeholder="séparez vos mots d'une virule sans espace."
-    />
-  </label>
-
-  <label class="form-label col" for="statut"> Statut : </label>
-  <select class="form-select" name="statut" id="statut" [(ngModel)]="statut">
-    <option value="nouveau">Nouveau</option>
-    <option value="approuve">Approuvé</option>
-    <option value="archive">Archivé</option>
-    <option value="signe">Signé</option>
-    <option value="finalise">Finalisé</option>
-  </select>
-
-  <button class="btn btn-primary col" type="submit">enregistrer</button>
-</form>
-
-<div class="col align-items-center" *ngIf="display == false">
-  <div
-    class="drop-zone row-reverse"
-    (drop)="fileDropped($event)"
-    (dragover)="onDragOver($event)"
-    (dragleave)="onDragLeave($event)"
-  >
-    <div class="glisser col">glisser-déposer</div>
-
-    <div class="button col">
-      <a class="nav-link" class="btn btn-info" (click)="selectFile()"
-        ><i class="fa fa-upload mr-2"></i> Importer</a
-      >
+      <div class="button col">
+        <a class="nav-link" class="btn btn-info" (click)="selectFile()"
+          ><i class="fa fa-upload mr-2"></i> Importer</a
+        >
+      </div>
     </div>
-  </div>
 
-  <div class="contrats row mt-3">
-    <div class="col-12 col-lg-4">
-      
-      <div class="card shadow-none border radius-15">
-        <div class="card-body">
-          <small class="display-4">Contrats*</small>
-          <div class="d-flex flex-row align-items-center justify-content-end">
-            <div class="font-60 text-primary">
-              <img
-                (click)="clikedFolder()"
-                width="96"
-                height="96"
-                src="https://img.icons8.com/color/96/folder-invoices--v1.png"
-                alt="folder-invoices--v1"
-              />
-              <small>{{countContrat()}} files*</small>
+    <div class="contrats row mt-3">
+      <div class="col-12 col-lg-4">
+        <div class="card shadow-none border radius-15">
+          <div class="card-body">
+            <small class="display-4">Contrats*</small>
+            <div class="d-flex flex-row align-items-center justify-content-end">
+              <div class="font-60 text-primary">
+                <img
+                  (click)="clikedFolder()"
+                  width="96"
+                  height="96"
+                  src="https://img.icons8.com/color/96/folder-invoices--v1.png"
+                  alt="folder-invoices--v1"
+                />
+                <small>{{ countContrat() }} files*</small>
+              </div>
+              <!-- <div class="user-groups ms-auto">
+                <img
+                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                  width="35"
+                  height="35"
+                  class="rounded-circle"
+                  alt=""
+                />
+                <img
+                  src="https://bootdey.com/img/Content/avatar/avatar2.png"
+                  width="35"
+                  height="35"
+                  class="rounded-circle"
+                  alt=""
+                />
+              </div> -->
+              <!-- <div class="user-plus">+</div> -->
+              <div class="ms-auto">
+                <p>ici vous avez tous les documents dee type contrat*</p>
+              </div>
             </div>
-            <!-- <div class="user-groups ms-auto">
-              <img
-                src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                width="35"
-                height="35"
-                class="rounded-circle"
-                alt=""
-              />
-              <img
-                src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                width="35"
-                height="35"
-                class="rounded-circle"
-                alt=""
-              />
-            </div> -->
-            <!-- <div class="user-plus">+</div> -->
-            <div class="ms-auto">
-              <p>ici vous avez tous les documents dee type contrat*</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div class="card shadow-none border radius-15">
+          <div class="card-body">
+            <small class="display-4">Factures*</small>
+            <div class="d-flex align-items-center">
+              <div class="font-60 text-primary">
+                <img
+                  (click)="clikedFolder()"
+                  width="96"
+                  height="96"
+                  src="https://img.icons8.com/color/96/folder-invoices--v1.png"
+                  alt="folder-invoices--v1"
+                />
+                <small>15 files*</small>
+              </div>
+              <div class="ms-auto">
+                <p>ici vous avez tous les documents dee type facture*</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="col-12 col-lg-4">
-      
-      <div class="card shadow-none border radius-15">
-        <div class="card-body">
-          <small class="display-4">Factures*</small>
-          <div class="d-flex align-items-center">
-            <div class="font-60 text-primary">
-              <img
-                (click)="clikedFolder()"
-                width="96"
-                height="96"
-                src="https://img.icons8.com/color/96/folder-invoices--v1.png"
-                alt="folder-invoices--v1"
-              />
-              <small>15 files*</small>
-            </div>
-            <div class="ms-auto">
-              <p>ici vous avez tous les documents dee type facture*</p>
-            </div>
+    <div class="row mt-3">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <h3 class="mb-0">Documents récemment enregistrés</h3>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mt-3">
-    <div class="col">
-      <div class="card shadow">
-        <div class="card-header border-0">
-          <h3 class="mb-0">Documents récemment enregistrés</h3>
-        </div>
-        <div class="table-responsive">
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Type doc</th>
-                <th scope="col">Statut</th>
-                <th scope="col">Mots clés</th>
-                <th scope="col">Taille</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                *ngFor="
-                  let document of documents;
-                  let i = index;
-                  paginate: {
-                    itemsPerPage: 5,
-                    currentPage: page,
-                    totalItems: total
-                  }
-                "
-              >
-                <th scope="row">{{ i + 1 }}</th>
-                <td>{{ document.name }}</td>
-                <td>{{ document.type }}</td>
-                <td>{{ document.statut }}</td>
-                <td>{{ document.mot_cles }}</td>
-                <td>{{ document.size }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="card-footer py-2">
-          <!-- <nav aria-label="...">
-            <ul class="pagination justify-content-end mb-0">
-              <li class="page-item disabled">
-                <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                  <i class="fas fa-angle-left"></i>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item active">
-                <a class="page-link" href="javascript:void(0)">1</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="javascript:void(0)"
-                  >2 <span class="sr-only">(current)</span></a
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Type doc</th>
+                  <th scope="col">Statut</th>
+                  <th scope="col">Mots clés</th>
+                  <th scope="col">Taille</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let document of documents;
+                    let i = index;
+                    paginate: {
+                      itemsPerPage: 5,
+                      currentPage: page,
+                      totalItems: total
+                    }
+                  "
                 >
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">3</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">
-                  <i class="fas fa-angle-right"></i>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav> -->
-          <pagination-controls
-            (pageChange)="page = $event"
-          ></pagination-controls>
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ document.name }}</td>
+                  <td>{{ document.type }}</td>
+                  <td>{{ document.statut }}</td>
+                  <td>{{ document.mot_cles }}</td>
+                  <td>{{ document.size }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer py-2">
+            <!-- <nav aria-label="...">
+              <ul class="pagination justify-content-end mb-0">
+                <li class="page-item disabled">
+                  <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                    <i class="fas fa-angle-left"></i>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="javascript:void(0)">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0)"
+                    >2 <span class="sr-only">(current)</span></a
+                  >
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0)">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0)">
+                    <i class="fas fa-angle-right"></i>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav> -->
+            <pagination-controls
+              (pageChange)="page = $event"
+            ></pagination-controls>
+          </div>
         </div>
       </div>
     </div>

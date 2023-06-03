@@ -12,13 +12,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { WorkflowsComponent } from './pages/workflows/workflows.component';
-import { DocumentsComponent } from './pages/documents/documents.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+//import { NgxDocViewerModule } from 'ngx-doc-viewer';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 
 @NgModule({
   imports: [
+    NgxExtendedPdfViewerModule,
+    // NgxDocViewerModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -32,8 +34,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    WorkflowsComponent,
-    DocumentsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
