@@ -15,17 +15,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { WorkflowsComponent } from '../../pages/workflows/workflows.component';
 import { DocumentsComponent } from '../../pages/documents/documents.component';
-//import { NgxDocViewerModule } from 'ngx-doc-viewer/lib/document-viewer.module';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 // import { ToastrModule } from 'ngx-toastr';
 import { AddWorkflowFormComponent } from '../../pages/workflows/add-workflow-form/add-workflow-form.component';
 import { ListComponent } from '../../pages/workflows/list/list.component';
-
+import { NgxDocViewerModule } from 'ngx-doc-viewer';
 
 @NgModule({
   imports: [
     NgxExtendedPdfViewerModule,
-    //NgxDocViewerModule,
+    NgxDocViewerModule,
     NgxPaginationModule,
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),

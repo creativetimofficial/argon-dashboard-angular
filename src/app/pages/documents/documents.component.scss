@@ -1,4 +1,5 @@
 .drop-zone {
+  letter-spacing: .3px;
   border: 2px dashed #ccc;
   border-radius: 5px;
   padding: 100px 50px;
@@ -7,7 +8,7 @@
   color: #999;
   background: #f7f7f7;
   cursor: pointer;
-  .drop-zone:hover {
+  &:hover {
     background: #eee;
   }
   .dragover {

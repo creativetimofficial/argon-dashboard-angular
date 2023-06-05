@@ -1,13 +1,69 @@
-<div class="container d-block">
-  <div class="Workflows d-block card mt-2 shadow-lg rounded" *ngFor="let workflow of workflowTab">
-    <div class=" card-header bg-primary text-white text-darker ">
-      <span class=" card-title">{{ workflow.titre }}</span>
-    </div>
+<div class="container-fluid d-flex justify-content-between mt-3">
+  <div class="card col-sm col-md rounded shadow border-0 mt-2 mr-2">
+    <div class="card-content">
+      <div class="card-header text-black-50">
+        <span class="card-title text-primary font-weight-bold">Workflows initiés</span>
+      </div>
+      <div class="card-body">
+        <div class="">
+          <div
+            class="Workflows card mt-2 rounded shadow--hover"
+            *ngFor="let workflow of workflowTab"
+          >
+            <div class="card-header bg-primary text-white text-darker">
+              <span class="card-title">{{ workflow.titre }}</span>
+            </div>
 
-    <div class="card-body text-sm">
-      <div class=" card-text"> <span class=" text-darker">Echéance :</span>  {{ workflow.Echeances }}</div>
-      <div class=" card-text"><span class=" text-darker">Priorité :</span> {{ workflow.priorite }}</div>
-      <div class=" card-text"> <span class=" text-darker">Statut :</span> {{ workflow.statut }}</div>
+            <div class="card-body text-sm">
+              <div class="card-text">
+                <span class="text-darker">Echéance :</span>
+                {{ workflow.Echeances }}
+              </div>
+              <div class="card-text">
+                <span class="text-darker">Priorité :</span>
+                {{ workflow.priorite }}
+              </div>
+              <div class="card-text">
+                <span class="text-darker">Statut :</span> {{ workflow.statut }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card col-sm col-md rounded border-0 shadow mt-2 ml-2">
+    <div class="card-content">
+      <div class="card-header text-black-50">
+        <span class="card-title text-green font-weight-bold">Tâches attribuées</span>
+      </div>
+      <div class="card-body">
+        <div class="d-block">
+          <div
+            class="Workflows d-block card mt-2 rounded shadow--hover"
+            *ngFor="let workflow of workflowTab"
+          >
+            <div class="card-header bg-green text-white text-darker">
+              <span class="card-title">{{ workflow.titre }}</span>
+            </div>
+
+            <div class="card-body text-sm">
+              <div class="card-text">
+                <span class="text-darker">Echéance :</span>
+                {{ workflow.Echeances }}
+              </div>
+              <div class="card-text">
+                <span class="text-darker">Priorité :</span>
+                {{ workflow.priorite }}
+              </div>
+              <div class="card-text">
+                <span class="text-darker">Statut :</span> {{ workflow.statut }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

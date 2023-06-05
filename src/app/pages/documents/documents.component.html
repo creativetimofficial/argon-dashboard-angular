@@ -1,6 +1,6 @@
 <div
   class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-  style="max-height: 300px; margin-bottom: 10px"
+  style="max-height: 300px; margin-bottom: 10px; font: 15px 'Poppins'; "
 >
   <!-- Mask -->
   <span class="mask bg-gradient-danger opacity-8"></span>
@@ -37,13 +37,13 @@
 
     <div class="visionneuse w-50">
       visionneuse
-      <!-- <ngx-doc-viewer
-        [url]="docPath"
-        viewer="pdf"
-        style="width: 98%;"
-      ></ngx-doc-viewer> -->
-      <ngx-extended-pdf-viewer [src]="docPath">
-      </ngx-extended-pdf-viewer>
+      <ngx-doc-viewer
+          [url]="docPath"
+          viewer="office"
+          style="width:100%;height:90vh;"
+        ></ngx-doc-viewer>
+      <!-- <ngx-extended-pdf-viewer [src]="docPath">
+      </ngx-extended-pdf-viewer> -->
     </div>
   </div>
 
@@ -67,11 +67,12 @@
       Type de document : <br>
 
       <select
-        class="form-select"
+        class="form-control"
         name="typeDoc"
         id="typeDoc"
         [(ngModel)]="typeDoc"
       >
+        <option value="" selected >Svp choississez une option</option>
         <option value="contrat">Contrat</option>
         <option value="facture">Facture</option>
         <option value="recrutement">Recrutement</option>
@@ -84,17 +85,18 @@
       <input
         [(ngModel)]="mot_cle"
         class="form-control"
-        id="mot_cle"
-        name="mot_cle"
+        id="mots_cles"
+        name="mots_cles"
         type="text"
         placeholder="séparez vos mots d'une virule sans espace."
       />
     </label>
 
-    <label class="form-label col" for="statut"> 
+    <label class="form-label col" for="status"> 
       Statut : <br>
 
-      <select class="form-select" name="statut" id="statut" [(ngModel)]="statut">
+      <select class="form-control" name="status" id="statut" [(ngModel)]="statut">
+        <option value="" selected>Selectionner un statut</option>
         <option value="nouveau">Nouveau</option>
         <option value="approuve">Approuvé</option>
         <option value="archive">Archivé</option>

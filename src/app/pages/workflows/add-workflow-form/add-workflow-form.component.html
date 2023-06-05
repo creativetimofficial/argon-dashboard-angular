@@ -1,116 +1,106 @@
 <!-- *ngIf="display == true && displayInnerFolder == false"
   (submit)="onSubmit()" -->
 
-<div>
-  <form class="sign-form col">
-    <div class="form-group">
-      <label class="form-label col">
-        Titre:
+<div class="container-fluid">
+  <div class="card rounded shadow p-5 mt-3 border-0">
+    <form class="sign-form col">
+      <div class="form-header"></div>
+      <div class="form-group">
+        <label class="form-control-label col">
+          Titre
 
-        <input [(ngModel)]="titre" class="form-control" type="text" />
-      </label>
-    </div>
-    <div class="form-group">
-      <label class="form-label col">
-        Message:
+          <input [(ngModel)]="titre" class="form-control" type="text" />
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label col">
+          Message
 
-        <textarea
-          name="message"
-          [(ngModel)]="message"
-          class="form-control"
-        ></textarea>
-      </label>
-    </div>
-    <div class="form-group">
-      <label class="form-label col">
-        Priorité : <br />
+          <textarea
+            name="message"
+            [(ngModel)]="message"
+            class="form-control"
+          ></textarea>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label col">
+          Priorité
 
-        <select class="form-select" name="priorite" [(ngModel)]="priorite">
-          <option value="basse">basse</option>
-          <option value="moyenne">moyenne</option>
-          <option value="eleve">élevé</option>
-        </select>
-      </label>
-    </div>
-    <!-- <div class="form-group">
-    <label class="form-label col">
-      Mots clés :
+          <select class="form-control" name="priorite" [(ngModel)]="priorite">
+            <option value="basse">basse</option>
+            <option value="moyenne">moyenne</option>
+            <option value="eleve">élevé</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label col">
+          Echéance
 
+          <input
+            [(ngModel)]="echeance"
+            class="form-control"
+            id="exheance"
+            name="echeance"
+            type="date"
+          />
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label col" for="statut">
+          Statut
+
+          <select
+            class="form-control"
+            name="statut"
+            id="statut"
+            [(ngModel)]="statut"
+          >
+            <option value="pas-demarre">Pas démarré</option>
+            <option value="en-cours">En cours</option>
+            <option value="suspendu">Suspendu</option>
+            <option value="annule">Annulé</option>
+            <option value="termine">Terminé</option>
+          </select>
+        </label>
+      </div>
+
+      <!-- modal button -->
       <input
-        [(ngModel)]="mot_cle"
-        class="form-control"
-        id="mot_cle"
-        name="mot_cle"
-        type="text"
+        type="button"
+        id="add-user-button"
+        class="btn btn-success"
+        placeholder="Selectionner"
       />
-    </label>
-  </div> -->
-    <div class="form-group">
-      <label class="form-label col">
-        Echéance :
+      <!-- modal button -->
+      <!-- modal -->
 
-        <input
-          [(ngModel)]="echeance"
-          class="form-control"
-          id="exheance"
-          name="echeance"
-          type="date"
-        />
-      </label>
-    </div>
-    <div class="form-group">
-      <label class="form-control-label col" for="statut">
-        Statut : <br />
-
-        <select
-          class="form-select"
-          name="statut"
-          id="statut"
-          [(ngModel)]="statut"
-        >
-          <option value="pas-demarre">Pas démarré</option>
-          <option value="en-cours">En cours</option>
-          <option value="suspendu">Suspendu</option>
-          <option value="annule">Annulé</option>
-          <option value="termine">Terminé</option>
-        </select>
-      </label>
-    </div>
-
-    <!-- modal button -->
-    <input
-      type="button"
-      id="add-user-button"
-      class="btn btn-success"
-      placeholder="Selectionner"
-    />
-    <!-- modal button -->
-    <!-- modal -->
-
-    <!--  -->
-    <div class="modal fade" id="add-user-modal" tabindex="-1">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">Selectionner...</div>
-          <div class="modal-body">
-            <div class="navbar-search">
-              <form method="get" class="form d-flex">
-                <div class="form-control">
-                  <input type="text" name="search" placeholder="" />
-                </div>
-                <button class="btn btn-success">Rechercher</button>
-              </form>
-            </div>
-            <div>
-              <div></div>
-              <div></div>
+      <!--  -->
+      <div class="modal fade" id="add-user-modal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">Selectionner...</div>
+            <div class="modal-body">
+              <div class="navbar-search">
+                <form method="get" class="form d-flex">
+                  <div class="form-control">
+                    <input type="text" name="search" placeholder="" />
+                  </div>
+                  <button class="btn btn-success">Rechercher</button>
+                </form>
+              </div>
+              <div>
+                <div></div>
+                <div></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- modal -->
+      <!-- modal -->
 
-    <button class="btn btn-primary col" type="submit">enregistrer</button>
-  </form>
+      <button class="btn btn-primary col" type="submit">enregistrer</button>
+    </form>
+  </div>
 </div>

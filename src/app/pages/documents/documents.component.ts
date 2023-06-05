@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ViewerType } from 'ngx-doc-viewer';
 
 @Component({
   selector: "app-documents",
@@ -21,6 +22,7 @@ export class DocumentsComponent implements OnInit {
   documents: any[] = [];
   contratArray: any[] = [];
   contratLenght: number;
+  viewer: ViewerType;
 
   constructor() {}
 
@@ -49,6 +51,7 @@ export class DocumentsComponent implements OnInit {
   selectFile(): void {
     const input = document.createElement("input");
     input.type = "file";
+    input.name = "file";
     input.style.display = "none";
     input.accept = "pdf";
     document.body.appendChild(input);
@@ -65,7 +68,7 @@ export class DocumentsComponent implements OnInit {
     this.name = file.name;
     this.type = file.type;
     this.size = file.size + "ko";
-    //this.docPath = URL.createObjectURL(file);
+    this.docPath = URL.createObjectURL(file);
 
     if (this.name !== "") {
       this.display = true;
@@ -84,10 +87,8 @@ export class DocumentsComponent implements OnInit {
       reader.onload = (e:any) => {
 
         const contentFile = new Blob([new Uint8Array(e.target.result)]); //, { type: 'application/pdf'}
-        this.docPath = URL.createObjectURL(contentFile);
-
+        //this.docPath = URL.createObjectURL(contentFile);
         console.log(this.docPath);
-        
         resolve(reader.result as string);
       };
 
