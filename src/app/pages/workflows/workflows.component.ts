@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ListComponent } from './list/list.component';
 
 @Component({
   selector: 'app-workflows',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class WorkflowsComponent {
 
+  displayForm: boolean = false;
+  displayModalDoc: boolean = false;
+  displayModalUser: boolean = false;
+  displayList: boolean = true;
+  displayCreateWorkflowButton : boolean = true;
+
+  constructor() {}
+  ngOnInit() {}
+
+  initiateWorkflow() {
+    this.displayList = true;
+    this.displayCreateWorkflowButton = true;
+    this.displayForm = true;
+  }
 }

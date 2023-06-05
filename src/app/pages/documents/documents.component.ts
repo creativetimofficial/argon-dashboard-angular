@@ -6,7 +6,8 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./documents.component.scss"],
 })
 export class DocumentsComponent implements OnInit {
-  docPath: string = "";
+  docPath: any;
+  fileContent: any;
   name: string = "";
   type: string = "";
   size: string = "";
@@ -41,48 +42,74 @@ export class DocumentsComponent implements OnInit {
 
     const files = event.dataTransfer.files;
     const file = files[0];
-    this.name = file.name;
-    console.log(this.name);
-    this.type = file.type;
-    this.size = file.size + "ko";
-    this.docPath = URL.createObjectURL(file);
-    if (this.name !== "") {
-      this.display = true;
-    }
+
+    this.handleFiles(file);
   }
 
   selectFile(): void {
     const input = document.createElement("input");
     input.type = "file";
     input.style.display = "none";
-    input.accept = "pdf, docx, xls";
+    input.accept = "pdf";
     document.body.appendChild(input);
     input.onchange = (event: any) => {
       const file = event.target.files[0];
-      this.name = file.name;
-      this.type = file.type;
-      this.size = file.size + "ko";
-      this.docPath = URL.createObjectURL(file);
-      console.log(this.docPath);
-      
-      if (this.name !== "") {
-        this.display = true;
-      }
+
+      this.handleFiles(file);
     };
     input.click();
   }
 
+  //permet de gerer les fichers importés dans l'application
+  async handleFiles(file: File) {
+    this.name = file.name;
+    this.type = file.type;
+    this.size = file.size + "ko";
+    //this.docPath = URL.createObjectURL(file);
+
+    if (this.name !== "") {
+      this.display = true;
+    }
+
+    const fileContent = await this.readFileContent(file);
+    this.fileContent = fileContent;
+  }
+
+  //cette fonction permet de recupérer le contenu d'un fichier
+  private async readFileContent(file: File): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+
+      const reader = new FileReader();
+
+      reader.onload = (e:any) => {
+
+        const contentFile = new Blob([new Uint8Array(e.target.result)]); //, { type: 'application/pdf'}
+        this.docPath = URL.createObjectURL(contentFile);
+
+        console.log(this.docPath);
+        
+        resolve(reader.result as string);
+      };
+
+      reader.onerror = () => {
+        reject(reader.error);
+      };
+
+      reader.readAsArrayBuffer(file);
+    });
+  }
+
   onSubmit() {
     //const motCles = this.mot_cle.split(",");
-    console.log(this.docPath);
-    
+
     this.documents.push({
       name: this.name,
       type: this.typeDoc,
       size: this.size,
       statut: this.statut,
       mot_cles: this.mot_cle,
-      filePath: this.docPath,
+      fileContent: this.fileContent,
+      docPath : this.docPath
     });
     //console.log(this.documents);
     this.contratArray = this.documents.filter((document) => {
@@ -96,6 +123,7 @@ export class DocumentsComponent implements OnInit {
     this.statut = "";
     this.mot_cle = "";
     this.docPath = "";
+    this.fileContent = null;
     this.total = this.documents.length; // Mettre à jour le nombre total d'éléments
     this.display = false;
   }
@@ -104,8 +132,8 @@ export class DocumentsComponent implements OnInit {
   clikedFolder() {
     this.display = true;
     this.displayInnerFolder = true;
-    let selectFilesDiv = document.querySelector("#fileTest") as HTMLElement; //<htmlElement>
-    selectFilesDiv.style.minHeight = "90vh";
+    let selectFilesDiv = document.querySelector("#filePlusViewer") as HTMLElement; //<htmlElement>
+    selectFilesDiv.style.height = "90vh";
   }
 
   // files in contrat
@@ -115,14 +143,18 @@ export class DocumentsComponent implements OnInit {
 
   // afficher un document dans la visionneuse
   viewFile() {
-    let fileName = document.querySelector(".fileName").innerHTML;
-    console.log(fileName);
-    let fileSize = document.querySelector(".fileSize");
-    this.contratArray.find((contrat) => {
-      if (contrat.name === fileName) {
-        console.log(contrat.docPath);
-
-        return (this.docPath = contrat.docPath);
+    let fileName = document.querySelector(".fileName").innerHTML.split(' ')[1];
+    //let fileSize = document.querySelector(".fileSize").innerHTML;
+    this.documents.find(document => {
+      console.log("find");
+      console.log(document, document.name, fileName);
+      if (document.name === fileName) {
+        console.log(document.fileContent, document.docPath);
+        
+        return (this.docPath = document.docPath);
+      } else {
+        console.log("error");
+        
       }
     });
   }

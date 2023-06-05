@@ -20,20 +20,22 @@
 </div>
 
 <div class="container-fuild">
-  <div class="d-flex wrap"  id="fileTest" *ngIf="displayInnerFolder == true">
-    <div class="file w-25" *ngFor="let contrat of contratArray">
-      <img
-        (click)="viewFile()"
-        width="96"
-        height="96"
-        src="https://img.icons8.com/color/96/pdf-2--v1.png"
-        alt="pdf-2--v1"
-      />
-      <span class="fileName"> {{ contrat.name }} </span>
-      <span class="fileSize"> {{ contrat.size }} </span>
+  <div class="d-flex wrap d-flex wrap"  id="filePlusViewer" *ngIf="displayInnerFolder == true" style="height: 90vh;">
+    <div class="file-container  w-50">
+      <div class="file" *ngFor="let contrat of contratArray" style="width: 55px;">
+        <img
+          (click)="viewFile()"
+          width="50"
+          height="50"
+          src="https://img.icons8.com/color/96/pdf-2--v1.png"
+          alt="pdf-2--v1"
+        /> <br>
+        <span class="fileName" style="font-size: smaller;"> {{ contrat.name }} </span> <br>
+        <span class="fileSize" style="font-size: smaller;"> {{ contrat.size }} </span>
+      </div>
     </div>
 
-    <div class="visionneuse w-75">
+    <div class="visionneuse w-50">
       visionneuse
       <!-- <ngx-doc-viewer
         [url]="docPath"
@@ -113,10 +115,10 @@
       (dragover)="onDragOver($event)"
       (dragleave)="onDragLeave($event)"
     >
-      <div class="glisser col">Glisser-déposer le fichier ici</div>
+      <div class="glisser col">Déposez les fichiers ici ou cliquez pour télécharger</div>
 
       <div class="button col">
-        <a class="nav-link" class="btn btn-info" (click)="selectFile()"
+        <a class="nav-link" class="btn btn-primary" (click)="selectFile()"
           ><i class="fa fa-upload mr-2"></i> Importer</a
         >
       </div>
@@ -156,7 +158,7 @@
               </div> -->
               <!-- <div class="user-plus">+</div> -->
               <div class="ms-auto">
-                <p>ici vous avez tous les documents dee type contrat*</p>
+                <p style="font-size: small;">ici vous avez tous les documents dee type contrat*</p>
               </div>
             </div>
           </div>
@@ -179,7 +181,7 @@
                 <small>15 files*</small>
               </div>
               <div class="ms-auto">
-                <p>ici vous avez tous les documents dee type facture*</p>
+                <p style="font-size: small;">ici vous avez tous les documents dee type facture*</p>
               </div>
             </div>
           </div>

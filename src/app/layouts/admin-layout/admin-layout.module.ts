@@ -18,6 +18,9 @@ import { DocumentsComponent } from '../../pages/documents/documents.component';
 //import { NgxDocViewerModule } from 'ngx-doc-viewer/lib/document-viewer.module';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 // import { ToastrModule } from 'ngx-toastr';
+import { AddWorkflowFormComponent } from '../../pages/workflows/add-workflow-form/add-workflow-form.component';
+import { ListComponent } from '../../pages/workflows/list/list.component';
+
 
 @NgModule({
   imports: [
@@ -38,7 +41,9 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     IconsComponent,
     MapsComponent, 
     WorkflowsComponent,
-    DocumentsComponent
+    DocumentsComponent,
+    AddWorkflowFormComponent,
+    ListComponent
   ]
 })
 

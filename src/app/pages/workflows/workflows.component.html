@@ -1,7 +1,20 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
-    <div class="container-fluid">
+<div class="header bg-gradient-danger pb-3 pt-5 pt-md-8">
+  <a
+    class="nav-link"
+    class="btn btn-primary ml-3 mt-4"
+    (click)="initiateWorkflow()"
+    ><img
+      width="25"
+      height="25"
+      src="https://img.icons8.com/ios/25/ffffff/serial-tasks--v1.png"
+      alt="serial-tasks--v1"
+    />
+    Lancer un workflow</a
+  >
+
+  <!-- <div class="container-fluid">
       <div class="header-body">
-        <!-- Card stats -->
+        
         <div class="row">
           <div class="col-xl-3 col-lg-6">
             <div class="card card-stats mb-4 mb-xl-0">
@@ -94,7 +107,7 @@
     </div>
   </div>
 <div class="container-fluid mt--7">
-    <!-- Table -->
+    
     <div class="row">
       <div class="col">
         <div class="card shadow">
@@ -434,5 +447,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 </div>
+<div>
+  <app-list></app-list>
+</div>
+<app-add-workflow-form></app-add-workflow-form>
