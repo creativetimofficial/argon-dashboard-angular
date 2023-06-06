@@ -154,7 +154,7 @@ export class DocumentsComponent implements OnInit {
         
         return (this.docPath = document.docPath);
       } else {
-        console.log("error");
+        console.error("problème ");
         
       }
     });

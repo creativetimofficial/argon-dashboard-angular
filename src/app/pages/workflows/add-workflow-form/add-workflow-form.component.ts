@@ -11,6 +11,4 @@ export class AddWorkflowFormComponent {
   message: any;
   titre: any;
   echeance: any;
-
-
 }
