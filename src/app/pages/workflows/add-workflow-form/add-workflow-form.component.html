@@ -67,26 +67,36 @@
       </div>
 
       <!-- modal button -->
-      <input
-        id="add-user-button"
-        class="btn btn-success "
-        placeholder="Associer"
-      />
+      <button
+        (click)="openLg(content)"
+        class="btn btn-success"
+      >
+        Associer
+      </button>
       <!-- modal button -->
       <!-- modal -->
 
-      <!--  -->
-      <div class="modal fade" id="add-user-modal" tabindex="-1">
+      <!-- <div
+       
+        class="col-lg"
+        id = "add-user-modal"
+        aria-labelledby="addUserModalLabel"
+        aria-hidden="true"
+      >
+      
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <div class="modal-header">Selectionner...</div>
-            <div class="modal-body">
+            <div class="modal-header bg-dark">
+              <h3 class="modal-title text-center">Selectionner...</h3>
+              <button type="button" class="btn-close" aria-label="Close" ></button>
+            </div>
+            <div class="modal-body col">
               <div class="navbar-search">
-                <form method="get" class="form d-flex">
-                  <div class="form-control">
-                    <input type="text" name="search" placeholder="" />
+                <form method="get" class="form d-flex justify-content-start">
+                  <div class=" form-group w-75">
+                    <input class="form-control" type="text" name="search"/>
                   </div>
-                  <button class="btn btn-success">Rechercher</button>
+                    <button class="btn btn-secondary w-auto">Rechercher</button>
                 </form>
               </div>
               <div>
@@ -94,9 +104,49 @@
                 <div></div>
               </div>
             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                Close
+              </button>
+             
+              <button type="button" class="btn btn-primary" >
+                Save changes
+              </button>
           </div>
         </div>
       </div>
+      </div> -->
+      <!-- <button [cModalToggle]="modalLg.id" cButton>Large modal</button>
+      <c-modal #modalLg id="modalLg" size="lg">
+        <c-modal-header>
+          <h5 cModalTitle>Large modal</h5>
+        </c-modal-header>
+        <c-modal-body>...</c-modal-body>
+      </c-modal> -->
+
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">Modal title</h4>
+          <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p>One fine body&hellip;</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-light"
+            (click)="modal.close('Close click')"
+          >
+            Close
+          </button>
+        </div>
+      </ng-template>
       <!-- modal -->
 
       <button class="btn btn-primary col" type="submit">enregistrer</button>

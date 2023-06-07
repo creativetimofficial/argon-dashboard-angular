@@ -25,6 +25,8 @@
     "@angular/platform-browser": "^16.0.3",
     "@angular/platform-browser-dynamic": "^16.0.3",
     "@angular/router": "^16.0.3",
+    "@coreui/angular": "^4.5.0",
+    "@coreui/coreui": "^4.2.6",
     "@ng-bootstrap/ng-bootstrap": "12.0.1",
     "@popperjs/core": "^2.11.4",
     "bootstrap": "4.6.1",

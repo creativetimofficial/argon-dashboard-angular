@@ -1,8 +1,17 @@
 <div class="container-fluid d-flex justify-content-between mt-3">
   <div class="card col-sm col-md rounded shadow border-0 mt-2 mr-2">
     <div class="card-content">
-      <div class="card-header text-black-50">
-        <span class="card-title text-primary font-weight-bold">Workflows initiés</span>
+      <div
+        class="card-header text-black-50 d-flex justify-content-between align-items-center"
+      >
+        <span class="card-title text-primary font-weight-bold"
+          >Workflows initiés</span
+        >
+        <span>
+          <a routerLinkActive="active" [routerLink]="['/workflows/inities']">
+            <button class="btn btn-primary">Lister</button>
+          </a>  
+        </span>
       </div>
       <div class="card-body">
         <div class="">
@@ -35,8 +44,15 @@
 
   <div class="card col-sm col-md rounded border-0 shadow mt-2 ml-2">
     <div class="card-content">
-      <div class="card-header text-black-50">
-        <span class="card-title text-green font-weight-bold">Tâches attribuées</span>
+      <div class="card-header text-black-50 d-flex justify-content-between align-items-center">
+        <span class="card-title text-green font-weight-bold"
+          >Tâches attribuées</span
+        >
+        <span>
+          <a routerLinkActive="active" [routerLink]="['/workflows/attribuees']">
+            <button class="btn btn-success">Lister</button>
+          </a>  
+        </span>
       </div>
       <div class="card-body">
         <div class="d-block">

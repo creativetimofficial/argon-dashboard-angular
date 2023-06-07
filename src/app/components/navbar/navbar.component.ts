@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  public genericPath: string;
   public focus;
   public listTitles: any[];
   public location: Location;
@@ -23,11 +24,20 @@ export class NavbarComponent implements OnInit {
     var titlee = this.location.prepareExternalUrl(this.location.path());
     if(titlee.charAt(0) === '#'){
         titlee = titlee.slice( 1 );
+        console.log(titlee);
+        
     }
 
     for(var item = 0; item < this.listTitles.length; item++){
         if(this.listTitles[item].path === titlee){
-            return this.listTitles[item].title;
+          this.genericPath = "/"+this.listTitles[item].title.toLowerCase() 
+          return this.listTitles[item].title;
+        } else if(titlee === "/workflows/inities") {
+          this.genericPath = "/workflows/inities"
+          return "Workflow initiés"
+        } else if(titlee === "/workflows/attribuees") {
+          this.genericPath = "/workflows/attribuees"
+          return "Tâches attribuées"
         }
     }
     return 'Dashboard';

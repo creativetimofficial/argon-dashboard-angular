@@ -15,6 +15,7 @@ export class WorkflowsComponent {
   displayCreateWorkflowButton : boolean = true;
 
   constructor() {}
+
   ngOnInit() {}
 
   initiateWorkflow() {
