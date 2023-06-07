@@ -1,1 +1,42 @@
-<p>modal-associate-user works!</p>
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Rechercher</h2>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" class="form-inline">
+          <div class="form-group">
+            <label for="searchInput"></label>
+            <input
+              type="text"
+              class="form-control"
+              id="searchInput"
+              placeholder="Recherche"
+            />
+          </div>
+        </form>
+        <div class="row mt-2">
+            <div class="col-sm-6">
+                <h3>Resultat</h3>
+            </div>
+            <div class="col-sm-6">
+                <h3>Selection</h3>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Fermer</button>
+          <button class="btn btn-primary" type="button">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>

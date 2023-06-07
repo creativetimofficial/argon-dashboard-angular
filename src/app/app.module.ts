@@ -15,7 +15,7 @@ import { ComponentsModule } from './components/components.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 //import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
-import { ModalAssociateUserComponent } from './pages/workflows/modal-associate-user/modal-associate-user.component';
+//import { ModalAssociateUserComponent } from './pages/workflows/modal-associate-user/modal-associate-user.component';
 import { ModalAddDocumentComponent } from './pages/workflows/modal-add-document/modal-add-document.component';
 //import { AddWorkflowFormComponent } from './pages/workflows/add-workflow-form/add-workflow-form.component';
 //import { ListComponent } from './pages/workflows/list/list.component';
@@ -38,7 +38,7 @@ import { ModalAddDocumentComponent } from './pages/workflows/modal-add-document/
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    ModalAssociateUserComponent,
+    //ModalAssociateUserComponent,
     ModalAddDocumentComponent,
     //AddWorkflowFormComponent,
     //ListComponent,

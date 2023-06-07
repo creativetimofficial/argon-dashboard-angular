@@ -67,15 +67,16 @@
       </div>
 
       <!-- modal button -->
+      <!-- (click)="openLg(content)" -->
       <button
-        (click)="openLg(content)"
+      (click)="openModal()"
         class="btn btn-success"
       >
         Associer
       </button>
       <!-- modal button -->
       <!-- modal -->
-
+      <app-modal-associate-user></app-modal-associate-user>  
       <!-- <div
        
         class="col-lg"
@@ -124,7 +125,7 @@
         <c-modal-body>...</c-modal-body>
       </c-modal> -->
 
-      <ng-template #content let-modal>
+      <!-- <ng-template #content let-modal>
         <div class="modal-header">
           <h4 class="modal-title">Modal title</h4>
           <button
@@ -146,7 +147,7 @@
             Close
           </button>
         </div>
-      </ng-template>
+      </ng-template> -->
       <!-- modal -->
 
       <button class="btn btn-primary col" type="submit">enregistrer</button>

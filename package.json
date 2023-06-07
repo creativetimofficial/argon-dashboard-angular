@@ -27,6 +27,8 @@
     "@angular/router": "^16.0.3",
     "@coreui/angular": "^4.5.0",
     "@coreui/coreui": "^4.2.6",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
     "@ng-bootstrap/ng-bootstrap": "12.0.1",
     "@popperjs/core": "^2.11.4",
     "bootstrap": "4.6.1",

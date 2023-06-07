@@ -20,6 +20,9 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { AddWorkflowFormComponent } from '../../pages/workflows/add-workflow-form/add-workflow-form.component';
 import { ListComponent } from '../../pages/workflows/list/list.component';
 import { NgxDocViewerModule } from 'ngx-doc-viewer';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalAssociateUserComponent } from '../../pages/workflows/modal-associate-user/modal-associate-user.component';
 
 @NgModule({
   imports: [
@@ -31,7 +34,9 @@ import { NgxDocViewerModule } from 'ngx-doc-viewer';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    MatDialogModule,
+    MatIconModule
   ],
   declarations: [
     DashboardComponent,
@@ -42,7 +47,12 @@ import { NgxDocViewerModule } from 'ngx-doc-viewer';
     WorkflowsComponent,
     DocumentsComponent,
     AddWorkflowFormComponent,
-    ListComponent
+    ModalAssociateUserComponent,
+    ListComponent,
+  ],
+  exports: [
+    MatDialogModule,
+    MatIconModule
   ]
 })
 
