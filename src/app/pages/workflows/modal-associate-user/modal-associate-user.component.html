@@ -1,42 +1,81 @@
-<div class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+<div class="modal-header">
+  <h4 class="modal-title">Recherche</h4>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('dismissed')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="searchForm">
+    <div class="form-group">
+      <label for="search">Recherche</label>
+      <input type="text" id="search" class="form-control" formControlName="search">
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-md-6">
+      <h5>Résultat de la recherche</h5>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of searchResults">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h5>Sélection</h5>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of selectedItems">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="save()">Enregistrer</button>
+  <button type="button" class="btn btn-secondary" (click)="close()">Annuler</button>
+</div>
+
+
+<!-- <div class="modal modal-backdrop modal-lg fade" id="modal" #modal tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title">Rechercher</h2>
         <button
           type="button"
           class="close"
-          data-dismiss="modal"
+          data-bs-dismiss="modal"
           aria-label="close"
         >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="" class="form-inline">
-          <div class="form-group">
-            <label for="searchInput"></label>
-            <input
-              type="text"
-              class="form-control"
-              id="searchInput"
-              placeholder="Recherche"
-            />
-          </div>
+        <form action="" class="form-inline mt--2 d-md-none">
+          
+            <div class="input-group input-group-rounded input-group-merge">
+              <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Rechercher" aria-label="Rechercher">
+              <div class="input-group-prepend">
+                <div class="input-group-text rounded-right">
+                  <span class="fa fa-search pointer-event"></span>
+                </div>
+              </div>
+            </div>
+          
         </form>
         <div class="row mt-2">
-            <div class="col-sm-6">
+            <div class="col-sm-6 h-100 w-50">
                 <h3>Resultat</h3>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 h-100 w-50">
                 <h3>Selection</h3>
             </div>
         </div>
       </div>
       <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Fermer</button>
+          <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Fermer</button>
           <button class="btn btn-primary" type="button">Enregistrer</button>
       </div>
     </div>
   </div>
-</div>
+</div> -->

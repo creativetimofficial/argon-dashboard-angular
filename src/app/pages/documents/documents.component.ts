@@ -1,5 +1,6 @@
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { ViewerType } from 'ngx-doc-viewer';
+import { ViewerType } from "ngx-doc-viewer";
 
 @Component({
   selector: "app-documents",
@@ -23,10 +24,13 @@ export class DocumentsComponent implements OnInit {
   contratArray: any[] = [];
   contratLenght: number;
   viewer: ViewerType;
+  reponse: any;
+  
+  constructor(private http: HttpClient) {}
 
-  constructor() {}
-
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   onDragOver(event: any) {
     event.preventDefault();
@@ -61,6 +65,21 @@ export class DocumentsComponent implements OnInit {
       this.handleFiles(file);
     };
     input.click();
+    this.http
+      .get("http://10.0.100.111:8080/files/view", { responseType: "arraybuffer" })
+      .subscribe(
+        (response) => {
+          const blob = new Blob([response], {type: 'application/pdf'});
+          console.log(blob);
+          
+          this.docPath = URL.createObjectURL(blob);
+          console.log(this.docPath);
+          
+        }, (error) => {
+          console.log(error);
+          
+        }
+      );
   }
 
   //permet de gerer les fichers importés dans l'application
@@ -68,7 +87,9 @@ export class DocumentsComponent implements OnInit {
     this.name = file.name;
     this.type = file.type;
     this.size = file.size + "ko";
-    this.docPath = URL.createObjectURL(file);
+
+    //this.docPath = "http://10.0.100.111:8080/files/view"; //URL.createObjectURL(file);
+    //console.log(this.docPath);
 
     if (this.name !== "") {
       this.display = true;
@@ -81,14 +102,12 @@ export class DocumentsComponent implements OnInit {
   //cette fonction permet de recupérer le contenu d'un fichier
   private async readFileContent(file: File): Promise<string> {
     return new Promise<string>((resolve, reject) => {
-
       const reader = new FileReader();
 
-      reader.onload = (e:any) => {
-
+      reader.onload = (e: any) => {
         const contentFile = new Blob([new Uint8Array(e.target.result)]); //, { type: 'application/pdf'}
         //this.docPath = URL.createObjectURL(contentFile);
-        console.log(this.docPath);
+
         resolve(reader.result as string);
       };
 
@@ -110,7 +129,7 @@ export class DocumentsComponent implements OnInit {
       statut: this.statut,
       mot_cles: this.mot_cle,
       fileContent: this.fileContent,
-      docPath : this.docPath
+      docPath: this.docPath,
     });
     //console.log(this.documents);
     this.contratArray = this.documents.filter((document) => {
@@ -133,7 +152,9 @@ export class DocumentsComponent implements OnInit {
   clikedFolder() {
     this.display = true;
     this.displayInnerFolder = true;
-    let selectFilesDiv = document.querySelector("#filePlusViewer") as HTMLElement; //<htmlElement>
+    let selectFilesDiv = document.querySelector(
+      "#filePlusViewer"
+    ) as HTMLElement; //<htmlElement>
     selectFilesDiv.style.height = "90vh";
   }
 
@@ -144,18 +165,29 @@ export class DocumentsComponent implements OnInit {
 
   // afficher un document dans la visionneuse
   viewFile() {
-    let fileName = document.querySelector(".fileName").innerHTML.split(' ')[1];
+    let fileName = document.querySelector(".fileName").innerHTML.split(" ")[1];
+    // const newtab = fileNameTab.filter( tabfileName => {
+    //   if ( tabfileName !== " " ) {
+    //     console.log(tabfileName);
+    //     return 
+    //   }
+    // })
+    // const fileName = "";
+    // for(let i = 0; i<= newtab.length; i++){
+    //   const fileName =+ newtab[i];
+    //   console.log(fileName);
+    //   return fileName
+    // }
     //let fileSize = document.querySelector(".fileSize").innerHTML;
-    this.documents.find(document => {
+    this.documents.find((document) => {
       console.log("find");
       console.log(document, document.name, fileName);
       if (document.name === fileName) {
-        console.log(document.fileContent, document.docPath);
-        
-        return (this.docPath = document.docPath);
+        console.log(document.fileContent, document.docPath, this.reponse);
+
+        return this.docPath;
       } else {
         console.error("problème ");
-        
       }
     });
   }

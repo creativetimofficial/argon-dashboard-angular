@@ -26,6 +26,7 @@ import { ModalAssociateUserComponent } from '../../pages/workflows/modal-associa
 
 @NgModule({
   imports: [
+    ReactiveFormsModule,
     NgxExtendedPdfViewerModule,
     NgxDocViewerModule,
     NgxPaginationModule,

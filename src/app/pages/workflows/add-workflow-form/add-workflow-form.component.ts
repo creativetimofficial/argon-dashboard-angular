@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { MatDialog } from '@angular/material/dialog';
 
 import { ModalAssociateUserComponent } from '../modal-associate-user/modal-associate-user.component';
@@ -15,23 +15,39 @@ export class AddWorkflowFormComponent {
   message: any;
   titre: any;
   echeance: any;
+  modal: NgbModal;
+  modalRef: any;
   //encapsulation: ViewEncapsulation.None;
   //closeResult: string;
 
   constructor(private modalService: NgbModal, private dialog: MatDialog) {}
 
-  ngOnInit(): void {}
-
   openModal() {
-    const dialogRef = this.dialog.open(ModalAssociateUserComponent, {
-      backdropClass: "false",
-      panelClass: 'modal-dialog',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Modal result: ${result}`);
+    
+    this.modalRef = this.modalService.open(ModalAssociateUserComponent);
+    this.modalRef.componentInstance.title = 'Mon titre';
+    document.querySelector<HTMLElement>(".modal-backdrop").style.zIndex = "2";
+    
+    this.modalRef.result.then((result) => {
+        console.log(result);
+    }, (reason) => {
+        console.log(reason);
     });
   }
+
+  //ngOnInit() {}
+
+  // openModal() {
+  //   const dialogRef = this.dialog.open(ModalAssociateUserComponent, {
+  //     //hasBackdrop: false,
+  //     backdropClass: "modal-backdrop",
+  //     panelClass: 'modal-dialog',
+  //   });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log(`Modal result: ${result}`);
+  //   });
+  // }
   // openLg(content) {
 	// 	this.modalService.open(content, { size: 'lg' });
 	// }
