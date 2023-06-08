@@ -19,12 +19,25 @@
   </div>
 </div>
 
+<!-- [typeDoc]="'Tout'" -->
+
 <app-document-acquisition
   *ngIf="display === false"
-  [page] = "page"
-  [documents] = "documents"
-  [name] = "name"
-  [type] = "type"
-  [size] = "size"
-  [docPath] ="docPath"
+  [page]="page"
+  [documents]="documents"
+  [name]="name"
+  [type]="type"
+  [size]="size"
+  
+  [docPath]="docPath"
 ></app-document-acquisition>
+
+<app-document-dossiers
+  
+  (buttonClicked)="clikedFolder()"
+></app-document-dossiers>
+
+<app-document-list
+  [displayInnerFolder]="displayInnerFolder"
+  [typeDocArray]="typeDocArray"
+></app-document-list>

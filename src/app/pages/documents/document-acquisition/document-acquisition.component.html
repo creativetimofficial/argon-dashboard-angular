@@ -27,8 +27,10 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nom</th>
-                    <th scope="col">Type doc</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Taille</th>
+                    <th scope="col"> Catégorie </th>
+                    <th scope="col">Statut</th>
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
@@ -48,8 +50,11 @@
                     <td>{{ document.name }}</td>
                     <td>{{ document.type }}</td>
                     <td>{{ document.size }}</td>
+                    <td></td>
+                    <td></td>
                     <td class="d-flex align-items-center justify-content-around">
                         <span class=" fa fa-list text-primary"></span>
+                        <span class=" fas fa-eye text-success"></span>
                         <span class=" fa text-danger fa-trash-alt "></span>
                     </td>
                   </tr>

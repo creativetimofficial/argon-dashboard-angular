@@ -2,6 +2,17 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ViewerType } from "ngx-doc-viewer";
 
+interface Document {
+  name?: string,
+  type?: string,
+  typeDoc: string,
+  size?: string,
+  statut: string,
+  mot_cles: string,
+  fileContent?: any,
+  docPath?: string,
+}
+
 @Component({
   selector: "app-documents",
   templateUrl: "./documents.component.html",
@@ -20,9 +31,10 @@ export class DocumentsComponent implements OnInit {
   page = 1; // Page initiale
   display: boolean = false;
   displayInnerFolder: boolean = false;
-  documents: any[] = [];
-  contratArray: any[] = [];
-  contratLenght: number;
+  documents: Document[] = [];
+
+  typeDocArray: any[] = [];
+  typeDocArrayLenght: number;
   viewer: ViewerType;
   reponse: any;
   
@@ -37,15 +49,15 @@ export class DocumentsComponent implements OnInit {
 
     this.documents.push({
       name: this.name,
-      type: this.typeDoc,
+      typeDoc: this.typeDoc,
+      type: this.type, 
       size: this.size,
       statut: this.statut,
       mot_cles: this.mot_cle,
-      fileContent: this.fileContent,
       docPath: this.docPath,
     });
     //console.log(this.documents);
-    this.contratArray = this.documents.filter((document) => {
+    this.typeDocArray = this.documents.filter((document) => {
       if (document.type === "contrat") {
         return document;
       }
@@ -63,6 +75,10 @@ export class DocumentsComponent implements OnInit {
 
   // view contaning file in a specific folder
   clikedFolder() {
+    const doctype = document.querySelector<HTMLElement>('.docType').innerHTML
+    console.log(doctype);
+    this.handleFolderCliked(doctype);
+
     this.display = true;
     this.displayInnerFolder = true;
     let selectFilesDiv = document.querySelector(
@@ -71,9 +87,14 @@ export class DocumentsComponent implements OnInit {
     selectFilesDiv.style.height = "90vh";
   }
 
+  handleFolderCliked(doctType: string) {
+    //this.documents.filter(document => document.typeDoc)
+    this.typeDocArray = this.documents.filter(document => document.typeDoc);
+  }
+
   // files in contrat
   countContrat() {
-    return (this.contratLenght = this.contratArray.length);
+    this.typeDocArrayLenght = this.typeDocArray.length;
   }
 
   // afficher un document dans la visionneuse

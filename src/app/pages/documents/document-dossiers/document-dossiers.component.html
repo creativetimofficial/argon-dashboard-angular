@@ -1,45 +1,72 @@
-<div class="contrats row mt-3">
-    <div class="col-12 col-lg-4">
-      <div class="card shadow-none border radius-15">
-        <div class="card-body">
-          <small class="display-4">Contrats*</small>
-          <div class="d-flex flex-row align-items-center justify-content-end">
-            <div class="font-60 text-primary">
-              <img
-                (click)="clikedFolder()"
-                width="96"
-                height="96"
-                src="https://img.icons8.com/color/96/folder-invoices--v1.png"
-                alt="folder-invoices--v1"
-              />
-              <small>{{ countContrat() }} files*</small>
+<div class="container-fuild mt-3" *ngIf="">
+  <div class="col align-items-center justify-content-center">
+    <div class="row justify-content-around">
+      <div class="col align-self-center">
+        <div class="card shadow">
+          <div class="card-content">
+            <div class="card-header border-0 d-flex align-items-center justify-content-between ">
+              <h3 class="card-title mb-0">Vos Dossiers</h3>
+              <i class="fas fa-plus-square fa-2x shadow-lg rounded text-success"></i>
             </div>
-            <!-- <div class="user-groups ms-auto">
-              <img
-                src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                width="35"
-                height="35"
-                class="rounded-circle"
-                alt=""
-              />
-              <img
-                src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                width="35"
-                height="35"
-                class="rounded-circle"
-                alt=""
-              />
-            </div> -->
-            <!-- <div class="user-plus">+</div> -->
-            <div class="ms-auto">
-              <p style="font-size: small;">ici vous avez tous les documents dee type contrat*</p>
+            <div class="card-body">
+              <div class="row">
+                <div *ngFor="let dossier of dossiers" class="col-12 col-lg-4">
+                  <div class="card shadow-none border radius-15">
+                    <div class="card-body">
+                      <small class="display-4 docType">{{
+                        dossier.type
+                      }}</small>
+                      <div
+                        class="d-flex flex-row align-items-center justify-content-end"
+                      >
+                        <div class="font-60 text-primary">
+                          <img
+                            (click)="clikedFolder()"
+                            width="96"
+                            height="96"
+                            src="https://img.icons8.com/color/96/folder-invoices--v1.png"
+                            alt="folder-invoices--v1"
+                          />
+                          <!-- countDossierType() -->
+                          <small>{{ dossier.numberOfFiles }} files</small>
+                        </div>
+                        <!-- <div class="user-groups ms-auto">
+                      <img
+                        src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                        width="35"
+                        height="35"
+                        class="rounded-circle"
+                        alt=""
+                      />
+                      <img
+                        src="https://bootdey.com/img/Content/avatar/avatar2.png"
+                        width="35"
+                        height="35"
+                        class="rounded-circle"
+                        alt=""
+                      />
+                    </div> -->
+
+                        <div class="ms-auto">
+                          <p style="font-size: small">
+                            ici vous avez tous les documents de type
+                            {{ dossier.type }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="col-12 col-lg-4">
+<!-- <div class="col-12 col-lg-4">
       <div class="card shadow-none border radius-15">
         <div class="card-body">
           <small class="display-4">Factures*</small>
@@ -60,5 +87,4 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </div> -->

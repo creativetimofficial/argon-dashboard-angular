@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-document-list',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./document-list.component.scss']
 })
 export class DocumentListComponent {
-
+  @Input() displayInnerFolder: boolean;
+  @Input() typeDocArray: [];
 }

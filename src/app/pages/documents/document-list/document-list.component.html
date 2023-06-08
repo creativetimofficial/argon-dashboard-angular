@@ -1,11 +1,11 @@
 <div
-  class="d-flex wrap d-flex wrap"
+  class="d-flex wrap"
   id="filePlusViewer"
-  *ngIf="displayInnerFolder == true"
+  *ngIf="displayInnerFolder === true"
   style="height: 90vh"
 >
   <div class="file-container w-50">
-    <div class="file" *ngFor="let contrat of contratArray" style="width: 50px">
+    <div class="file" *ngFor="let typeDoc of typeDocArray" style="width: 50px">
       <img
         (click)="viewFile()"
         width="50"
@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <div class="visionneuse w-50">
+  <div class="visionneuse">
     visionneuse
     <ngx-doc-viewer
       [url]="docPath"

@@ -12,9 +12,8 @@ export class DocumentAcquisitionComponent {
   @Input() name: string;
   @Input() type: string;
   @Input() size: string;
+  typeDoc: string = 'Tout';
   @Input() docPath: string;
-  //action: {indexer: 'fa fa-list', suprimmer:'ni ni-fat-delete'};
-
 
   onDragOver(event: any) {
     event.preventDefault();
@@ -81,6 +80,7 @@ export class DocumentAcquisitionComponent {
       name: this.name,
       type: this.type,
       size: this.size,
+      typeDoc : this.typeDoc,
       //action: this.action,
       docPath: this.docPath,
     });
