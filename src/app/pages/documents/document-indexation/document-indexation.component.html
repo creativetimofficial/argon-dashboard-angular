@@ -1,0 +1,63 @@
+<div class="container-fuild">
+
+    <form
+      *ngIf="display == true && displayInnerFolder == false"
+      (submit)="onSubmit()"
+      class="sign-form col"
+    >
+      <label class="form-label col">
+        Nom :
+  
+        <input
+          [(ngModel)]="name"
+          class="form-control"
+          type="text"
+          placeholder="nom du fichier"
+          value="{{ name }}"
+        />
+      </label>
+      <label class="form-label col">
+        Type de document : <br>
+  
+        <select
+          class="form-control"
+          name="typeDoc"
+          id="typeDoc"
+          [(ngModel)]="typeDoc"
+        >
+          <option value="" selected >Svp choississez une option</option>
+          <option value="contrat">Contrat</option>
+          <option value="facture">Facture</option>
+          <option value="recrutement">Recrutement</option>
+        </select>
+      </label>
+  
+      <label class="form-label col">
+        Mots clés :
+  
+        <input
+          [(ngModel)]="mot_cle"
+          class="form-control"
+          id="mots_cles"
+          name="mots_cles"
+          type="text"
+          placeholder="séparez vos mots d'une virule sans espace."
+        />
+      </label>
+  
+      <label class="form-label col" for="status"> 
+        Statut : <br>
+  
+        <select class="form-control" name="status" id="statut" [(ngModel)]="statut">
+          <option value="" selected>Selectionner un statut</option>
+          <option value="nouveau">Nouveau</option>
+          <option value="approuve">Approuvé</option>
+          <option value="archive">Archivé</option>
+          <option value="signe">Signé</option>
+          <option value="finalise">Finalisé</option>
+        </select>
+      </label> 
+      
+      <button class="btn btn-primary col" type="submit">enregistrer</button>
+    </form>
+  </div>

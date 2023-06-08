@@ -23,6 +23,10 @@ import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalAssociateUserComponent } from '../../pages/workflows/modal-associate-user/modal-associate-user.component';
+import { DocumentListComponent } from '../../pages/documents/document-list/document-list.component';
+import { DocumentIndexationComponent } from '../../pages/documents/document-indexation/document-indexation.component';
+import { DocumentDossiersComponent } from '../../pages/documents/document-dossiers/document-dossiers.component';
+import { DocumentAcquisitionComponent } from '../../pages/documents/document-acquisition/document-acquisition.component';
 
 @NgModule({
   imports: [
@@ -50,6 +54,10 @@ import { ModalAssociateUserComponent } from '../../pages/workflows/modal-associa
     AddWorkflowFormComponent,
     ModalAssociateUserComponent,
     ListComponent,
+    DocumentAcquisitionComponent,
+    DocumentDossiersComponent,
+    DocumentIndexationComponent,
+    DocumentListComponent,
   ],
   exports: [
     MatDialogModule,

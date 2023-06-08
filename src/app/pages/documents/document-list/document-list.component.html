@@ -1,0 +1,32 @@
+<div
+  class="d-flex wrap d-flex wrap"
+  id="filePlusViewer"
+  *ngIf="displayInnerFolder == true"
+  style="height: 90vh"
+>
+  <div class="file-container w-50">
+    <div class="file" *ngFor="let contrat of contratArray" style="width: 50px">
+      <img
+        (click)="viewFile()"
+        width="50"
+        height="50"
+        src="https://img.icons8.com/color/96/pdf-2--v1.png"
+        alt="pdf-2--v1"
+      />
+      <br />
+      <span class="fileName" style="font-size: smaller">
+        {{ dossier.name }}
+      </span>
+      <!-- <span class="fileSize" style="font-size: smaller;"> {{ dossier.size }} </span> -->
+    </div>
+  </div>
+
+  <div class="visionneuse w-50">
+    visionneuse
+    <ngx-doc-viewer
+      [url]="docPath"
+      viewer="pdf"
+      style="width: 100%; height: 90vh"
+    ></ngx-doc-viewer>
+  </div>
+</div>
