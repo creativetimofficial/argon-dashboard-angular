@@ -40,11 +40,17 @@ export class DocumentAcquisitionComponent {
   selectFile(): void {
     const input = document.createElement("input");
     input.type = "file";
+    input.setAttribute('multiple', 'true');
     input.name = "file";
     input.style.display = "none";
     input.accept = "pdf";
     document.body.appendChild(input);
     input.onchange = (event: any) => {
+      const files = event.target.files;
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        console.log(`File name: ${file.name}, File size: ${file.size} bytes`);
+      }
       const file = event.target.files[0];
       this.handleFiles(file);
     };
