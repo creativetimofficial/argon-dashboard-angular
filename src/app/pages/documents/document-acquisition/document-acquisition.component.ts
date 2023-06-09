@@ -14,6 +14,8 @@ export class DocumentAcquisitionComponent {
   @Input() size: string;
   typeDoc: string = 'Tout';
   @Input() docPath: string;
+  @Input() countDoc: () => void;
+  //@Input() typeDocArrayLength: number;
 
   onDragOver(event: any) {
     event.preventDefault();
@@ -47,6 +49,8 @@ export class DocumentAcquisitionComponent {
       this.handleFiles(file);
     };
     input.click();
+
+    this.countDoc();
     // this.http
     //   .get("http://10.0.100.111:8080/files/view", { responseType: "arraybuffer" })
     //   .subscribe(
@@ -84,6 +88,8 @@ export class DocumentAcquisitionComponent {
       //action: this.action,
       docPath: this.docPath,
     });
+
+    //this.typeDocArrayLength = this.documents.length
 
     //this.docPath = "http://10.0.100.111:8080/files/view"; //URL.createObjectURL(file);
     //console.log(this.docPath);

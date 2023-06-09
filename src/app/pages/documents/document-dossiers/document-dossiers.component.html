@@ -1,4 +1,4 @@
-<div class="container-fuild mt-3" *ngIf="">
+<div class="container-fuild mt-3">
   <div class="col align-items-center justify-content-center">
     <div class="row justify-content-around">
       <div class="col align-self-center">
@@ -13,7 +13,7 @@
                 <div *ngFor="let dossier of dossiers" class="col-12 col-lg-4">
                   <div class="card shadow-none border radius-15">
                     <div class="card-body">
-                      <small class="display-4 docType">{{
+                      <small class="display-5">{{
                         dossier.type
                       }}</small>
                       <div
@@ -21,31 +21,16 @@
                       >
                         <div class="font-60 text-primary">
                           <img
-                            (click)="clikedFolder()"
+                            (click)="clikedFolder(dossier.type)"
                             width="96"
                             height="96"
                             src="https://img.icons8.com/color/96/folder-invoices--v1.png"
                             alt="folder-invoices--v1"
                           />
                           <!-- countDossierType() -->
-                          <small>{{ dossier.numberOfFiles }} files</small>
+                          <small>{{dossier.numberOfFile}} files</small>
                         </div>
-                        <!-- <div class="user-groups ms-auto">
-                      <img
-                        src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                        width="35"
-                        height="35"
-                        class="rounded-circle"
-                        alt=""
-                      />
-                      <img
-                        src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                        width="35"
-                        height="35"
-                        class="rounded-circle"
-                        alt=""
-                      />
-                    </div> -->
+                      
 
                         <div class="ms-auto">
                           <p style="font-size: small">
@@ -88,3 +73,21 @@
         </div>
       </div>
     </div> -->
+
+
+      <!-- <div class="user-groups ms-auto">
+                      <img
+                        src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                        width="35"
+                        height="35"
+                        class="rounded-circle"
+                        alt=""
+                      />
+                      <img
+                        src="https://bootdey.com/img/Content/avatar/avatar2.png"
+                        width="35"
+                        height="35"
+                        class="rounded-circle"
+                        alt=""
+                      />
+                    </div> -->

@@ -28,13 +28,15 @@
   [name]="name"
   [type]="type"
   [size]="size"
-  
   [docPath]="docPath"
+  [countDoc]="countDoc()"
 ></app-document-acquisition>
 
 <app-document-dossiers
+  *ngIf="display === false"
+  [dossiers]="dossiers"
+  (folderClicked)="clikedFolder($event)"
   
-  (buttonClicked)="clikedFolder()"
 ></app-document-dossiers>
 
 <app-document-list

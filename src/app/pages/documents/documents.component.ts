@@ -2,6 +2,10 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ViewerType } from "ngx-doc-viewer";
 
+interface Dossier {
+  type: string;
+  numberOfFile: number;
+}
 interface Document {
   name?: string,
   type?: string,
@@ -31,16 +35,26 @@ export class DocumentsComponent implements OnInit {
   page = 1; // Page initiale
   display: boolean = false;
   displayInnerFolder: boolean = false;
+  
+  //typeDocArrayLength: number = 0;
+  dossiers: Dossier[] = [
+    { type: "Tout", numberOfFile: 0},
+    { type: "Contrats", numberOfFile: 0},
+    { type: "Factures", numberOfFile: 0},
+    { type: "Payements", numberOfFile: 0},
+  ];
   documents: Document[] = [];
 
   typeDocArray: any[] = [];
-  typeDocArrayLenght: number;
+  
   viewer: ViewerType;
   reponse: any;
   
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
+    this.countDoc()
+    
     
   }
 
@@ -74,10 +88,8 @@ export class DocumentsComponent implements OnInit {
   }
 
   // view contaning file in a specific folder
-  clikedFolder() {
-    const doctype = document.querySelector<HTMLElement>('.docType').innerHTML
-    console.log(doctype);
-    this.handleFolderCliked(doctype);
+  clikedFolder(docType: string) {
+    this.selectFolderAndCreateArray(docType);
 
     this.display = true;
     this.displayInnerFolder = true;
@@ -87,14 +99,27 @@ export class DocumentsComponent implements OnInit {
     selectFilesDiv.style.height = "90vh";
   }
 
-  handleFolderCliked(doctType: string) {
+  selectFolderAndCreateArray(doctype: string) {
+    this.handleFolderCliked(doctype);
+  }
+
+  handleFolderCliked(docType: string) {
     //this.documents.filter(document => document.typeDoc)
-    this.typeDocArray = this.documents.filter(document => document.typeDoc);
+    this.typeDocArray = this.documents.filter(document => document.typeDoc === docType);
+    return this.documents.filter(document => document.typeDoc === docType);
   }
 
   // files in contrat
-  countContrat() {
-    this.typeDocArrayLenght = this.typeDocArray.length;
+  countDoc() {
+    for(let i = 0; i < this.dossiers.length ; i++) {
+      
+      const docType = this.dossiers[i].type
+      console.log(docType);
+      console.log(this.handleFolderCliked(docType));
+      const arraylength = this.handleFolderCliked(docType).length
+      this.dossiers[ i].numberOfFile = arraylength;
+      //return this.typeDocArrayLength = this.handleFolderCliked(docType).length
+    }
   }
 
   // afficher un document dans la visionneuse

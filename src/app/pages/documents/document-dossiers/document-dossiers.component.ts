@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 interface Dossier {
   type: string;
@@ -10,16 +10,17 @@ interface Dossier {
   styleUrls: ["./document-dossiers.component.scss"],
 })
 export class DocumentDossiersComponent {
-  @Output() buttonClicked = new EventEmitter<void>();
-  dossiers: Dossier[] = [
-    { type: "Tout", numberOfFile: 0 },
-    { type: "Contrats", numberOfFile: 0 },
-    { type: "Factures", numberOfFile: 0 },
-    { type: "Payements", numberOfFile: 0 },
-  ];
+  //@Input() countDoc: () => number;
+  @Input() dossier: Dossier;
+  @Output() folderClicked = new EventEmitter<string>();
+  @Input() dossiers: Dossier[] = [];
 
-  clikedFolder() {
-    this.buttonClicked.emit();
+  clikedFolder(docType: Dossier["type"]) {
+    this.folderClicked.emit(docType);
   }
+
+  // callCountMethod() {
+  //   this.countDoc();
+  // }
   
 }
