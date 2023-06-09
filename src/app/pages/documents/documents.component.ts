@@ -6,7 +6,7 @@ interface Dossier {
   type: string;
   numberOfFile: number;
 }
-interface Document {
+export interface Document {
   name?: string,
   type?: string,
   typeDoc: string,
@@ -33,7 +33,7 @@ export class DocumentsComponent implements OnInit {
   mot_cle: string = "";
   total: number;
   page = 1; // Page initiale
-  display: boolean = false;
+  display: boolean = true;
   displayInnerFolder: boolean = false;
   
   //typeDocArrayLength: number = 0;
@@ -58,40 +58,40 @@ export class DocumentsComponent implements OnInit {
     
   }
 
-  onSubmit() {
-    //const motCles = this.mot_cle.split(",");
+  // onSubmit() {
+  //   //const motCles = this.mot_cle.split(",");
 
-    this.documents.push({
-      name: this.name,
-      typeDoc: this.typeDoc,
-      type: this.type, 
-      size: this.size,
-      statut: this.statut,
-      mot_cles: this.mot_cle,
-      docPath: this.docPath,
-    });
-    //console.log(this.documents);
-    this.typeDocArray = this.documents.filter((document) => {
-      if (document.type === "contrat") {
-        return document;
-      }
-    });
-    this.name = "";
-    this.typeDoc = "";
-    this.size = "";
-    this.statut = "";
-    this.mot_cle = "";
-    this.docPath = "";
-    this.fileContent = null;
-    this.total = this.documents.length; // Mettre à jour le nombre total d'éléments
-    this.display = false;
-  }
+  //   this.documents.push({
+  //     name: this.name,
+  //     typeDoc: this.typeDoc,
+  //     type: this.type, 
+  //     size: this.size,
+  //     statut: this.statut,
+  //     mot_cles: this.mot_cle,
+  //     docPath: this.docPath,
+  //   });
+  //   //console.log(this.documents);
+  //   this.typeDocArray = this.documents.filter((document) => {
+  //     if (document.type === "contrat") {
+  //       return document;
+  //     }
+  //   });
+  //   this.name = "";
+  //   this.typeDoc = "";
+  //   this.size = "";
+  //   this.statut = "";
+  //   this.mot_cle = "";
+  //   this.docPath = "";
+  //   this.fileContent = null;
+  //   this.total = this.documents.length; // Mettre à jour le nombre total d'éléments
+  //   this.display = false;
+  // }
 
   // view contaning file in a specific folder
   clikedFolder(docType: string) {
     this.selectFolderAndCreateArray(docType);
 
-    this.display = true;
+    this.display = false;
     this.displayInnerFolder = true;
     let selectFilesDiv = document.querySelector(
       "#filePlusViewer"
@@ -114,40 +114,37 @@ export class DocumentsComponent implements OnInit {
     for(let i = 0; i < this.dossiers.length ; i++) {
       
       const docType = this.dossiers[i].type
-      console.log(docType);
-      console.log(this.handleFolderCliked(docType));
       const arraylength = this.handleFolderCliked(docType).length
       this.dossiers[ i].numberOfFile = arraylength;
-      //return this.typeDocArrayLength = this.handleFolderCliked(docType).length
     }
   }
 
-  // afficher un document dans la visionneuse
-  viewFile() {
-    let fileName = document.querySelector(".fileName").innerHTML.split(" ")[1];
-    // const newtab = fileNameTab.filter( tabfileName => {
-    //   if ( tabfileName !== " " ) {
-    //     console.log(tabfileName);
-    //     return 
-    //   }
-    // })
-    // const fileName = "";
-    // for(let i = 0; i<= newtab.length; i++){
-    //   const fileName =+ newtab[i];
-    //   console.log(fileName);
-    //   return fileName
-    // }
-    //let fileSize = document.querySelector(".fileSize").innerHTML;
-    this.documents.find((document) => {
-      console.log("find");
-      console.log(document, document.name, fileName);
-      if (document.name === fileName) {
-        console.log(document.fileContent, document.docPath, this.reponse);
+  // // afficher un document dans la visionneuse
+  // viewFile(docPath) {
+  //   let fileName = document.querySelector(".fileName").innerHTML.split(" ")[1];
+  //   // const newtab = fileNameTab.filter( tabfileName => {
+  //   //   if ( tabfileName !== " " ) {
+  //   //     console.log(tabfileName);
+  //   //     return 
+  //   //   }
+  //   // })
+  //   // const fileName = "";
+  //   // for(let i = 0; i<= newtab.length; i++){
+  //   //   const fileName =+ newtab[i];
+  //   //   console.log(fileName);
+  //   //   return fileName
+  //   // }
+  //   //let fileSize = document.querySelector(".fileSize").innerHTML;
+  //   this.documents.find((document) => {
+  //     console.log("find");
+  //     console.log(document, document.name, fileName);
+  //     if (document.name === fileName) {
+  //       console.log(document.fileContent, document.docPath, this.reponse);
 
-        return this.docPath;
-      } else {
-        console.error("problème ");
-      }
-    });
-  }
+  //       return document.docPath;
+  //     } else {
+  //       console.error("problème ");
+  //     }
+  //   });
+  // }
 }

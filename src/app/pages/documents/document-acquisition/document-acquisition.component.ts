@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-document-acquisition',
@@ -15,7 +16,15 @@ export class DocumentAcquisitionComponent {
   typeDoc: string = 'Tout';
   @Input() docPath: string;
   @Input() countDoc: () => void;
+  private request: string = "http://10.0.100.115:8080";
   //@Input() typeDocArrayLength: number;
+
+  constructor(private http: HttpClient) {
+  } 
+
+  ngOnInit() {
+    this.loadFile("manuella.pdf");
+  }
 
   onDragOver(event: any) {
     event.preventDefault();
@@ -33,7 +42,9 @@ export class DocumentAcquisitionComponent {
 
     const files = event.dataTransfer.files;
     const file = files[0];
-
+    const formData = this.createFormData(files);
+    this.sendFile(formData)
+    
     this.handleFiles(file);
   }
 
@@ -45,7 +56,11 @@ export class DocumentAcquisitionComponent {
     input.accept = "pdf";
     document.body.appendChild(input);
     input.onchange = (event: any) => {
-      const file = event.target.files[0];
+      const files = event.target.files;
+      const file = files[0];
+      const formData = this.createFormData(files);
+      //envois du contenu de l'input(fichiers) au backend
+      this.sendFile(formData)
       this.handleFiles(file);
     };
     input.click();
@@ -68,15 +83,41 @@ export class DocumentAcquisitionComponent {
     //   );
   }
 
+  createFormData(files: File[]) {
+    const formData = new FormData;
+
+      for( let file of files) {
+        formData.append( 'files', file, file.name )
+      }
+      return formData;
+  }
+
+  sendFile(formData: FormData){
+    this.http.post(this.request+"/files/uploadM", formData).subscribe(response => {
+      //console.log(response);
+    })
+  }
+
+  loadFile(fileName: string) {
+    return this.http.get(this.request+"/files/view/"+fileName).subscribe(  //{responseType: "blob"}
+      (res: any) => {
+        this.docPath = res.url
+        // const file = new Blob([res], { type: 'application/pdf' });
+        // const fileURL = URL.createObjectURL(file);
+        // this.docPath = fileURL;
+      }
+    );
+  }
+    // .subscribe(response => {
+    //   console.log(response);
+    // })
+
   //permet de gerer les fichers importés dans l'application
   async handleFiles(file: File) {
     this.name = file.name;
     this.type = file.type.split('application/')[1]
-    console.log(this.type);
     
     const sizeKilo = file.size
-    console.log(sizeKilo);
-    
     this.size = sizeKilo+"";
     this.docPath = URL.createObjectURL(file);
 
@@ -86,7 +127,8 @@ export class DocumentAcquisitionComponent {
       size: this.size,
       typeDoc : this.typeDoc,
       //action: this.action,
-      docPath: this.docPath,
+      //docPath: this.docPath,
+      docPath: this.docPath //this.http.get(this.request+"/files/view/manuella.pdf")     //this.loadFile('manuella.pdf')
     });
 
     //this.typeDocArrayLength = this.documents.length

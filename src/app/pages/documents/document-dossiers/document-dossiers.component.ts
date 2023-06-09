@@ -19,6 +19,7 @@ export class DocumentDossiersComponent {
     this.folderClicked.emit(docType);
   }
 
+  addNewFolder() {}
   // callCountMethod() {
   //   this.countDoc();
   // }
