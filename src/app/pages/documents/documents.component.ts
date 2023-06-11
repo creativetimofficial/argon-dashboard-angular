@@ -55,7 +55,6 @@ export class DocumentsComponent implements OnInit {
   ngOnInit() {
     this.countDoc()
     
-    
   }
 
   // onSubmit() {

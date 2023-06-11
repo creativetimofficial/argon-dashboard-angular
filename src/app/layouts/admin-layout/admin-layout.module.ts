@@ -27,6 +27,7 @@ import { DocumentListComponent } from '../../pages/documents/document-list/docum
 import { DocumentIndexationComponent } from '../../pages/documents/document-indexation/document-indexation.component';
 import { DocumentDossiersComponent } from '../../pages/documents/document-dossiers/document-dossiers.component';
 import { DocumentAcquisitionComponent } from '../../pages/documents/document-acquisition/document-acquisition.component';
+import { DocumentViewFileModalComponent } from 'src/app/pages/documents/document-view-file-modal/document-view-file-modal.component';
 
 @NgModule({
   imports: [
@@ -58,6 +59,7 @@ import { DocumentAcquisitionComponent } from '../../pages/documents/document-acq
     DocumentDossiersComponent,
     DocumentIndexationComponent,
     DocumentListComponent,
+    DocumentViewFileModalComponent
   ],
   exports: [
     MatDialogModule,

@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h4 class="modal-title">Créer un nouveau dossier</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('dismissed')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form action="">
+    <div class="form-group">
+      <input class="form-control" type="text" placeholder="Entrez le nom du nouveau dossier" [(ngModel)]="newFolderName">
+
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-success" (click)="createNewFolder()">Créer</button>
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Anuler</button>
+</div>
+  
+  
+<!-- activeModal.dismiss() -->

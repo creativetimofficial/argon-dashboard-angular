@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ModalDismissReasons, NgbModal, NgbModalOptions, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-modal-associate-user',
@@ -13,7 +13,7 @@ export class ModalAssociateUserComponent implements OnInit{
   modal: NgbModalRef;
   searchForm: FormGroup
 
-  constructor(private formBuilder: FormBuilder, private modalService: NgbModal) {
+  constructor(private formBuilder: FormBuilder, public activeModal: NgbActiveModal) {
     this.searchForm = this.formBuilder.group({
       search: ['']
     });
@@ -38,32 +38,5 @@ export class ModalAssociateUserComponent implements OnInit{
       this.selectedItems.splice(index, 1)
     }
   }
-
-  save() {
-    document.querySelector<HTMLElement>(".modal").classList.remove('show', 'd-block')
-    document.querySelector<HTMLElement>(".modal-backdrop").classList.remove('show')
-    document.querySelector<HTMLElement>("modal-backdrop").style.removeProperty("z-index")
-    document.querySelector<HTMLElement>("body").classList.remove('modal-open')
-    document.querySelector<HTMLElement>("body").style.removeProperty("padding-right")  //classList.remove('modal-open')
-    document.querySelector<HTMLElement>("body").style.removeProperty("overflow") 
-  }
-
-  close() {
-    document.querySelector<HTMLElement>(".modal").classList.remove('show', 'd-block')
-    document.querySelector<HTMLElement>(".modal-backdrop").classList.remove('show')
-    document.querySelector<HTMLElement>("modal-backdrop").style.removeProperty('z-index')
-    document.querySelector<HTMLElement>("body").classList.remove('modal-open')
-    document.querySelector<HTMLElement>("body").style.removeProperty("padding-right")  //classList.remove('modal-open')
-    document.querySelector<HTMLElement>("body").style.removeProperty("overflow") 
-  }
-
-  // openModal(content: any) {
-  //   this.modal = this.modalService.open(content, { ariaLabelledBy: 'modal-title', size: 'lg' });
-  //   this.modal.result.then((result) => {
-  //     console.log(result);
-  //   }, (reason) => {
-  //     console.log(reason);
-  //   });
-  // }
 }
 
