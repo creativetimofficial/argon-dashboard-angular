@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h4 class="modal-title">Visionneuse</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('dismissed')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <ngx-doc-viewer [url]="filePath" viewer="pdf" style="height: 780px;"></ngx-doc-viewer>
+</div>
+<!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="createNewFolder()">Créer</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Anuler</button>
+  </div> -->

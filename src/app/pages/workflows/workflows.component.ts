@@ -19,7 +19,7 @@ export class WorkflowsComponent {
   ngOnInit() {}
 
   initiateWorkflow() {
-    this.displayList = true;
+    this.displayList = false;
     this.displayCreateWorkflowButton = true;
     this.displayForm = true;
   }

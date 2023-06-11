@@ -15,18 +15,18 @@ export class AddWorkflowFormComponent {
   message: any;
   titre: any;
   echeance: any;
-  modal: NgbModal;
+  // modal: NgbModal;
   modalRef: any;
   //encapsulation: ViewEncapsulation.None;
   //closeResult: string;
 
-  constructor(private modalService: NgbModal, private dialog: MatDialog) {}
+  constructor(private modalService: NgbModal) {}
 
   openModal() {
     
     this.modalRef = this.modalService.open(ModalAssociateUserComponent);
     this.modalRef.componentInstance.title = 'Mon titre';
-    document.querySelector<HTMLElement>(".modal-backdrop").style.zIndex = "2";
+    document.querySelector<HTMLElement>(".modal-backdrop").style.zIndex = "1";
     
     this.modalRef.result.then((result) => {
         console.log(result);

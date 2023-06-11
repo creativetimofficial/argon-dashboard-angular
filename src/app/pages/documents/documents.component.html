@@ -22,7 +22,7 @@
 <!-- [typeDoc]="'Tout'" -->
 
 <app-document-acquisition
-  *ngIf="display === false"
+  *ngIf="display"
   [page]="page"
   [documents]="documents"
   [name]="name"
@@ -33,13 +33,16 @@
 ></app-document-acquisition>
 
 <app-document-dossiers
-  *ngIf="display === false"
+  *ngIf="display"
   [dossiers]="dossiers"
   (folderClicked)="clikedFolder($event)"
-  
 ></app-document-dossiers>
 
 <app-document-list
+  *ngIf="displayInnerFolder"
+  [display]="display"
   [displayInnerFolder]="displayInnerFolder"
+  (modifyDisplays)="display = $event.boolean1; displayInnerFolder=$event.boolean2 "
   [typeDocArray]="typeDocArray"
+  [docPath]="docPath"
 ></app-document-list>
