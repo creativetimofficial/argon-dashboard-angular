@@ -1,80 +1,99 @@
-<div class="container-fluid d-flex justify-content-between mt-3">
-  <div class="card col-sm col-md rounded shadow border-0 mt-2 mr-2">
-    <div class="card-content">
-      <div
-        class="card-header text-black-50 d-flex justify-content-between align-items-center"
-      >
-        <span class="card-title text-primary font-weight-bold"
-          >Workflows initiés</span
-        >
-        <span>
-          <a routerLinkActive="active" [routerLink]="['/workflows/inities']">
-            <button class="btn btn-primary">Lister</button>
-          </a>  
-        </span>
-      </div>
-      <div class="card-body">
-        <div class="">
+ <div class=" row justify-content-center mt-3">
+  <div class="col-lg-6 ">
+    <div class="row ml-2 mr-2">
+      <div class="card col-lg-11 rounded shadow border-0 mt-2">
+        <div class="card-content">
           <div
-            class="Workflows card mt-2 rounded shadow--hover"
-            *ngFor="let workflow of workflowTab"
+            class="card-header text-black-50 d-flex justify-content-between align-items-center"
           >
-            <div class="card-header bg-primary text-white text-darker">
-              <span class="card-title">{{ workflow.titre }}</span>
-            </div>
+            <span class="card-title text-primary font-weight-bold"
+              >Workflows initiés</span
+            >
+            <span>
+              <a
+                routerLinkActive="active"
+                [routerLink]="['/workflows/inities']"
+              >
+                <button class="btn btn-primary">Lister</button>
+              </a>
+            </span>
+          </div>
+          <div class="card-body">
+            <div class="">
+              <div
+                class="Workflows card mt-2 rounded shadow--hover"
+                *ngFor="let workflow of workflowTab"
+              >
+                <div class="card-header bg-primary text-white text-darker">
+                  <span class="card-title">{{ workflow.titre }}</span>
+                </div>
 
-            <div class="card-body text-sm">
-              <div class="card-text">
-                <span class="text-darker">Echéance :</span>
-                {{ workflow.Echeances }}
-              </div>
-              <div class="card-text">
-                <span class="text-darker">Priorité :</span>
-                {{ workflow.priorite }}
-              </div>
-              <div class="card-text">
-                <span class="text-darker">Statut :</span> {{ workflow.statut }}
+                <div class="card-body text-sm">
+                  <div class="card-text">
+                    <span class="text-darker">Echéance :</span>
+                    {{ workflow.Echeances }}
+                  </div>
+                  <div class="card-text">
+                    <span class="text-darker">Priorité :</span>
+                    {{ workflow.priorite }}
+                  </div>
+                  <div class="card-text">
+                    <span class="text-darker">Statut :</span>
+                    {{ workflow.statut }}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      
     </div>
   </div>
-
-  <div class="card col-sm col-md rounded border-0 shadow mt-2 ml-2">
-    <div class="card-content">
-      <div class="card-header text-black-50 d-flex justify-content-between align-items-center">
-        <span class="card-title text-green font-weight-bold"
-          >Tâches attribuées</span
-        >
-        <span>
-          <a routerLinkActive="active" [routerLink]="['/workflows/attribuees']">
-            <button class="btn btn-success">Lister</button>
-          </a>  
-        </span>
-      </div>
-      <div class="card-body">
-        <div class="d-block">
+  <div class="col-lg-6">
+    <div class="row ml-2 mr-2">
+      <!-- <div class="col-lg-1"></div> -->
+      <div class="card col-lg-11 rounded border-0 shadow mt-2">
+        <div class="card-content">
           <div
-            class="Workflows d-block card mt-2 rounded shadow--hover"
-            *ngFor="let workflow of workflowTab"
+            class="card-header text-black-50 d-flex justify-content-between align-items-center"
           >
-            <div class="card-header bg-green text-white text-darker">
-              <span class="card-title">{{ workflow.titre }}</span>
-            </div>
+            <span class="card-title text-green font-weight-bold"
+              >Tâches attribuées</span
+            >
+            <span>
+              <a
+                routerLinkActive="active"
+                [routerLink]="['/workflows/attribuees']"
+              >
+                <button class="btn btn-success">Lister</button>
+              </a>
+            </span>
+          </div>
+          <div class="card-body">
+            <div class="d-block">
+              <div
+                class="Workflows d-block card mt-2 rounded shadow--hover"
+                *ngFor="let workflow of workflowTab"
+              >
+                <div class="card-header bg-green text-white text-darker">
+                  <span class="card-title">{{ workflow.titre }}</span>
+                </div>
 
-            <div class="card-body text-sm">
-              <div class="card-text">
-                <span class="text-darker">Echéance :</span>
-                {{ workflow.Echeances }}
-              </div>
-              <div class="card-text">
-                <span class="text-darker">Priorité :</span>
-                {{ workflow.priorite }}
-              </div>
-              <div class="card-text">
-                <span class="text-darker">Statut :</span> {{ workflow.statut }}
+                <div class="card-body text-sm">
+                  <div class="card-text">
+                    <span class="text-darker">Echéance :</span>
+                    {{ workflow.Echeances }}
+                  </div>
+                  <div class="card-text">
+                    <span class="text-darker">Priorité :</span>
+                    {{ workflow.priorite }}
+                  </div>
+                  <div class="card-text">
+                    <span class="text-darker">Statut :</span>
+                    {{ workflow.statut }}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

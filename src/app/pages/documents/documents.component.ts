@@ -1,21 +1,14 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ViewerType } from "ngx-doc-viewer";
+import { documents } from "src/app/variables/charts";
 
-interface Dossier {
+
+export interface Dossier {
   type: string;
   numberOfFile: number;
 }
-export interface Document {
-  name?: string,
-  type?: string,
-  typeDoc: string,
-  size?: string,
-  statut: string,
-  mot_cles: string,
-  fileContent?: any,
-  docPath?: string,
-}
+
 
 @Component({
   selector: "app-documents",
@@ -43,7 +36,7 @@ export class DocumentsComponent implements OnInit {
     { type: "Factures", numberOfFile: 0},
     { type: "Payements", numberOfFile: 0},
   ];
-  documents: Document[] = [];
+  documents = documents;
 
   typeDocArray: any[] = [];
   

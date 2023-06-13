@@ -22,6 +22,8 @@ export class ModalAssociateUserComponent implements OnInit{
   ngOnInit(): void {
   }
 
+  findUser(){}
+
   search() {
     this.searchResults = ["u1", "u2", "u3", "u4", "u5"];
   }

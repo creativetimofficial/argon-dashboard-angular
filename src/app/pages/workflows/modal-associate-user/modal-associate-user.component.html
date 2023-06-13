@@ -1,18 +1,37 @@
 <div class="modal-header">
   <h4 class="modal-title">Recherche</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('dismissed')">
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('dismissed')"
+  >
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
   <form [formGroup]="searchForm">
-    <div class="form-group">
-      <label for="search">Recherche</label>
-      <input type="text" id="search" class="form-control" formControlName="search">
+    <div class="form-row">
+      <div class="form-group">
+        <input
+          type="text"
+          id="search"
+          class="form-control"
+          formControlName="search"
+        />
+      </div>
+      <div class="form-group">
+        <button
+          class="btn btn-outline-primary form-control"
+          (click)="findUser()"
+        >
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
   </form>
-  <div class="row">
-    <div class="col-md-6">
+  <div class="form-row">
+    <div class="col-md-6 card rounded">
       <h5>Résultat de la recherche</h5>
       <ul class="list-group">
         <li class="list-group-item" *ngFor="let item of searchResults">
@@ -20,7 +39,7 @@
         </li>
       </ul>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 card rounded">
       <h5>Sélection</h5>
       <ul class="list-group">
         <li class="list-group-item" *ngFor="let item of selectedItems">
@@ -31,10 +50,17 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-primary" (click)="activeModal.dismiss()">Enregistrer</button>
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Anuler</button>
+  <button type="button" class="btn btn-primary" (click)="activeModal.dismiss()">
+    Enregistrer
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="activeModal.close('Close click')"
+  >
+    Anuler
+  </button>
 </div>
-
 
 <!-- <div class="modal modal-backdrop modal-lg fade" id="modal" #modal tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">

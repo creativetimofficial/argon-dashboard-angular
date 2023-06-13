@@ -353,3 +353,16 @@ export const chartExample2 = {
     ]
   }
 }
+
+export interface Document {
+  name?: string,
+  type?: string,
+  typeDoc: string,
+  size?: string,
+  statut: string,
+  mot_cles: string,
+  fileContent?: any,
+  docPath?: string,
+}
+
+export const documents: Document[] = [];
