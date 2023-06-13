@@ -1,0 +1,73 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Ajouter une tâche</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body row justify-content-center">
+    <div class="col-lg-9">
+      <div class="form-group">
+        <label class="form-control-label"> Titre </label>
+        <input [(ngModel)]="titre" class="form-control" type="text" />
+      </div>
+      <div class="form-group">
+        <label class="form-control-label"> Détail </label>
+        <textarea
+          name="detail"
+          [(ngModel)]="detail"
+          class="form-control"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label"> Priorité </label>
+        <select class="form-control" name="priorite" [(ngModel)]="priorite">
+          <option value="basse">basse</option>
+          <option value="moyenne">moyenne</option>
+          <option value="eleve">élevé</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-control-label"> Echéance </label>
+        <input
+          [(ngModel)]="echeance"
+          class="form-control"
+          id="exheance"
+          name="echeance"
+          type="date"
+        />
+      </div>
+      <div class="form-group">
+        <label class="form-control-label" for="statut"> Statut </label>
+        <select
+          class="form-control"
+          name="statut"
+          id="statut"
+          [(ngModel)]="statut"
+        >
+          <option value="pas-demarre">Pas démarré</option>
+          <option value="en-cours">En cours</option>
+          <option value="suspendu">Suspendu</option>
+          <option value="annule">Annulé</option>
+          <option value="termine">Terminé</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="activeModal.close('Close click')"
+    >
+      Enregistrer
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="activeModal.dismiss()"
+    >
+      Annuler
+    </button>
+  </div>
+</div>

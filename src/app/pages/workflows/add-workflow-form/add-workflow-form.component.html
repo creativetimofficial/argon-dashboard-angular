@@ -66,32 +66,47 @@
 
           <div class="form-group col-lg-5">
             <!-- modal file button -->
-            <button (click)="openModal()" class="btn btn-success form-control">
+            <button (click)="openModal('file')" class="btn btn-outline-primary form-control">
               Ajouter un document
             </button>
           </div>
         </div>
 
-        <!-- modal file button -->
-        <button (click)="openModal()" class="btn btn-success">
-          Ajouter une tâche
-        </button>
-
-        <!-- modal user button -->
-        <!-- (click)="openLg(content)" -->
-        <button (click)="openModal()" class="btn btn-success">
-          Ajouter un utilisateur
-        </button>
+        <div>
+          <div class="form-row">
+            <!-- modal file button -->
+            <div class="col-lg-6">
+              <button
+                (click)="openModal('task')"
+                class="btn btn-outline-primary form-control"
+              >
+                Ajouter une tâche
+              </button>
+            </div>
+            <div class="col-lg-6">
+              <!-- modal user button -->
+              <!-- (click)="openLg(content)" -->
+              <button
+                (click)="openModal('user')"
+                class="btn btn-outline-primary form-control"
+              >
+                Ajouter un utilisateur
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
-
+      <!-- liste d'association des utilisateurs et des taches -->
       <div class="col-lg-5 card rounded border-0">
         <div class="form-row justify-content-arround">
           <div class="col-md-6">
             <h3 class="form-control-label">Tâches</h3>
             <div class="form-group" *ngFor="let tache of taches">
               <select class="form-control">
-                <option *ngFor="let tache of taches" [value]="tache.id">{{ tache.titre }}</option>
+                <option *ngFor="let tache of taches" [value]="tache.id">
+                  {{ tache.titre }}
+                </option>
               </select>
             </div>
           </div>
@@ -109,7 +124,17 @@
       </div>
     </div>
 
-    <button class="btn btn-primary col-lg-2 mt-3" type="submit">enregistrer</button>
+    <!-- Bouton d'enregistrement -->
+    <div>
+      <div class="row justify-content-lg-end">
+        <button
+          class="btn btn-success col-lg-2 mt-3"
+          type="submit"
+        >
+          enregistrer
+        </button>
+      </div>
+    </div>
   </form>
 </div>
 <!-- </div> -->

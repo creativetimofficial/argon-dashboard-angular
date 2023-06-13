@@ -19,6 +19,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { ModalAddDocumentComponent } from './pages/workflows/modal-add-document/modal-add-document.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { DocumentAddDossierComponent } from './pages/documents/document-add-dossier/document-add-dossier.component';
+import { ModalAddTaskComponent } from './pages/workflows/modal-add-task/modal-add-task.component';
 //import { DocumentViewFileModalComponent } from './pages/documents/document-view-file-modal/document-view-file-modal.component';
 
 //import { AddWorkflowFormComponent } from './pages/workflows/add-workflow-form/add-workflow-form.component';
@@ -46,6 +47,7 @@ import { DocumentAddDossierComponent } from './pages/documents/document-add-doss
     ModalAddDocumentComponent,
     ModalComponent,
     DocumentAddDossierComponent,
+    ModalAddTaskComponent,
     //DocumentViewFileModalComponent
     //AddWorkflowFormComponent,
     //ListComponent,

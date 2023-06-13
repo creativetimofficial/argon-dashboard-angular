@@ -169,6 +169,8 @@ export class DocumentAcquisitionComponent implements OnInit {
     modalRef.componentInstance.filePath = filePath;
     document.querySelector<HTMLElement>(".modal-backdrop").style.zIndex = "1";
     document.querySelector<HTMLElement>(".modal-dialog").classList.add("modal-lg", "modal-dialog-scrollable");
+    document.querySelector<HTMLElement>(".modal-dialog").style.height = "920px"
+
     // document.querySelector<HTMLElement>("#viewer").style.height = "800px";
     // document.querySelector<HTMLElement>("#toolbar").style.display = "block";
     //modal-dialog-scrollable
