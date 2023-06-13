@@ -9,6 +9,7 @@ interface User {
 }
 
 interface Tache {
+  id: number,
   titre: string;
   detail: string;
   echeance?: Date;
@@ -40,20 +41,29 @@ export class AddWorkflowFormComponent {
   ];
   taches: Tache[] = [
     {
+      id : 1,
       titre: "t1",
-      detail: "test",
+      detail: "test"
     },
     {
+      id : 2,
       titre: "t2",
-      detail: "test2",
+      detail: "test2"
     },
     {
+      id : 3,
       titre: "t3",
-      detail: "test3",
+      detail: "test3"
     },
     {
+      id : 4,
       titre: "t4",
-      detail: "test4",
+      detail: "test4"
+    },
+    {
+      id : 5,
+      titre: "t5",
+      detail: "test5"
     },
   ];
   documents: Document[] = documents;

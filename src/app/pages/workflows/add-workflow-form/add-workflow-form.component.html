@@ -83,30 +83,46 @@
         </div>
 
         <div class="col-lg-5 card rounded border-0">
-          <div *ngFor=" tache of taches" class="form-row justify-content-between">
+          <div class="row">
+            <div class="col-md-6">
+              <h3>Tâches</h3>
+              <div *ngFor="let tache of taches">
+                <p>{{tache.titre}}</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h3>Utilisateurs</h3>
+              <div *ngFor="let tache of taches">
+                <select [(ngModel)]="tache.user">
+                  <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div  class="form-row justify-content-between"  *ngFor=" tache of taches">
             <div class="form-group col">
-              <label class="form-control-label" for="">Tâches</label>
+              <label class="form-control-label" for="tache">Tâche n°{{tache.id}}</label>
               <select
               class="form-control"
-              name="statut"
-              id="statut"
-              [(ngModel)]="statut"
+              name="tache"
+              id="tache"
+              [(ngModel)]="tache"
             >
-              <option>Tâche N1...</option>
-              <option value="{{tache.titre}}">{{tache.detail}}</option>
+              <option>Tâche n°{{tache.id}}</option>
+              <option *ngFor="tache of taches" value="{{tache.titre}}">{{tache.titre}}</option>
               
             </select>
             </div>
             <div class="form-group col">
-              <label class="form-control-label" for="">Utilisateurs</label>
+              <label class="form-control-label" for="statut">Utilisateurs</label>
               <select
               class="form-control"
-              name="statut"
-              id="statut"
-              [(ngModel)]="statut"
+              name="user"
+              id="user"
+              [(ngModel)]="user"
             >
               <option>Utilisateur N1...</option>
-              <option *ngFor="user of users" value="{{user.id}}">{{user.name}}</option>
+              <option *ngFor="user of users" value="{{user.id}}">{{user.id}}</option>
             </select>
             </div>
           </div>
