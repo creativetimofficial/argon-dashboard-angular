@@ -66,6 +66,7 @@ export class AddWorkflowFormComponent {
       detail: "test5"
     },
   ];
+  userId: User["id"];
   documents: Document[] = documents;
   constructor(private modalService: NgbModal) {}
 

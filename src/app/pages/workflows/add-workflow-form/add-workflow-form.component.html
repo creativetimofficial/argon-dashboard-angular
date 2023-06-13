@@ -2,136 +2,114 @@
   (submit)="onSubmit()" -->
 
 <!-- <div class="container-fluid"> -->
-  <div class="card rounded shadow p-5 mt-3 border-0">
-    <form class="">
-      <div class="row">
-        <div class="col-lg-7">
-          <div class="form-group">
-            <label class="form-control-label"> Titre </label>
-            <input [(ngModel)]="titre" class="form-control" type="text" />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label"> Message </label>
-            <textarea
-              name="message"
-              [(ngModel)]="message"
-              class="form-control"
-            ></textarea>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label"> Priorité </label>
-            <select class="form-control" name="priorite" [(ngModel)]="priorite">
-              <option value="basse">basse</option>
-              <option value="moyenne">moyenne</option>
-              <option value="eleve">élevé</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label"> Echéance </label>
-            <input
-              [(ngModel)]="echeance"
-              class="form-control"
-              id="exheance"
-              name="echeance"
-              type="date"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="statut"> Statut </label>
-            <select
-              class="form-control"
-              name="statut"
-              id="statut"
-              [(ngModel)]="statut"
-            >
-              <option value="pas-demarre">Pas démarré</option>
-              <option value="en-cours">En cours</option>
-              <option value="suspendu">Suspendu</option>
-              <option value="annule">Annulé</option>
-              <option value="termine">Terminé</option>
-            </select>
-          </div>
-
-          <label class="form-control-label" for="documents"> Documents ajoutés </label>
-          <div class="form-row justify-content-between">
-            <div class="form-group col-lg-7">
-              <input
-                name="documents"
-                [(ngModel)]="addDocuments"
-                class="form-control"
-              />
-            </div> 
-
-            <div class="form-group col-lg-5">
-              <!-- modal file button -->
-              <button (click)="openModal()" class="btn btn-success form-control">
-                Ajouter un document
-              </button>
-            </div>
-          </div>
-
-          <!-- modal file button -->
-          <button (click)="openModal()" class="btn btn-success">
-            Ajouter une tâche
-          </button>
-
-          <!-- modal user button -->
-          <!-- (click)="openLg(content)" -->
-          <button (click)="openModal()" class="btn btn-success">
-            Ajouter un utilisateur
-          </button>
+<div class="card rounded shadow p-5 mt-3 border-0">
+  <form class="">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="form-group">
+          <label class="form-control-label"> Titre </label>
+          <input [(ngModel)]="titre" class="form-control" type="text" />
+        </div>
+        <div class="form-group">
+          <label class="form-control-label"> Message </label>
+          <textarea
+            name="message"
+            [(ngModel)]="message"
+            class="form-control"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label"> Priorité </label>
+          <select class="form-control" name="priorite" [(ngModel)]="priorite">
+            <option value="basse">basse</option>
+            <option value="moyenne">moyenne</option>
+            <option value="eleve">élevé</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label"> Echéance </label>
+          <input
+            [(ngModel)]="echeance"
+            class="form-control"
+            id="exheance"
+            name="echeance"
+            type="date"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="statut"> Statut </label>
+          <select
+            class="form-control"
+            name="statut"
+            id="statut"
+            [(ngModel)]="statut"
+          >
+            <option value="pas-demarre">Pas démarré</option>
+            <option value="en-cours">En cours</option>
+            <option value="suspendu">Suspendu</option>
+            <option value="annule">Annulé</option>
+            <option value="termine">Terminé</option>
+          </select>
         </div>
 
-        <div class="col-lg-5 card rounded border-0">
-          <div class="row">
-            <div class="col-md-6">
-              <h3>Tâches</h3>
-              <div *ngFor="let tache of taches">
-                <p>{{tache.titre}}</p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <h3>Utilisateurs</h3>
-              <div *ngFor="let tache of taches">
-                <select [(ngModel)]="tache.user">
-                  <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
-                </select>
-              </div>
+        <label class="form-control-label" for="documents">
+          Documents ajoutés
+        </label>
+        <div class="form-row justify-content-between">
+          <div class="form-group col-lg-7">
+            <input
+              name="documents"
+              [(ngModel)]="addDocuments"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group col-lg-5">
+            <!-- modal file button -->
+            <button (click)="openModal()" class="btn btn-success form-control">
+              Ajouter un document
+            </button>
+          </div>
+        </div>
+
+        <!-- modal file button -->
+        <button (click)="openModal()" class="btn btn-success">
+          Ajouter une tâche
+        </button>
+
+        <!-- modal user button -->
+        <!-- (click)="openLg(content)" -->
+        <button (click)="openModal()" class="btn btn-success">
+          Ajouter un utilisateur
+        </button>
+      </div>
+
+
+      <div class="col-lg-5 card rounded border-0">
+        <div class="form-row justify-content-arround">
+          <div class="col-md-6">
+            <h3 class="form-control-label">Tâches</h3>
+            <div class="form-group" *ngFor="let tache of taches">
+              <select class="form-control">
+                <option *ngFor="let tache of taches" [value]="tache.id">{{ tache.titre }}</option>
+              </select>
             </div>
           </div>
-          <div  class="form-row justify-content-between"  *ngFor=" tache of taches">
-            <div class="form-group col">
-              <label class="form-control-label" for="tache">Tâche n°{{tache.id}}</label>
-              <select
-              class="form-control"
-              name="tache"
-              id="tache"
-              [(ngModel)]="tache"
-            >
-              <option>Tâche n°{{tache.id}}</option>
-              <option *ngFor="tache of taches" value="{{tache.titre}}">{{tache.titre}}</option>
-              
-            </select>
-            </div>
-            <div class="form-group col">
-              <label class="form-control-label" for="statut">Utilisateurs</label>
-              <select
-              class="form-control"
-              name="user"
-              id="user"
-              [(ngModel)]="user"
-            >
-              <option>Utilisateur N1...</option>
-              <option *ngFor="user of users" value="{{user.id}}">{{user.id}}</option>
-            </select>
+          <div class="col-md-6">
+            <h3 class="form-control-label">Utilisateurs</h3>
+            <div class="form-group" *ngFor="let tache of taches">
+              <select [(ngModel)]="tache.user" class="form-control">
+                <option *ngFor="let user of users" [value]="user.id">
+                  {{ user.name }}
+                </option>
+              </select>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      
-      <button class="btn btn-primary col" type="submit">enregistrer</button>
-    </form>
-  </div>
+    <button class="btn btn-primary col-lg-2 mt-3" type="submit">enregistrer</button>
+  </form>
+</div>
 <!-- </div> -->
-
