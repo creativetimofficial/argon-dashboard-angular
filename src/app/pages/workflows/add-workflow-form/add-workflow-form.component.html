@@ -1,156 +1,121 @@
 <!-- *ngIf="display == true && displayInnerFolder == false"
   (submit)="onSubmit()" -->
 
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
   <div class="card rounded shadow p-5 mt-3 border-0">
-    <form class="sign-form col">
-      <div class="form-header"></div>
-      <div class="form-group">
-        <label class="form-control-label col">
-          Titre
+    <form class="">
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="form-group">
+            <label class="form-control-label"> Titre </label>
+            <input [(ngModel)]="titre" class="form-control" type="text" />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label"> Message </label>
+            <textarea
+              name="message"
+              [(ngModel)]="message"
+              class="form-control"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label"> Priorité </label>
+            <select class="form-control" name="priorite" [(ngModel)]="priorite">
+              <option value="basse">basse</option>
+              <option value="moyenne">moyenne</option>
+              <option value="eleve">élevé</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label"> Echéance </label>
+            <input
+              [(ngModel)]="echeance"
+              class="form-control"
+              id="exheance"
+              name="echeance"
+              type="date"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="statut"> Statut </label>
+            <select
+              class="form-control"
+              name="statut"
+              id="statut"
+              [(ngModel)]="statut"
+            >
+              <option value="pas-demarre">Pas démarré</option>
+              <option value="en-cours">En cours</option>
+              <option value="suspendu">Suspendu</option>
+              <option value="annule">Annulé</option>
+              <option value="termine">Terminé</option>
+            </select>
+          </div>
 
-          <input [(ngModel)]="titre" class="form-control" type="text" />
-        </label>
-      </div>
-      <div class="form-group">
-        <label class="form-control-label col">
-          Message
+          <label class="form-control-label" for="documents"> Documents ajoutés </label>
+          <div class="form-row justify-content-between">
+            <div class="form-group col-lg-7">
+              <input
+                name="documents"
+                [(ngModel)]="addDocuments"
+                class="form-control"
+              />
+            </div> 
 
-          <textarea
-            name="message"
-            [(ngModel)]="message"
-            class="form-control"
-          ></textarea>
-        </label>
-      </div>
-      <div class="form-group">
-        <label class="form-control-label col">
-          Priorité
-
-          <select class="form-control" name="priorite" [(ngModel)]="priorite">
-            <option value="basse">basse</option>
-            <option value="moyenne">moyenne</option>
-            <option value="eleve">élevé</option>
-          </select>
-        </label>
-      </div>
-      <div class="form-group">
-        <label class="form-control-label col">
-          Echéance
-
-          <input
-            [(ngModel)]="echeance"
-            class="form-control"
-            id="exheance"
-            name="echeance"
-            type="date"
-          />
-        </label>
-      </div>
-      <div class="form-group">
-        <label class="form-control-label col" for="statut">
-          Statut
-
-          <select
-            class="form-control"
-            name="statut"
-            id="statut"
-            [(ngModel)]="statut"
-          >
-            <option value="pas-demarre">Pas démarré</option>
-            <option value="en-cours">En cours</option>
-            <option value="suspendu">Suspendu</option>
-            <option value="annule">Annulé</option>
-            <option value="termine">Terminé</option>
-          </select>
-        </label>
-      </div>
-
-      <!-- modal button -->
-      <!-- (click)="openLg(content)" -->
-      <button
-       (click)="openModal()"
-        class="btn btn-success"
-      >
-        Associer
-      </button>
-      <!-- modal button -->
-      <!-- modal -->
-      <!-- <app-modal-associate-user></app-modal-associate-user>   -->
-      <!-- <div
-       
-        class="col-lg"
-        id = "add-user-modal"
-        aria-labelledby="addUserModalLabel"
-        aria-hidden="true"
-      >
-      
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header bg-dark">
-              <h3 class="modal-title text-center">Selectionner...</h3>
-              <button type="button" class="btn-close" aria-label="Close" ></button>
-            </div>
-            <div class="modal-body col">
-              <div class="navbar-search">
-                <form method="get" class="form d-flex justify-content-start">
-                  <div class=" form-group w-75">
-                    <input class="form-control" type="text" name="search"/>
-                  </div>
-                    <button class="btn btn-secondary w-auto">Rechercher</button>
-                </form>
-              </div>
-              <div>
-                <div></div>
-                <div></div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-                Close
+            <div class="form-group col-lg-5">
+              <!-- modal file button -->
+              <button (click)="openModal()" class="btn btn-success form-control">
+                Ajouter un document
               </button>
-             
-              <button type="button" class="btn btn-primary" >
-                Save changes
-              </button>
+            </div>
+          </div>
+
+          <!-- modal file button -->
+          <button (click)="openModal()" class="btn btn-success">
+            Ajouter une tâche
+          </button>
+
+          <!-- modal user button -->
+          <!-- (click)="openLg(content)" -->
+          <button (click)="openModal()" class="btn btn-success">
+            Ajouter un utilisateur
+          </button>
+        </div>
+
+        <div class="col-lg-5 card rounded border-0">
+          <div *ngFor=" tache of taches" class="form-row justify-content-between">
+            <div class="form-group col">
+              <label class="form-control-label" for="">Tâches</label>
+              <select
+              class="form-control"
+              name="statut"
+              id="statut"
+              [(ngModel)]="statut"
+            >
+              <option>Tâche N1...</option>
+              <option value="{{tache.titre}}">{{tache.detail}}</option>
+              
+            </select>
+            </div>
+            <div class="form-group col">
+              <label class="form-control-label" for="">Utilisateurs</label>
+              <select
+              class="form-control"
+              name="statut"
+              id="statut"
+              [(ngModel)]="statut"
+            >
+              <option>Utilisateur N1...</option>
+              <option *ngFor="user of users" value="{{user.id}}">{{user.name}}</option>
+            </select>
+            </div>
           </div>
         </div>
       </div>
-      </div> -->
-      <!-- <button [cModalToggle]="modalLg.id" cButton>Large modal</button>
-      <c-modal #modalLg id="modalLg" size="lg">
-        <c-modal-header>
-          <h5 cModalTitle>Large modal</h5>
-        </c-modal-header>
-        <c-modal-body>...</c-modal-body>
-      </c-modal> -->
 
-      <!-- <ng-template #content let-modal>
-        <div class="modal-header">
-          <h4 class="modal-title">Modal title</h4>
-          <button
-            type="button"
-            class="btn-close"
-            aria-label="Close"
-            (click)="modal.dismiss('Cross click')"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-light"
-            (click)="modal.close('Close click')"
-          >
-            Close
-          </button>
-        </div>
-      </ng-template> -->
-      <!-- modal -->
-
+      
       <button class="btn btn-primary col" type="submit">enregistrer</button>
     </form>
   </div>
-</div>
+<!-- </div> -->
+

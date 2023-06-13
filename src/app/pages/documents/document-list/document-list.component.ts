@@ -1,5 +1,5 @@
 import { Component, Input, Output,EventEmitter } from '@angular/core';
-import { Document } from '../documents.component';
+import { Document } from '../../../variables/charts'
 
 @Component({
   selector: 'app-document-list',
