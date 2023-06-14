@@ -20,6 +20,8 @@ import { ModalAddDocumentComponent } from './pages/workflows/modal-add-document/
 import { ModalComponent } from './components/modal/modal.component';
 import { DocumentAddDossierComponent } from './pages/documents/document-add-dossier/document-add-dossier.component';
 import { ModalAddTaskComponent } from './pages/workflows/modal-add-task/modal-add-task.component';
+import { SignatureComponent } from './pages/signature/signature.component';
+import { SignatureListComponent } from './pages/signature/signature-list/signature-list.component';
 //import { DocumentViewFileModalComponent } from './pages/documents/document-view-file-modal/document-view-file-modal.component';
 
 //import { AddWorkflowFormComponent } from './pages/workflows/add-workflow-form/add-workflow-form.component';
@@ -48,6 +50,8 @@ import { ModalAddTaskComponent } from './pages/workflows/modal-add-task/modal-ad
     ModalComponent,
     DocumentAddDossierComponent,
     ModalAddTaskComponent,
+    SignatureComponent,
+    SignatureListComponent,
     //DocumentViewFileModalComponent
     //AddWorkflowFormComponent,
     //ListComponent,

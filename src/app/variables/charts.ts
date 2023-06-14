@@ -428,3 +428,60 @@ export const documents: Document[] = [
     //mot_cles: "contrat,directeur,employé"
   },
 ];
+
+export interface User {
+  id: number,
+  name: string,
+  date_naissance?: Date;
+  sexe?: boolean,
+  email?: string,
+  numero: number,
+  id_role?: number,
+  id_site?: number,
+  id_sign?: number,
+  taches?: [],
+  workflows?: []
+}
+
+export const users: User[] =  [
+  {
+    id: 1,
+    name: "concepteur JS",
+    numero: 697451979
+  },
+  {
+    id: 2,
+    name: "Armand",
+    numero: 653301329
+  },
+  {
+    id: 3,
+    name: "aymard",
+    numero: 652341789
+  },
+  {
+    id: 4,
+    name: "Idriss",
+    numero: 685215543
+  },
+  {
+    id: 5,
+    name: "Joris",
+    numero: 655412682
+  },
+  {
+    id: 6,
+    name: "Nicolette",
+    numero: 697421587
+  },
+  {
+    id: 1,
+    name: "Sylvie",
+    numero: 654123874
+  },
+  {
+    id: 1,
+    name: "Maéva",
+    numero: 692651379
+  }
+]

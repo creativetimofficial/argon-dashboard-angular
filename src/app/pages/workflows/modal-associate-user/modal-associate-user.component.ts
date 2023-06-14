@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { users, User } from 'src/app/variables/charts';
 
 @Component({
   selector: 'app-modal-associate-user',
@@ -8,37 +9,46 @@ import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal-associate-user.component.scss']
 })
 export class ModalAssociateUserComponent implements OnInit{
-  searchResults: string[] = [];
-  selectedItems: string[] = [];
+  listUsers: User[] = users;
+  searchResults: User[] = [];
+  selectedItems: User[] = [];
+  workflowUsers: User[] = [];
   modal: NgbModalRef;
-  searchForm: FormGroup
+  searchForm: FormGroup;
+  searchUser: string = '';
 
   constructor(private formBuilder: FormBuilder, public activeModal: NgbActiveModal) {
-    this.searchForm = this.formBuilder.group({
-      search: ['']
-    });
   }
 
   ngOnInit(): void {
+    this.searchResults = this.listUsers;
   }
 
-  //findUser() {}
+  searchInput() {
+    let results = this.listUsers.filter(userResult => 
+      userResult.name.includes(this.searchUser)
+    )
+    this.searchResults = results
+  }
 
   search() {
-    this.searchResults = ["u1", "u2", "u3", "u4", "u5"];
+    let results = this.listUsers.filter(userResult =>
+      userResult.name.includes(this.searchUser)  
+    )
+    this.searchResults = results
   }
 
-  selectItem(item: string) {
-    if(!this.selectedItems.includes(item)) {
-      this.selectedItems.push(item);
-    }
+  selectUser(id: number) {
+    // if(!this.selectedItems.includes(item)) {
+    //   this.selectedItems.push(item);
+    // }
   }
 
-  deselectItem(item: string) {
-    const index = this.selectedItems.indexOf(item);
-    if(index !== -1) {
-      this.selectedItems.splice(index, 1)
-    }
+  deselectUser(id: number) {
+    // const index = this.selectedItems.indexOf(item);
+    // if(index !== -1) {
+    //   this.selectedItems.splice(index, 1)
+    // }
   }
 }
 

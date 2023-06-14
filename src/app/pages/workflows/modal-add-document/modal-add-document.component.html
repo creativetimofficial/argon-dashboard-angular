@@ -17,6 +17,7 @@
           <input
             type="search"
             id="search"
+            (input)="searchFileInput()"
             [(ngModel)]="search"
             class="form-control"
             aria-label="Search"
@@ -91,7 +92,7 @@
     <button
       type="button"
       class="btn btn-primary"
-      (click)="activeModal.close('Close click')"
+      (click)="enregistrer()"
     >
       Enregistrer
     </button>

@@ -8,7 +8,7 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { WorkflowsComponent } from 'src/app/pages/workflows/workflows.component';
 import { DocumentsComponent } from 'src/app/pages/documents/documents.component';
 import { InitiateFlowComponent } from 'src/app/pages/workflows/initiate-flow/initiate-flow.component';
-
+import { SignatureComponent } from 'src/app/pages/signature/signature.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -17,6 +17,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'workflows',      component: WorkflowsComponent },
     { path: 'workflows/:list',      component: InitiateFlowComponent },
     { path: 'workflows/:list/:id',      component: InitiateFlowComponent },
+    { path: 'signature', component: SignatureComponent}
     //{ path: 'tables',         component: TablesComponent },
     //{ path: 'icons',          component: IconsComponent },
     //{ path: 'maps',           component: MapsComponent },

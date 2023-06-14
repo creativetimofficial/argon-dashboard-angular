@@ -10,7 +10,7 @@
   </button>
 </div>
 <div class="modal-body">
-  <form [formGroup]="searchForm">
+  <form>
     <div class="form-row">
       <div class="form-group mr-2 col-lg-6">
         <input
@@ -18,22 +18,42 @@
           id="search"
           class="form-control"
           aria-label="Search"
+          (input)="searchInput()"
+          [(ngModel)]="searchUser"
         />
       </div>
       <div class="form-group col-lg-3">
-        <button class="btn btn-outline-success" (click)="search()">
+        <button
+          class="btn btn-outline-success"
+          (click)="search()"
+        >
           Recherche
         </button>
       </div>
     </div>
   </form>
-  <div class="row" style="height: auto;">
+  <div class="row" style="height: auto">
     <div class="col-md-6">
       <h5>Résultat de la recherche</h5>
-      <div class="card border-dark" >
+      <div class="card border-dark">
         <ul class="list-group">
-          <li class="list-group-item" *ngFor="let item of searchResults">
-            {{ item }}
+          <li class="list-group-item" *ngFor="let user of searchResults">
+            <div class="row justify-content-between">
+              <span class="col-md-9">
+                {{ user.name }}
+              </span>
+              <div class="col-md-3">
+                <div class="row justify-content-center">
+                  <div class="col"></div>
+                  <div class="col cursor-pointer" (click)="selectUser(user.id)">
+                    <i
+                      class="fa fa-plus-circle fa-lg text-success"
+                      aria-hidden="true"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -43,8 +63,20 @@
       <h5>Sélection</h5>
       <div class="card border-dark">
         <ul class="list-group">
-          <li class="list-group-item" *ngFor="let item of selectedItems">
-            {{ item }}
+          <li class="list-group-item" *ngFor="let user of selectedItems">
+            <div class="row justify-content-between">
+              <span class="col-md-9">
+                {{ user.name }}
+              </span>
+              <div class="col-md-3">
+                <div class="row justify-content-center">
+                  <div class="col"></div>
+                  <div class="col cursor-pointer" (click)="deselectUser(user.id)">
+                    <i class="fas fa-times-circle fa-lg text-danger"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </div>

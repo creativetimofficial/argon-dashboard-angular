@@ -15,7 +15,7 @@ export class ModalAddDocumentComponent implements OnInit {
   workflowFiles: Document[] = [];
   modal: NgbModalRef;
   searchForm: FormGroup;
-  search: string;
+  search: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,31 +26,38 @@ export class ModalAddDocumentComponent implements OnInit {
     this.searchFileResults = this.listFiles;
   }
 
-  searchFile(): Document[] {
-    let results = this.listFiles.filter((fileResult) =>
+  searchFileInput() {
+    let results = this.listFiles.filter(fileResult =>
       fileResult.name.includes(this.search)
     );
-    console.log(results);
-    return (this.searchFileResults = results);
+    this.searchFileResults = results;
+  }
+
+  searchFile() {
+    let results = this.listFiles.filter(fileResult =>
+      fileResult.name.includes(this.search)
+    );
+    this.searchFileResults = results;
   }
 
   selectFile(id: number): void {
-    if ((this.searchFileResults.length = 1)) {
-      let selectedFile = this.searchFileResults[0];
+    let selectedFile = this.searchFileResults.find(selectedFile => {
+      return selectedFile.id === id
+    });
+
+    if(!this.selectedFiles.includes(selectedFile)) {
       this.selectedFiles.push(selectedFile);
-    } else if (this.searchFileResults.length > 1) {
-      let selectedFile = this.searchFileResults[id - 1];
-      this.selectedFiles.push(selectedFile);
-    } else {
-      this.selectedFiles = [];
     }
   }
 
   deleteFile(id: number): void {
-    //let deletedFile = this.selectedFiles[id-1];
-    if(this.selectedFiles.length = 1) {
-      let deletedFile = this.selectedFiles.splice(0, 1);
-    }
-    let deletedFile = this.selectedFiles.splice(id - 1, 1);
+    let deletedFileId = this.selectedFiles.findIndex(file => file.id === id)
+    this.selectedFiles.splice(deletedFileId, 1);
+    
+  }
+
+  enregistrer() {
+    this.workflowFiles = this.selectedFiles;
+    this.activeModal.close('Close click')
   }
 }

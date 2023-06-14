@@ -4,7 +4,7 @@
       <div class="card col-lg-11 rounded shadow border-0 mt-2">
         <div class="card-content">
           <div
-            class="card-header text-black-50 d-flex justify-content-between align-items-center"
+            class="card-header text-black-50 d-flex justify-content-between align-items-start"
           >
             <span class="card-title text-primary font-weight-bold"
               >Workflows initiés</span
@@ -14,7 +14,7 @@
                 routerLinkActive="active"
                 [routerLink]="['/workflows/inities']"
               >
-                <button class="btn btn-primary">Lister</button>
+                <button class="btn btn-primary btn-sm">Lister</button>
               </a>
             </span>
           </div>
@@ -24,8 +24,16 @@
                 class="Workflows card mt-2 rounded shadow--hover"
                 *ngFor="let workflow of workflowTab"
               >
-                <div class="card-header bg-primary text-white text-darker">
+                <div class="card-header bg-primary d-flex justify-content-between align-content-start text-white text-darker">
                   <span class="card-title">{{ workflow.titre }}</span>
+                  <span>
+                    <a
+                      routerLinkActive="active"
+                      [routerLink]="['/workflows/inities/:id']"
+                    >
+                      <button class="btn btn-secondary btn-sm">Détails</button>
+                    </a>
+                  </span>
                 </div>
 
                 <div class="card-body text-sm">
@@ -56,7 +64,7 @@
       <div class="card col-lg-11 rounded border-0 shadow mt-2">
         <div class="card-content">
           <div
-            class="card-header text-black-50 d-flex justify-content-between align-items-center"
+            class="card-header text-black-50 d-flex justify-content-between align-items-start"
           >
             <span class="card-title text-green font-weight-bold"
               >Tâches attribuées</span
@@ -66,7 +74,7 @@
                 routerLinkActive="active"
                 [routerLink]="['/workflows/attribuees']"
               >
-                <button class="btn btn-success">Lister</button>
+                <button class="btn btn-success btn-sm">Lister</button>
               </a>
             </span>
           </div>
@@ -76,8 +84,16 @@
                 class="Workflows d-block card mt-2 rounded shadow--hover"
                 *ngFor="let workflow of workflowTab"
               >
-                <div class="card-header bg-green text-white text-darker">
+                <div class="card-header d-flex justify-content-between align-content-start bg-green text-white text-darker">
                   <span class="card-title">{{ workflow.titre }}</span>
+                  <span>
+                    <a
+                      routerLinkActive="active"
+                      [routerLink]="['/workflows/attribuees/:id']"
+                    >
+                      <button class="btn btn-secondary btn-sm">Détails</button>
+                    </a>
+                  </span>
                 </div>
 
                 <div class="card-body text-sm">
