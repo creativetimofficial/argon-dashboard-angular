@@ -355,14 +355,76 @@ export const chartExample2 = {
 }
 
 export interface Document {
+  id?: number;
   name?: string,
   type?: string,
   typeDoc: string,
   size?: string,
   statut: string,
-  mot_cles: string,
+  mot_cles?: string,
   fileContent?: any,
   docPath?: string,
 }
 
-export const documents: Document[] = [];
+export const documents: Document[] = [
+  {
+    id:1,
+    name: "doc1",
+    type: "pdf",
+    typeDoc: "Contrats",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },
+  {
+    id:2,
+    name: "doc2",
+    type: "pdf",
+    typeDoc: "Contrats",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },
+  {
+    id:3,
+    name: "doc3",
+    type: "pdf",
+    typeDoc: "Factures",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },{
+    id:4,
+    name: "doc4",
+    type: "pdf",
+    typeDoc: "Factures",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },{
+    id:5,
+    name: "doc5",
+    type: "pdf",
+    typeDoc: "CV",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },{
+    id:6,
+    name: "doc6",
+    type: "pdf",
+    typeDoc: "Demission",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },{
+    id:7,
+    name: "doc7",
+    type: "pdf",
+    typeDoc: "Recrutement",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },
+  {
+    id:8,
+    name: "doc8",
+    type: "pdf",
+    typeDoc: "Contrats",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },
+];

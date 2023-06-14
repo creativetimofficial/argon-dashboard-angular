@@ -1,58 +1,106 @@
 <div class="modal-content">
   <div class="modal-header">
     <h5 class="modal-title">Ajouter un ou plusieurs documents</h5>
-    <button type="button" class="close" (click)="activeModal.dismiss()" aria-label="Close">
+    <button
+      type="button"
+      class="close"
+      (click)="activeModal.dismiss()"
+      aria-label="Close"
+    >
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <form >
-        <div class="form-row">
-          <div class="form-group mr-2 col-lg-6">
-            <input
-              type="search"
-              id="search"
-              class="form-control"
-              aria-label="Search"
-            />
-          </div>
-          <div class="form-group col-lg-3">
-            <button class="btn btn-outline-success" (click)="searchFile()">
-              Recherche
-            </button>
-          </div>
+    <form>
+      <div class="form-row">
+        <div class="form-group mr-2 col-lg-6">
+          <input
+            type="search"
+            id="search"
+            [(ngModel)]="search"
+            class="form-control"
+            aria-label="Search"
+          />
         </div>
-      </form>
-      <div class="row" style="height: auto;">
-        <div class="col-md-6">
-          <h5>Liste des documents</h5>
-          <div class="card border-dark" >
-            <ul class="list-group">
-              <li class="list-group-item" *ngFor="let item of searchFileResults">
-                {{ item.name }}
-              </li>
-            </ul>
-          </div>
+        <div class="form-group col-lg-3">
+          <button class="btn btn-outline-success" (click)="searchFile()">
+            Recherche
+          </button>
         </div>
-    
-        <div class="col-md-6">
-          <h5>Sélection</h5>
-          <div class="card border-dark">
-            <ul class="list-group">
-              <li class="list-group-item" *ngFor="let item of selectedFiles">
-                {{ item.name }}
-              </li>
-            </ul>
-          </div>
+      </div>
+    </form>
+    <div class="row" style="height: auto">
+      <div class="col-md-6">
+        <h5>Liste des documents</h5>
+        <div class="card border-dark">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let file of searchFileResults">
+              <div class="row justify-content-between">
+                <span class="col-md-9">
+                  {{ file.name }}
+                </span>
+                <div class="col-md-3">
+                  <div class="row justify-content-center">
+                    <div class="col"></div>
+                    <div
+                      class="col cursor-pointer"
+                      (click)="selectFile(file.id)"
+                    >
+                      <i
+                        class="fa fa-plus-circle fa-lg text-success"
+                        aria-hidden="true"
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <h5>Sélection</h5>
+        <div class="card border-dark">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let file of selectedFiles">
+              <div class="row justify-content-between">
+                <span class="col-md-9">
+                  {{ file.name }}
+                </span>
+                <div class="col-md-3">
+                  <div class="row justify-content-center">
+                    <div class="col"></div>
+                    <div
+                      class="col cursor-pointer"
+                      (click)="deleteFile(file.id)"
+                    >
+                      <i class="fas fa-times-circle fa-lg text-danger"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-  
-  <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Enregistrer</button>
-    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">
-        Annuler
-      </button>
   </div>
 
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="activeModal.close('Close click')"
+    >
+      Enregistrer
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="activeModal.dismiss()"
+    >
+      Annuler
+    </button>
+  </div>
 </div>
