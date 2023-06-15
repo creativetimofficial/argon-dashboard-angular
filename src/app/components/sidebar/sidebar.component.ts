@@ -12,6 +12,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/documents', title: 'Espace documents',  icon:'ni ni-folder-17 text-blue', class: '' },
     { path: '/user-profile', title: 'User profile',  icon:'ni ni-single-02 text-blue', class: '' },
     { path: '/workflows', title: 'Workflows',  icon:'ni ni-archive-2 text-blue', class: '' },
+    { path: '/sites', title: 'Sites',  icon:'fa fa-users fa-lg text-blue', class: '' },
     { path: '/signature', title: 'Signature',  icon:'fa fa-pen-nib fa-lg text-blue', class: '' }
 ];
 

@@ -2,21 +2,37 @@ import { Component } from "@angular/core";
 import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 
 import { ModalAssociateUserComponent } from "../modal-associate-user/modal-associate-user.component";
-import { documents, Document } from "src/app/variables/charts";
+import { documents, Document, User } from "src/app/variables/charts";
 import { ModalAddDocumentComponent } from "../modal-add-document/modal-add-document.component";
 import { ModalAddTaskComponent } from "../modal-add-task/modal-add-task.component";
-interface User {
-  id: number;
-  name: string;
+export interface Task {
+  id?: number,
+  titre?: string,
+  detail?: string,
+  statut?: string,
+  priorite?: string;
+  echeance?: Date,
+  user?: User["id"],
+  document?: Document["name"],
 }
 
-interface Tache {
-  id: number;
-  titre: string;
-  detail: string;
-  echeance?: Date;
-  user?: User["id"];
-  document?: Document["name"];
+interface TaskUser {
+  id_task: Task["id"];
+  id_user: User["id"];
+  ordre: number;
+}
+
+interface Workflow {
+  id: number,
+  titre: string,
+  detail: string,
+  priorite: string,
+  echeance?: Date,
+  statut: string,
+  documents?: number[],
+  users?: number[],
+  tasks?: number[],
+  taskUser?: TaskUser[]
 }
 
 @Component({
@@ -25,51 +41,29 @@ interface Tache {
   styleUrls: ["./add-workflow-form.component.scss"],
 })
 export class AddWorkflowFormComponent {
-  statut: any;
-  priorite: any;
+  statut: string;
+  priorite: string;
   message: any;
-  titre: any;
-  echeance: any;
-  addDocuments: any;
-  // modal: NgbModal;
+  titre: string;
+  echeance: string;
+  addDocuments: Document[];
+  workflowUsers: User[];
   modalRef: any;
-  //encapsulation: ViewEncapsulation.None;
-  //closeResult: string;
 
-  users: User[] = [
-    { id: 1, name: "zobel" },
-    { id: 2, name: "concepteur JS" },
-    { id: 3, name: "ulrich" },
+  usersWorkflow: User[] = [
+    {id: 1, name: "zobel"}, {id:2, name: "ulrich"}
   ];
-  taches: Tache[] = [
-    {
-      id: 1,
-      titre: "t1",
-      detail: "test",
-    },
-    {
-      id: 2,
-      titre: "t2",
-      detail: "test2",
-    },
-    {
-      id: 3,
-      titre: "t3",
-      detail: "test3",
-    },
-    {
-      id: 4,
-      titre: "t4",
-      detail: "test4",
-    },
-    {
-      id: 5,
-      titre: "t5",
-      detail: "test5",
-    },
+  tasksWorkflow: Task[] = [
+    {id:1, titre: "t1"}, {id: 2, titre: 't2'}
   ];
+  workflow: Workflow;
   userId: User["id"];
   documents: Document[] = documents;
+  id_user: any;
+  id_task: any;
+  selectedUser: any[];
+  selectedTask: any[];
+
   constructor(private modalService: NgbModal) {}
 
   addDoc() {}
@@ -82,7 +76,6 @@ export class AddWorkflowFormComponent {
     } else if (test === "task") {
       this.modalRef = this.modalService.open(ModalAddTaskComponent);
     }
-
 
     this.modalRef.componentInstance.title = "Mon titre";
     document.querySelector<HTMLElement>(".modal-backdrop").style.zIndex = "1";
@@ -99,4 +92,28 @@ export class AddWorkflowFormComponent {
       }
     );
   }
+
+  enregistrer() {
+    const data = [];
+    for (let i = 0; i < this.tasksWorkflow.length; i++) {
+      data.push({id_user: this.selectedTask[i], id_task: this.selectedUser[i]});
+    }
+    console.log(data)
+
+  }
+
+  sendWorkflow() {
+    
+  }
+
+  // submitForm() {
+  //   const data = [];
+  //   for (let i = 0; i < this.tasksWorkflow.length; i++) {
+  //     const task = this.tasksWorkflow[i];
+  //     const user = this.usersWorkflow[i];
+  //     data.push({id_user: this.id_user, id_task: this.id_task});
+  //   }
+  //   console.log(data); // afficher les données dans la console
+  //   // Ajouter ici le code pour enregistrer les données dans votre backend
+  // }
 }

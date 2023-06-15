@@ -8,19 +8,13 @@ import { ListComponent } from './list/list.component';
 })
 export class WorkflowsComponent {
 
-  displayForm: boolean = false;
-  displayModalDoc: boolean = false;
-  displayModalUser: boolean = false;
-  displayList: boolean = true;
-  displayCreateWorkflowButton : boolean = true;
+  display: boolean = false;
 
   constructor() {}
 
   ngOnInit() {}
 
   initiateWorkflow() {
-    this.displayList = false;
-    this.displayCreateWorkflowButton = true;
-    this.displayForm = true;
+    this.display = true; 
   }
 }

@@ -22,6 +22,11 @@ import { DocumentAddDossierComponent } from './pages/documents/document-add-doss
 import { ModalAddTaskComponent } from './pages/workflows/modal-add-task/modal-add-task.component';
 import { SignatureComponent } from './pages/signature/signature.component';
 import { SignatureListComponent } from './pages/signature/signature-list/signature-list.component';
+import { SitesComponent } from './pages/sites/sites.component';
+import { UpdateSiteComponent } from './pages/sites/update-site/update-site.component';
+import { DeleteSiteComponent } from './pages/sites/delete-site/delete-site.component';
+import { ReadSiteComponent } from './pages/sites/read-site/read-site.component';
+import { AddSiteComponent } from './pages/sites/add-site/add-site.component';
 //import { DocumentViewFileModalComponent } from './pages/documents/document-view-file-modal/document-view-file-modal.component';
 
 //import { AddWorkflowFormComponent } from './pages/workflows/add-workflow-form/add-workflow-form.component';
@@ -52,6 +57,11 @@ import { SignatureListComponent } from './pages/signature/signature-list/signatu
     ModalAddTaskComponent,
     SignatureComponent,
     SignatureListComponent,
+    SitesComponent,
+    UpdateSiteComponent,
+    DeleteSiteComponent,
+    ReadSiteComponent,
+    AddSiteComponent,
     //DocumentViewFileModalComponent
     //AddWorkflowFormComponent,
     //ListComponent,

@@ -11,7 +11,7 @@ import { users, User } from 'src/app/variables/charts';
 export class ModalAssociateUserComponent implements OnInit{
   listUsers: User[] = users;
   searchResults: User[] = [];
-  selectedItems: User[] = [];
+  selectedUsers: User[] = [];
   workflowUsers: User[] = [];
   modal: NgbModalRef;
   searchForm: FormGroup;
@@ -39,16 +39,23 @@ export class ModalAssociateUserComponent implements OnInit{
   }
 
   selectUser(id: number) {
-    // if(!this.selectedItems.includes(item)) {
-    //   this.selectedItems.push(item);
-    // }
+    let selectedUser = this.searchResults.find(selectedUser => {
+      return selectedUser.id === id
+    });
+
+    if(!this.selectedUsers.includes(selectedUser)) {
+      this.selectedUsers.push(selectedUser);
+    }
   }
 
   deselectUser(id: number) {
-    // const index = this.selectedItems.indexOf(item);
-    // if(index !== -1) {
-    //   this.selectedItems.splice(index, 1)
-    // }
+    let deselectedUserId = this.selectedUsers.findIndex(user => user.id === id)
+    this.selectedUsers.splice(deselectedUserId, 1);
+  }
+
+  enregistrer() {
+    this.workflowUsers = this.selectedUsers;
+    this.activeModal.close('Close click')
   }
 }
 

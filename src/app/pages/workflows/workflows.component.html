@@ -3,6 +3,7 @@
     class="nav-link"
     class="btn btn-primary ml-3 mt-4"
     (click)="initiateWorkflow()"
+    *ngIf="display === false"
     ><img
       width="25"
       height="25"
@@ -14,11 +15,11 @@
 </div>
 
 <div class="container-fluid">
-  <div>
+  <div *ngIf="display === false">
     <app-list></app-list>
   </div>
 
-  <div>
+  <div *ngIf="display === true">
     <app-add-workflow-form></app-add-workflow-form>
   </div>
 </div>

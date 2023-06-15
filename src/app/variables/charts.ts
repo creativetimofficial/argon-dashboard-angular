@@ -435,7 +435,7 @@ export interface User {
   date_naissance?: Date;
   sexe?: boolean,
   email?: string,
-  numero: number,
+  numero?: number,
   id_role?: number,
   id_site?: number,
   id_sign?: number,
