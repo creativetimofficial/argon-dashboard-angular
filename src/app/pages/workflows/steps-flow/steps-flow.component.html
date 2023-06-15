@@ -1,0 +1,116 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 col-md-12">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-transparent">
+          <div class="text-muted text-center">
+            <h2>Etapes du workflow</h2>
+            <small
+              >Remplissez ce formulaire pour créer les étapes du nouveau flux de
+              travail</small
+            >
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- class="form" action="/dashboard" method="get" -->
+          <form>
+            <div class="form-group">
+              <label class="form-control-label"> Titre </label>
+              <div class="input-group-alternative">
+                <input class="form-control" name="user" type="text" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label"> Fonction associée </label>
+              <div class="input-group-alternative">
+                <select name="etape 1" class="form-control">
+                  <option value=""></option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label"> Durée </label>
+              <div class="row justify-content-start">
+                <!-- jour -->
+                <div class="col-lg-3">
+                  <div class="form-group row">
+                    <div class="col">
+                      <div class="input-group-alternative">
+                        <input type="number" name="jour" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="col">
+                      <label for="jour" class="form-control-label"
+                        >jour(s)</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- heure -->
+                <div class="col-lg-3">
+                  <div
+                    class="form-group row align-content-center justify-content-center"
+                  >
+                    <div class="col">
+                      <div class="input-group-alternative">
+                        <input
+                          type="number"
+                          name="heure"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="col">
+                      <label for="heure" class="form-control-label"
+                        >heure(s)</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- minute -->
+                <div class="col-lg-3">
+                  <div
+                    class="form-group row align-content-center justify-content-center"
+                  >
+                    <div class="col">
+                      <div class="input-group-alternative">
+                        <input
+                          type="number"
+                          name="minute"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="col">
+                      <label for="minute" class="form-control-label"
+                        >minute(s)</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-3">
+                  <div class="row justify-content-end">
+                    <div class="col">
+                      <button
+                        style="font-weight: bolder"
+                        class="btn btn-success text-xl text-white pl-2 pr-2 pt-0 pb-0"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-primary">Créer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

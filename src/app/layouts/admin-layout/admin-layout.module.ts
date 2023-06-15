@@ -28,6 +28,7 @@ import { DocumentIndexationComponent } from '../../pages/documents/document-inde
 import { DocumentDossiersComponent } from '../../pages/documents/document-dossiers/document-dossiers.component';
 import { DocumentAcquisitionComponent } from '../../pages/documents/document-acquisition/document-acquisition.component';
 import { DocumentViewFileModalComponent } from 'src/app/pages/documents/document-view-file-modal/document-view-file-modal.component';
+import { StepsFlowComponent } from 'src/app/pages/workflows/steps-flow/steps-flow.component';
 
 @NgModule({
   imports: [
@@ -59,7 +60,8 @@ import { DocumentViewFileModalComponent } from 'src/app/pages/documents/document
     DocumentDossiersComponent,
     DocumentIndexationComponent,
     DocumentListComponent,
-    DocumentViewFileModalComponent
+    DocumentViewFileModalComponent,
+    StepsFlowComponent
   ],
   exports: [
     MatDialogModule,
