@@ -24,6 +24,8 @@ export class ModalAddDocumentComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchFileResults = this.listFiles;
+    console.log(this.searchFileResults);
+    
   }
 
   searchFileInput() {

@@ -19,7 +19,7 @@ export interface Task {
 interface TaskUser {
   id_task: Task["id"];
   id_user: User["id"];
-  ordre: number;
+  ordre?: number;
 }
 
 interface Workflow {
@@ -48,6 +48,7 @@ export class AddWorkflowFormComponent {
   echeance: string;
   addDocuments: Document[];
   workflowUsers: User[];
+  taskUser: TaskUser[] = [];
   modalRef: any;
 
   usersWorkflow: User[] = [
@@ -57,12 +58,8 @@ export class AddWorkflowFormComponent {
     {id:1, titre: "t1"}, {id: 2, titre: 't2'}
   ];
   workflow: Workflow;
-  userId: User["id"];
+  //userId: User["id"];
   documents: Document[] = documents;
-  id_user: any;
-  id_task: any;
-  selectedUser: any[];
-  selectedTask: any[];
 
   constructor(private modalService: NgbModal) {}
 
@@ -93,12 +90,17 @@ export class AddWorkflowFormComponent {
     );
   }
 
+  onTaskSelect(task_id: number, index: number) {
+    this.taskUser[index] = {...this.taskUser[index], id_task: task_id};
+  }
+
+  onUserSelect(user_id: number, index: number) {
+    this.taskUser[index] = {...this.taskUser[index], id_user: user_id}
+  }
+
   enregistrer() {
-    const data = [];
-    for (let i = 0; i < this.tasksWorkflow.length; i++) {
-      data.push({id_user: this.selectedTask[i], id_task: this.selectedUser[i]});
-    }
-    console.log(data)
+    
+    console.log(this.taskUser)
 
   }
 
