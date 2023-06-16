@@ -27,6 +27,7 @@ import { UpdateSiteComponent } from './pages/sites/update-site/update-site.compo
 import { DeleteSiteComponent } from './pages/sites/delete-site/delete-site.component';
 import { ReadSiteComponent } from './pages/sites/read-site/read-site.component';
 import { AddSiteComponent } from './pages/sites/add-site/add-site.component';
+import { UpdateFlowComponent } from './pages/workflows/update-flow/update-flow.component';
 //import { StepsFlowComponent } from './pages/workflows/steps-flow/steps-flow.component';
 //import { DocumentViewFileModalComponent } from './pages/documents/document-view-file-modal/document-view-file-modal.component';
 
@@ -63,6 +64,7 @@ import { AddSiteComponent } from './pages/sites/add-site/add-site.component';
     DeleteSiteComponent,
     ReadSiteComponent,
     AddSiteComponent,
+    UpdateFlowComponent,
     //StepsFlowComponent,
     //DocumentViewFileModalComponent
     //AddWorkflowFormComponent,

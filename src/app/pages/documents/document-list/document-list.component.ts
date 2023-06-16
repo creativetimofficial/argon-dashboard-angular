@@ -1,17 +1,28 @@
-import { Component, Input, Output,EventEmitter } from '@angular/core';
-import { Document } from '../../../variables/charts'
+import { Component, Input, Output,EventEmitter, OnInit } from '@angular/core';
+import { Document } from '../../../models/document.model'
+import { DocumentService } from 'src/app/services/document/document.service';
 
 @Component({
   selector: 'app-document-list',
   templateUrl: './document-list.component.html',
   styleUrls: ['./document-list.component.scss']
 })
-export class DocumentListComponent {
+export class DocumentListComponent implements OnInit {
+  
   @Input() display: boolean;
   @Input() displayInnerFolder: boolean;
   @Input() typeDocArray: Document[];
   @Input() docPath: string;
   @Output() modifyDisplays = new EventEmitter< {boolean1: boolean, boolean2: boolean} >();
+  fileList: Document[];
+
+  constructor(private documentService: DocumentService) {}
+
+  ngOnInit(): void {
+    this.documentService.getFiles().subscribe(fileList => {
+      this.fileList = fileList;
+    })
+  }
   // afficher un document dans la visionneuse
   viewFile(docPath: string) {
     this.docPath = docPath;

@@ -11,19 +11,22 @@
       <div class="col-lg-7">
         <div class="form-group">
           <label class="form-control-label"> Titre </label>
-          <input [(ngModel)]="titre" class="form-control" type="text" />
+          <!-- [(ngModel)]="titre" -->
+          <input  class="form-control" type="text" />
         </div>
+        <!-- [(ngModel)]="message" -->
         <div class="form-group">
           <label class="form-control-label"> Message </label>
           <textarea
             name="message"
-            [(ngModel)]="message"
+            
             class="form-control"
           ></textarea>
         </div>
         <div class="form-group">
           <label class="form-control-label"> Priorité </label>
-          <select class="form-control" name="priorite" [(ngModel)]="priorite">
+          <!-- [(ngModel)]="priorite" -->
+          <select class="form-control" name="priorite" >
             <option value="basse">basse</option>
             <option value="moyenne">moyenne</option>
             <option value="eleve">élevé</option>
@@ -31,8 +34,9 @@
         </div>
         <div class="form-group">
           <label class="form-control-label"> Echéance </label>
+          <!-- [(ngModel)]="echeance" -->
           <input
-            [(ngModel)]="echeance"
+            
             class="form-control"
             id="exheance"
             name="echeance"
@@ -45,8 +49,9 @@
             class="form-control"
             name="statut"
             id="statut"
-            [(ngModel)]="statut"
+            
           >
+          <!-- [(ngModel)]="statut" -->
             <option value="pas-demarre">Pas démarré</option>
             <option value="en-cours">En cours</option>
             <option value="suspendu">Suspendu</option>
@@ -60,17 +65,19 @@
         </label>
         <div class="form-row justify-content-between">
           <div class="form-group col-lg-7">
+            <!-- [(ngModel)]="addDocuments" -->
             <input
               name="documents"
-              [(ngModel)]="addDocuments"
+              
               class="form-control"
             />
           </div>
 
           <div class="form-group col-lg-5">
             <!-- modal file button -->
+            <!-- (click)="openModal('file')" -->
             <button
-              (click)="openModal('file')"
+             
               class="btn btn-outline-primary form-control"
             >
               Ajouter un document
@@ -82,8 +89,9 @@
           <div class="form-row">
             <!-- modal file button -->
             <div class="col-lg-6">
+                <!-- (click)="openModal('task')" -->
               <button
-                (click)="openModal('task')"
+                
                 class="btn btn-outline-primary form-control"
               >
                 Ajouter une tâche
@@ -92,8 +100,9 @@
             <div class="col-lg-6">
               <!-- modal user button -->
               <!-- (click)="openLg(content)" -->
+              <!-- (click)="openModal('user')" -->
               <button
-                (click)="openModal('user')"
+                
                 class="btn btn-outline-primary form-control"
               >
                 Ajouter un utilisateur
@@ -108,37 +117,39 @@
         <div class="form-row justify-content-arround">
           <div class="col-md-6">
             <h3 class="form-control-label">Tâches</h3>
+            <!--  *ngFor="let task of tasksWorkflow; let i = index" -->
             <div
               class="form-group"
-              *ngFor="let task of tasksWorkflow; let i = index"
+             
             >
               <!-- (change)="onTaskSelect(task.id, i)" -->
+              <!-- (change)="onTaskSelect($event.target.value, i)" -->
               <select
                 class="form-control"
                 name="user"
-                (change)="onTaskSelect($event.target.value, i)"
+                
               >
-                <option value="">Choisir...</option>
-                <option
+              <!-- <option
                   *ngFor="let taskav of availableTasks.slice()"
                   [value]="taskav.id"
                 >
                   {{ taskav.titre }}
-                </option>
+                </option> -->
+                <option value="">Choisir...</option>
+                
               </select>
             </div>
           </div>
           <div class="col-md-6">
             <h3 class="form-control-label">Utilisateurs</h3>
-            <div class="form-group" *ngFor="let task of tasksWorkflow">
-              <select
-                class="form-control"
-                (change)="onUserSelect($event.target.value, i)"
-              >
+            <!--  *ngFor="let task of tasksWorkflow" -->
+            <!-- (change)="onUserSelect($event.target.value, i)" -->
+            <!-- <option *ngFor="let user of usersWorkflow" [value]="user.id">
+                        {{ user.name }}
+                      </option> -->
+            <div class="form-group">
+              <select class="form-control">
                 <option value="">Choisir...</option>
-                <option *ngFor="let user of usersWorkflow" [value]="user.id">
-                  {{ user.name }}
-                </option>
               </select>
             </div>
           </div>
@@ -149,11 +160,7 @@
     <!-- Bouton d'enregistrement -->
     <div>
       <div class="row justify-content-lg-end">
-        <button
-          class="btn btn-success col-lg-2 mt-3"
-          type="submit"
-          (click)="enregistrer()"
-        >
+        <button class="btn btn-success col-lg-2 mt-3" type="submit">
           enregistrer
         </button>
       </div>
@@ -161,7 +168,7 @@
 
     <div class="row justify-content-center">
       <div class="col-2"><div class="" id="pointer">Etape 1</div></div>
-      <div class="col-2"><div class="" id="pointer "> Etape 2</div></div>
+      <div class="col-2"><div class="" id="pointer ">Etape 2</div></div>
       <div class="col-2"><div class="" id="pointer">Etape 3</div></div>
     </div>
 

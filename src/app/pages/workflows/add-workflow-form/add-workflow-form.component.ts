@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 
 import { ModalAssociateUserComponent } from "../modal-associate-user/modal-associate-user.component";
@@ -6,33 +6,33 @@ import { documents, Document, User } from "src/app/variables/charts";
 import { ModalAddDocumentComponent } from "../modal-add-document/modal-add-document.component";
 import { ModalAddTaskComponent } from "../modal-add-task/modal-add-task.component";
 export interface Task {
-  id?: number,
-  titre?: string,
-  detail?: string,
-  statut?: string,
+  id?: number;
+  titre?: string;
+  detail?: string;
+  statut?: string;
   priorite?: string;
-  echeance?: Date,
-  user?: User["id"],
-  document?: Document["name"],
+  echeance?: Date;
+  user?: User["id"];
+  document?: Document["name"];
 }
 
 interface TaskUser {
   id_task: Task["id"];
   id_user: User["id"];
-  ordre?: number;
+  //ordre?: number;
 }
 
 interface Workflow {
-  id: number,
-  titre: string,
-  detail: string,
-  priorite: string,
-  echeance?: Date,
-  statut: string,
-  documents?: number[],
-  users?: number[],
-  tasks?: number[],
-  taskUser?: TaskUser[]
+  id: number;
+  titre: string;
+  detail: string;
+  priorite: string;
+  echeance?: Date;
+  statut: string;
+  documents?: number[];
+  users?: number[];
+  tasks?: number[];
+  taskUser?: TaskUser[];
 }
 
 @Component({
@@ -40,7 +40,7 @@ interface Workflow {
   templateUrl: "./add-workflow-form.component.html",
   styleUrls: ["./add-workflow-form.component.scss"],
 })
-export class AddWorkflowFormComponent {
+export class AddWorkflowFormComponent implements OnInit {
   statut: string;
   priorite: string;
   message: any;
@@ -48,27 +48,36 @@ export class AddWorkflowFormComponent {
   echeance: string;
   addDocuments: Document[];
   workflowUsers: User[];
-  taskUser: TaskUser[] = [];
-  modalRef: any;
-
-  usersWorkflow: User[] = [
-    {id: 1, name: "zobel"}, {id:2, name: "ulrich"}
-  ];
   tasksWorkflow: Task[] = [
-    {id:1, titre: "t1"}, {id: 2, titre: 't2'}
+    { id: 1, titre: "t1" },
+    { id: 2, titre: "t2" },
+    { id: 3, titre: "t3" },
+    { id: 4, titre: "t4" }
   ];
+  usersWorkflow: User[] = [
+    { id: 1, name: "zobel" },
+    { id: 2, name: "ulrich" },
+  ];
+
+  //les tableaux pour stocker les paires task-user et les tâches disponibles
+  availableTasks: Task[] = this.tasksWorkflow;
+  taskUser: TaskUser[] = [];
+
+  modalRef: any;
   workflow: Workflow;
   //userId: User["id"];
   documents: Document[] = documents;
 
   constructor(private modalService: NgbModal) {}
+  ngOnInit(): void {
+  }
 
   addDoc() {}
 
   openModal(test: string) {
     if (test === "user") {
       this.modalRef = this.modalService.open(ModalAssociateUserComponent);
-    } else if(test=== "file") {
+    } else if (test === "file") {
       this.modalRef = this.modalService.open(ModalAddDocumentComponent);
     } else if (test === "task") {
       this.modalRef = this.modalService.open(ModalAddTaskComponent);
@@ -90,23 +99,47 @@ export class AddWorkflowFormComponent {
     );
   }
 
+  // Fonction appelée lorsqu'une tâche est sélectionnée
   onTaskSelect(task_id: number, index: number) {
-    this.taskUser[index] = {...this.taskUser[index], id_task: task_id};
+    // Trouver la tâche sélectionnée
+    console.log(task_id);
+    
+    const task = this.availableTasks.find(task => task.id === task_id);
+    console.log(this.availableTasks);
+    
+    console.log(task.id);
+    
+    if (!task) {
+      return "error";
+    }
+    // Ajouter l'id de la tache selectionnée dans le tableau des paire taskUser
+    this.taskUser.push({ ...this.taskUser[index], id_task: task.id });
+    console.log(this.taskUser);
+    //this.availableTasks = this.availableTasks.filter(task => task.id !== task_id)
+    this.availableTasks.splice(this.availableTasks.indexOf(task), 1);
+    //availableTaskList.splice(availableTaskList.indexOf(task), 1);
+    console.log(this.availableTasks);
+    
   }
 
+  // Fonction appelée lorsqu'un user est sélectionnée
   onUserSelect(user_id: number, index: number) {
-    this.taskUser[index] = {...this.taskUser[index], id_user: user_id}
+    const user = this.usersWorkflow.find((u) => u.id === user_id);
+    //console.log(user);
+    
+    if (!user) {
+      return "error";
+    }
+    this.taskUser.push({ ...this.taskUser[index], id_user: user.id });
+    console.log(this.taskUser);
+    
   }
 
   enregistrer() {
-    
-    console.log(this.taskUser)
-
+    console.log(this.taskUser);
   }
 
-  sendWorkflow() {
-    
-  }
+  sendWorkflow() {}
 
   // submitForm() {
   //   const data = [];
