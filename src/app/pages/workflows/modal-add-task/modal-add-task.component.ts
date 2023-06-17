@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { NgbActiveModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
-import { Task } from "../add-workflow-form/add-workflow-form.component";
+import { Task } from "src/app/models/tache.model";
 
 @Component({
   selector: "app-modal-add-task",
@@ -13,9 +13,12 @@ export class ModalAddTaskComponent implements OnInit {
   detail: string;
   statut: string; 
   priorite: string;
-  echeance: Date;
+  echeance: string;
   workflowTask: Task;
   id: number = 0;
+  ordre: number;
+  id_function: number;
+  titre_function: string;
 
   constructor(private formBuilder: FormBuilder, public activeModal: NgbActiveModal) {}
   
@@ -24,12 +27,13 @@ export class ModalAddTaskComponent implements OnInit {
   enregistrer() {
     this.workflowTask =
       {
-        //id: this.id++,
-        titre: this.titre,
-        detail: this.detail,
+        id: this.id++,
+        title: this.titre,
+        description: this.detail,
         statut: this.statut,
-        priorite: this.priorite,
-        echeance: this.echeance
+        delay: this.echeance,
+        order: this.ordre,
+        assignedFunction: {id: this.id_function, title: this.titre_function}
       }
     this.activeModal.close('Close click');
   }

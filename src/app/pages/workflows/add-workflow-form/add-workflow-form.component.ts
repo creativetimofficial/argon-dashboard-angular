@@ -5,35 +5,37 @@ import { ModalAssociateUserComponent } from "../modal-associate-user/modal-assoc
 import { documents, Document, User } from "src/app/variables/charts";
 import { ModalAddDocumentComponent } from "../modal-add-document/modal-add-document.component";
 import { ModalAddTaskComponent } from "../modal-add-task/modal-add-task.component";
-export interface Task {
-  id?: number;
-  titre?: string;
-  detail?: string;
-  statut?: string;
-  priorite?: string;
-  echeance?: Date;
-  user?: User["id"];
-  document?: Document["name"];
-}
+import { Workflow } from "src/app/models/workflow.model";
+import { Task } from "src/app/models/tache.model";
+// export interface Task {
+//   id?: number;
+//   titre?: string;
+//   detail?: string;
+//   statut?: string;
+//   priorite?: string;
+//   echeance?: Date;
+//   user?: User["id"];
+//   document?: Document["name"];
+// }
 
-interface TaskUser {
-  id_task: Task["id"];
-  id_user: User["id"];
-  //ordre?: number;
-}
+// interface TaskUser {
+//   id_task: Task["id"];
+//   id_user: User["id"];
+//   //ordre?: number;
+// }
 
-interface Workflow {
-  id: number;
-  titre: string;
-  detail: string;
-  priorite: string;
-  echeance?: Date;
-  statut: string;
-  documents?: number[];
-  users?: number[];
-  tasks?: number[];
-  taskUser?: TaskUser[];
-}
+// interface Workflow {
+//   id: number;
+//   titre: string;
+//   detail: string;
+//   priorite: string;
+//   echeance?: Date;
+//   statut: string;
+//   documents?: number[];
+//   users?: number[];
+//   tasks?: number[];
+//   taskUser?: TaskUser[];
+// }
 
 @Component({
   selector: "app-add-workflow-form",
@@ -48,31 +50,115 @@ export class AddWorkflowFormComponent implements OnInit {
   echeance: string;
   addDocuments: Document[];
   workflowUsers: User[];
-  tasksWorkflow: Task[] = [
-    { id: 1, titre: "t1" },
-    { id: 2, titre: "t2" },
-    { id: 3, titre: "t3" },
-    { id: 4, titre: "t4" }
-  ];
-  usersWorkflow: User[] = [
-    { id: 1, name: "zobel" },
-    { id: 2, name: "ulrich" },
-  ];
-
-  //les tableaux pour stocker les paires task-user et les tâches disponibles
-  availableTasks: Task[] = this.tasksWorkflow;
-  taskUser: TaskUser[] = [];
 
   modalRef: any;
-  workflow: Workflow;
-  //userId: User["id"];
   documents: Document[] = documents;
 
-  constructor(private modalService: NgbModal) {}
-  ngOnInit(): void {
+  workflow: Workflow = {
+    id: null,
+    title: "",
+    description: "",
+    status: "",
+    priority: null,
+    dueDate: null,
+    tasks: [],
+  };
+  task: Task = {
+    id: null,
+    title: "",
+    description: "",
+    statut: "",
+    assignedFunction: { id: null, title: "" },
+    order: null,
+  };
+
+  workflowTask: Task[] = [];
+
+  addTask(task: Task): void {
+    this.workflowTask.push(task);
+    console.log(this.workflowTask);
+
+    this.workflow.tasks = this.workflowTask
+    //this.workflow.tasks.push(this.task);
+    console.log(this.workflow);
+
   }
 
-  addDoc() {}
+  numTasks: number;
+
+  constructor(private modalService: NgbModal) {}
+  ngOnInit(): void {}
+
+  createTasks() {
+    if (this.numTasks && this.numTasks > 0) {
+      if (this.workflowTask.length > 0) {
+        this.workflowTask = [];
+        for (let i = 1; i <= this.numTasks; i++) {
+          this.workflowTask.push({
+            id: i,
+            title: "",
+            description: "",
+            statut: "",
+            assignedFunction: { id: null, title: "" },
+            order: null,
+          });
+        }
+      } else if (this.workflowTask.length === 0) {
+        for (let i = 1; i <= this.numTasks; i++) {
+          this.workflowTask.push({
+            id: i,
+            title: "",
+            description: "",
+            statut: "",
+            assignedFunction: { id: null, title: "" },
+            order: null,
+          });
+        }
+      }
+    }
+  }
+
+  saveTasks() {
+    if (this.workflowTask && this.workflowTask.length > 0) {
+      if (!this.workflow.tasks) {
+        this.workflow.tasks = [];
+      }
+      this.workflowTask.forEach((task: Task, index: number) => {
+        if (
+          task.title &&
+          task.description &&
+          task.assignedFunction &&
+          task.order
+        ) {
+          // const indexs = this.workflow.tasks.findIndex(
+          //   (task) => task.id === this.workflow.tasks[index].id
+          // );
+
+          const existTask = this.workflow.tasks.find((tache) => (tache === task));
+
+          if (!existTask) {
+            this.workflow.tasks.push(task);
+            console.log(this.workflow);
+          }else {
+            console.log(`la taches ${existTask.title} existe deja`);
+            
+          }
+        }
+      });
+    }
+  }
+
+  deleteTask(taskId: number) {
+    const index = this.workflowTask.findIndex((task) => task.id === taskId);
+    if (index !== -1) {
+      this.workflowTask.splice(index, 1);
+    }
+
+    const index1 = this.workflow.tasks.findIndex((task) => task.id === taskId);
+    if (index1 !== -1) {
+      this.workflow.tasks.splice(index, 1);
+    }
+  }
 
   openModal(test: string) {
     if (test === "user") {
@@ -99,47 +185,47 @@ export class AddWorkflowFormComponent implements OnInit {
     );
   }
 
-  // Fonction appelée lorsqu'une tâche est sélectionnée
-  onTaskSelect(task_id: number, index: number) {
-    // Trouver la tâche sélectionnée
-    console.log(task_id);
-    
-    const task = this.availableTasks.find(task => task.id === task_id);
-    console.log(this.availableTasks);
-    
-    console.log(task.id);
-    
-    if (!task) {
-      return "error";
-    }
-    // Ajouter l'id de la tache selectionnée dans le tableau des paire taskUser
-    this.taskUser.push({ ...this.taskUser[index], id_task: task.id });
-    console.log(this.taskUser);
-    //this.availableTasks = this.availableTasks.filter(task => task.id !== task_id)
-    this.availableTasks.splice(this.availableTasks.indexOf(task), 1);
-    //availableTaskList.splice(availableTaskList.indexOf(task), 1);
-    console.log(this.availableTasks);
-    
-  }
+  // // Fonction appelée lorsqu'une tâche est sélectionnée
+  // onTaskSelect(task_id: number, index: number) {
+  //   // Trouver la tâche sélectionnée
+  //   console.log(task_id);
 
-  // Fonction appelée lorsqu'un user est sélectionnée
-  onUserSelect(user_id: number, index: number) {
-    const user = this.usersWorkflow.find((u) => u.id === user_id);
-    //console.log(user);
-    
-    if (!user) {
-      return "error";
-    }
-    this.taskUser.push({ ...this.taskUser[index], id_user: user.id });
-    console.log(this.taskUser);
-    
-  }
+  //   const task = this.availableTasks.find(task => task.id === task_id);
+  //   console.log(this.availableTasks);
+
+  //   console.log(task.id);
+
+  //   if (!task) {
+  //     return "error";
+  //   }
+  //   // Ajouter l'id de la tache selectionnée dans le tableau des paire taskUser
+  //   this.taskUser.push({ ...this.taskUser[index], id_task: task.id });
+  //   console.log(this.taskUser);
+  //   //this.availableTasks = this.availableTasks.filter(task => task.id !== task_id)
+  //   this.availableTasks.splice(this.availableTasks.indexOf(task), 1);
+  //   //availableTaskList.splice(availableTaskList.indexOf(task), 1);
+  //   console.log(this.availableTasks);
+
+  // }
+
+  // // Fonction appelée lorsqu'un user est sélectionnée
+  // onUserSelect(user_id: number, index: number) {
+  //   const user = this.usersWorkflow.find((u) => u.id === user_id);
+  //   //console.log(user);
+
+  //   if (!user) {
+  //     return "error";
+  //   }
+  //   this.taskUser.push({ ...this.taskUser[index], id_user: user.id });
+  //   console.log(this.taskUser);
+
+  // }
 
   enregistrer() {
-    console.log(this.taskUser);
+    console.log(this.workflow);
   }
 
-  sendWorkflow() {}
+  // sendWorkflow() {}
 
   // submitForm() {
   //   const data = [];

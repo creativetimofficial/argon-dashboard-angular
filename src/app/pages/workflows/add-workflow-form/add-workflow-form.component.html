@@ -6,114 +6,250 @@
   <h1 class="title text-lg-center">
     Remplissez le formulaire ci-dessous pour l'initiation de votre workflow.
   </h1>
-  <form class="mt-3">
-    <div class="row">
-      <div class="col-lg-7">
-        <div class="form-group">
-          <label class="form-control-label"> Titre </label>
-          <input [(ngModel)]="titre" class="form-control" type="text" />
-        </div>
-        <div class="form-group">
-          <label class="form-control-label"> Message </label>
-          <textarea
-            name="message"
-            [(ngModel)]="message"
-            class="form-control"
-          ></textarea>
-        </div>
-        <div class="form-group">
-          <label class="form-control-label"> Priorité </label>
-          <select class="form-control" name="priorite" [(ngModel)]="priorite">
-            <option value="basse">basse</option>
-            <option value="moyenne">moyenne</option>
-            <option value="eleve">élevé</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-control-label"> Echéance </label>
-          <input
-            [(ngModel)]="echeance"
-            class="form-control"
-            id="exheance"
-            name="echeance"
-            type="date"
-          />
-        </div>
-        <div class="form-group">
-          <label class="form-control-label" for="statut"> Statut </label>
-          <select
-            class="form-control"
-            name="statut"
-            id="statut"
-            [(ngModel)]="statut"
-          >
-            <option value="pas-demarre">Pas démarré</option>
-            <option value="en-cours">En cours</option>
-            <option value="suspendu">Suspendu</option>
-            <option value="annule">Annulé</option>
-            <option value="termine">Terminé</option>
-          </select>
-        </div>
-
-        <label class="form-control-label" for="documents">
-          Documents ajoutés
-        </label>
-        <div class="form-row justify-content-between">
-          <div class="form-group col-lg-7">
-            <input
-              name="documents"
-              [(ngModel)]="addDocuments"
+  <div class="mt-3">
+    <form>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="form-control-label"> Titre </label>
+            <input [(ngModel)]="titre" class="form-control" type="text" />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label"> Message </label>
+            <textarea
+              name="message"
+              [(ngModel)]="message"
               class="form-control"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label"> Priorité </label>
+            <select class="form-control" name="priorite" [(ngModel)]="priorite">
+              <option value="basse">basse</option>
+              <option value="moyenne">moyenne</option>
+              <option value="eleve">élevé</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label"> Echéance </label>
+            <input
+              [(ngModel)]="echeance"
+              class="form-control"
+              id="exheance"
+              name="echeance"
+              type="date"
             />
           </div>
-
-          <div class="form-group col-lg-5">
-            <!-- modal file button -->
-            <button
-              (click)="openModal('file')"
-              class="btn btn-outline-primary form-control"
+          <div class="form-group">
+            <label class="form-control-label" for="statut"> Statut </label>
+            <select
+              class="form-control"
+              name="statut"
+              id="statut"
+              [(ngModel)]="statut"
             >
-              Ajouter un document
-            </button>
+              <option value="pas-demarre">Pas démarré</option>
+              <option value="en-cours">En cours</option>
+              <option value="suspendu">Suspendu</option>
+              <option value="annule">Annulé</option>
+              <option value="termine">Terminé</option>
+            </select>
+          </div>
+
+          <label class="form-control-label" for="documents">
+            Documents ajoutés
+          </label>
+          <div class="form-row justify-content-between">
+            <div class="form-group col-lg-7">
+              <input
+                name="documents"
+                [(ngModel)]="addDocuments"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group col-lg-5">
+              <!-- modal file button -->
+              <button
+                (click)="openModal('file')"
+                class="btn btn-outline-primary form-control"
+              >
+                Ajouter un document
+              </button>
+            </div>
           </div>
         </div>
 
-        <div>
-          <div class="form-row">
-            <!-- modal file button -->
-            <div class="col-lg-6">
-              <button
-                (click)="openModal('task')"
-                class="btn btn-outline-primary form-control"
-              >
-                Ajouter une tâche
-              </button>
+        <div class="col-lg-12 mt-5">
+          <div class="new-tasks">
+            <div class="row">
+              <div class="col-lg-5">
+                <h2>Créer des tâches</h2>
+
+                <div class="row">
+                  <div class="form-group col">
+                    <label class="form-control-label" for="numTasks"
+                      >Nombre de tâches</label
+                    >
+                    <input
+                      class="form-control"
+                      type="number"
+                      id="numTasks"
+                      name="numTasks"
+                      [(ngModel)]="numTasks"
+                      required
+                    />
+                  </div>
+                  <div class="form-group col align-self-end">
+                    <label class="form-control-label"></label>
+                    <button class="btn btn-primary" (click)="createTasks()">
+                      Créer
+                    </button>
+                  </div>
+                  
+                </div>
+              </div>
             </div>
-            <div class="col-lg-6">
-              <!-- modal user button -->
-              <!-- (click)="openLg(content)" -->
-              <button
-                (click)="openModal('user')"
-                class="btn btn-outline-primary form-control"
-              >
-                Ajouter un utilisateur
-              </button>
+
+            <div class="row justify-content-center">
+              <div *ngFor="let task of workflowTask" class="col-lg-3 mt-4 mb-4">
+                <h3>Tâche {{ task.id }}</h3>
+                <div class="form-group">
+                  <label for="title{{ task.id }}" class="form-control-label"
+                    >Titre</label
+                  >
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="title{{ task.id }}"
+                    name="title{{ task.id }}"
+                    [(ngModel)]="task.title"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    class="form-control-label"
+                    for="description{{ task.id }}"
+                    >Description</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="description{{ task.id }}"
+                    name="description{{ task.id }}"
+                    [(ngModel)]="task.description"
+                    required
+                  ></textarea>
+                </div>
+                <div class="form-group">
+                  <label
+                    class="form-control-label"
+                    for="assignedFunction{{ task.id }}"
+                    >Fonction utilisateur</label
+                  >
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="assignedFunction{{ task.id }}"
+                    name="assignedFunction{{ task.id }}"
+                    [(ngModel)]="task.assignedFunction"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label" for="order{{ task.id }}"
+                    >Ordre</label
+                  >
+                  <input
+                    class="form-control"
+                    type="number"
+                    id="order{{ task.id }}"
+                    name="order{{ task.id }}"
+                    [(ngModel)]="task.order"
+                    required
+                  />
+                </div>
+                <button
+                  class="btn btn-danger"
+                  type="button"
+                  (click)="deleteTask(task.id)"
+                >
+                  Supprimer
+                </button>
+              </div>
             </div>
+            <button type="button" class="btn btn-success" (click)="saveTasks()">
+              Enregistrer
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- liste d'association des utilisateurs et des taches -->
-      <div class="col-lg-5 card rounded border-0">
+      <!-- Bouton d'enregistrement -->
+      <div>
+        <div class="row justify-content-lg-center">
+          <button
+            class="btn btn-success col-lg-2 mt-3"
+            type="submit"
+            (click)="enregistrer()"
+          >
+            enregistrer
+          </button>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-2">
+          <div class="" id="pointer" style="z-index: 3"></div>
+        </div>
+        <div class="col-2">
+          <div
+            class=""
+            id="pointer"
+            style="z-index: 2; margin-left: 20px"
+          ></div>
+        </div>
+        <div class="col-2">
+          <div class="" id="pointer" style="margin-left: 40px"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- </div> -->
+</div>
+
+<!-- <div>
+  <div class="form-row">
+    <div class="col-lg-6">
+      <button
+        (click)="openModal('task')"
+        class="btn btn-outline-primary form-control"
+      >
+        Ajouter une tâche
+      </button>
+    </div>
+    <div class="col-lg-6">
+      <button
+        (click)="openModal('user')"
+        class="btn btn-outline-primary form-control"
+      >
+        Ajouter un utilisateur
+      </button>
+    </div>
+  </div>
+</div> -->
+
+<!-- liste d'association des utilisateurs et des taches -->
+<!-- <div class="col-lg-5 card rounded border-0">
         <div class="form-row justify-content-arround">
           <div class="col-md-6">
             <h3 class="form-control-label">Tâches</h3>
             <div
               class="form-group"
               *ngFor="let task of tasksWorkflow; let i = index"
-            >
-              <!-- (change)="onTaskSelect(task.id, i)" -->
-              <select
+            > -->
+<!-- (change)="onTaskSelect(task.id, i)" -->
+<!-- <select
                 class="form-control"
                 name="user"
                 (change)="onTaskSelect($event.target.value, i)"
@@ -144,28 +280,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <!-- Bouton d'enregistrement -->
-    <div>
-      <div class="row justify-content-lg-end">
-        <button
-          class="btn btn-success col-lg-2 mt-3"
-          type="submit"
-          (click)="enregistrer()"
-        >
-          enregistrer
-        </button>
-      </div>
-    </div>
-
-    <div class="row justify-content-center">
-      <div class="col-2"><div class="" id="pointer">Etape 1</div></div>
-      <div class="col-2"><div class="" id="pointer "> Etape 2</div></div>
-      <div class="col-2"><div class="" id="pointer">Etape 3</div></div>
-    </div>
-
-    <div>
+<!-- <div>
       <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item">
           <a
@@ -204,7 +321,4 @@
           >
         </li>
       </ul>
-    </div>
-  </form>
-</div>
-<!-- </div> -->
+    </div> -->
