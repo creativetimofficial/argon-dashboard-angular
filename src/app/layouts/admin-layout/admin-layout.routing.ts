@@ -10,6 +10,8 @@ import { DocumentsComponent } from 'src/app/pages/documents/documents.component'
 import { InitiateFlowComponent } from 'src/app/pages/workflows/initiate-flow/initiate-flow.component';
 import { SignatureComponent } from 'src/app/pages/signature/signature.component';
 import { SitesComponent } from 'src/app/pages/sites/sites.component';
+import { UpdateFlowComponent } from 'src/app/pages/workflows/update-flow/update-flow.component';
+import { UpdateTaskComponent } from 'src/app/pages/workflows/update-task/update-task.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -17,9 +19,11 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'workflows',      component: WorkflowsComponent },
     { path: 'workflows/:list',      component: InitiateFlowComponent },
-    { path: 'workflows/:list/:id',      component: InitiateFlowComponent },
+    { path: 'workflows/list/:id',      component: InitiateFlowComponent },
     { path: 'signature', component: SignatureComponent},
-    { path: 'sites', component: SitesComponent}
+    { path: 'equipes', component: SitesComponent},
+    { path: 'workflows/update-flow/:id', component: UpdateFlowComponent },
+    { path: 'workflows/update-task/:id', component: UpdateTaskComponent}
     //{ path: 'tables',         component: TablesComponent },
     //{ path: 'icons',          component: IconsComponent },
     //{ path: 'maps',           component: MapsComponent },

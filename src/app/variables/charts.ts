@@ -440,48 +440,57 @@ export interface User {
   id_site?: number,
   id_sign?: number,
   taches?: [],
-  workflows?: []
+  workflows?: [],
+  service: string
 }
 
 export const users: User[] =  [
   {
     id: 1,
     name: "concepteur JS",
+    service: "RH",
     numero: 697451979
   },
   {
     id: 2,
     name: "Armand",
+    service: "RD",
     numero: 653301329
   },
   {
     id: 3,
     name: "aymard",
+    service: "RD",
     numero: 652341789
   },
   {
     id: 4,
     name: "Idriss",
-    numero: 685215543
+    numero: 685215543,
+    service: "CF"
   },
   {
     id: 5,
     name: "Joris",
+    service: "IR",
     numero: 655412682
   },
   {
     id: 6,
     name: "Nicolette",
-    numero: 697421587
+    numero: 697421587,
+    service: "MARK"
   },
   {
-    id: 1,
+    id: 7,
     name: "Sylvie",
-    numero: 654123874
+    numero: 654123874,
+    service: "RH"
   },
   {
-    id: 1,
+    id: 8,
     name: "Maéva",
-    numero: 692651379
+    numero: 692651379,
+    service: "RD"
   }
 ]

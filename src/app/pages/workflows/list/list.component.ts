@@ -103,4 +103,9 @@ export class ListComponent {
       documentAssignes: [this.Documents[2]],
     },
   ];
+
+  deleteWorkflow(id: number) {
+    console.log('workflow delete');
+    
+  }
 }

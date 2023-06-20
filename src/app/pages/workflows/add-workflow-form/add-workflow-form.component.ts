@@ -45,21 +45,22 @@ import { Task } from "src/app/models/tache.model";
 export class AddWorkflowFormComponent implements OnInit {
   statut: string;
   priorite: string;
-  message: any;
+  message: string;
   titre: string;
-  echeance: string;
+  echeance: Date;
   addDocuments: Document[];
+  id: number = 0;
   workflowUsers: User[];
 
   modalRef: any;
   documents: Document[] = documents;
 
   workflow: Workflow = {
-    id: null,
+    id: this.id++,
     title: "",
     description: "",
     status: "",
-    priority: null,
+    priority: "",
     dueDate: null,
     tasks: [],
   };
@@ -68,21 +69,22 @@ export class AddWorkflowFormComponent implements OnInit {
     title: "",
     description: "",
     statut: "",
-    assignedFunction: { id: null, title: "" },
+    //assignedFunction: { id: null, title: "" },
+    users: null,
     order: null,
   };
 
   workflowTask: Task[] = [];
 
-  addTask(task: Task): void {
-    this.workflowTask.push(task);
-    console.log(this.workflowTask);
+  // addTask(task: Task): void {
+  //   this.workflowTask.push(task);
+  //   console.log(this.workflowTask);
 
-    this.workflow.tasks = this.workflowTask
-    //this.workflow.tasks.push(this.task);
-    console.log(this.workflow);
+  //   this.workflow.tasks = this.workflowTask
+  //   //this.workflow.tasks.push(this.task);
+  //   console.log(this.workflow);
 
-  }
+  // }
 
   numTasks: number;
 
@@ -99,7 +101,7 @@ export class AddWorkflowFormComponent implements OnInit {
             title: "",
             description: "",
             statut: "",
-            assignedFunction: { id: null, title: "" },
+            users: null,
             order: null,
           });
         }
@@ -110,7 +112,7 @@ export class AddWorkflowFormComponent implements OnInit {
             title: "",
             description: "",
             statut: "",
-            assignedFunction: { id: null, title: "" },
+            users: null,
             order: null,
           });
         }
@@ -127,21 +129,20 @@ export class AddWorkflowFormComponent implements OnInit {
         if (
           task.title &&
           task.description &&
-          task.assignedFunction &&
+          //task.users &&
           task.order
         ) {
           // const indexs = this.workflow.tasks.findIndex(
           //   (task) => task.id === this.workflow.tasks[index].id
           // );
 
-          const existTask = this.workflow.tasks.find((tache) => (tache === task));
+          const existTask = this.workflow.tasks.find((tache) => tache === task);
 
           if (!existTask) {
             this.workflow.tasks.push(task);
             console.log(this.workflow);
-          }else {
-            console.log(`la taches ${existTask.title} existe deja`);
-            
+          } else {
+            console.log(`la tache ${existTask.title} existe deja`);
           }
         }
       });
@@ -163,6 +164,11 @@ export class AddWorkflowFormComponent implements OnInit {
   openModal(test: string) {
     if (test === "user") {
       this.modalRef = this.modalService.open(ModalAssociateUserComponent);
+      this.modalRef.componentInstance.save.subscribe((workflowUsers )=> {
+        this.workflowUsers = workflowUsers;
+        console.log(this.workflowUsers);
+      });
+        
     } else if (test === "file") {
       this.modalRef = this.modalService.open(ModalAddDocumentComponent);
     } else if (test === "task") {
@@ -183,6 +189,19 @@ export class AddWorkflowFormComponent implements OnInit {
         console.log(reason);
       }
     );
+  }
+
+  enregistrer() {
+    this.workflow = {
+      ...this.workflow,
+      id: this.id,
+      title: this.titre,
+      description: this.message,
+      priority: this.priorite,
+      dueDate: this.echeance,
+      status: this.statut,
+    };
+    console.log(this.workflow);
   }
 
   // // Fonction appelée lorsqu'une tâche est sélectionnée
@@ -221,9 +240,7 @@ export class AddWorkflowFormComponent implements OnInit {
 
   // }
 
-  enregistrer() {
-    console.log(this.workflow);
-  }
+  
 
   // sendWorkflow() {}
 

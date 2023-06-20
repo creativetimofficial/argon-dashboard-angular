@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { NgbActiveModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 import { Task } from "src/app/models/tache.model";
+import { User } from "src/app/variables/charts";
 
 @Component({
   selector: "app-modal-add-task",
@@ -19,6 +20,7 @@ export class ModalAddTaskComponent implements OnInit {
   ordre: number;
   id_function: number;
   titre_function: string;
+  workflowUsers: User[]
 
   constructor(private formBuilder: FormBuilder, public activeModal: NgbActiveModal) {}
   
@@ -33,7 +35,8 @@ export class ModalAddTaskComponent implements OnInit {
         statut: this.statut,
         delay: this.echeance,
         order: this.ordre,
-        assignedFunction: {id: this.id_function, title: this.titre_function}
+        users: this.workflowUsers
+        //assignedFunction: {id: this.id_function, title: this.titre_function}
       }
     this.activeModal.close('Close click');
   }

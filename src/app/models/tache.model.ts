@@ -1,3 +1,4 @@
+import { User } from "../variables/charts";
 import { Function } from "./function.model";
 
 export interface Task {
@@ -6,6 +7,7 @@ export interface Task {
     description: string; // description de la tâche
     statut: string; // définir l'état de la tâche en cours, terminée ou annulée
     delay?: string // délais d'execution de la tâche
-    assignedFunction: Function; // fonction utilisateur assignée à la tâche
+    //assignedFunction: Function; // fonction utilisateur assignée à la tâche
+    users: User[];
     order: number; // ordre d'exécution de la tâche
   }

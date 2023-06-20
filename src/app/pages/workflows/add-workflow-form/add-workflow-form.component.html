@@ -15,7 +15,7 @@
             <input [(ngModel)]="titre" class="form-control" type="text" />
           </div>
           <div class="form-group">
-            <label class="form-control-label"> Message </label>
+            <label class="form-control-label"> Message ou descripton </label>
             <textarea
               name="message"
               [(ngModel)]="message"
@@ -117,7 +117,7 @@
             </div>
 
             <div class="row justify-content-center">
-              <div *ngFor="let task of workflowTask" class="col-lg-3 mt-4 mb-4">
+              <div *ngFor="let task of workflowTask" class="col-lg-4 mt-4 mb-4">
                 <h3>Tâche {{ task.id }}</h3>
                 <div class="form-group">
                   <label for="title{{ task.id }}" class="form-control-label"
@@ -146,7 +146,17 @@
                     required
                   ></textarea>
                 </div>
+
                 <div class="form-group">
+                  <button
+                    (click)="openModal('user')"
+                    class="btn btn-outline-primary form-control"
+                  >
+                    Ajouter un/des utilisateur(s)
+                  </button>
+                </div>
+
+                <!-- <div class="form-group">
                   <label
                     class="form-control-label"
                     for="assignedFunction{{ task.id }}"
@@ -160,7 +170,7 @@
                     [(ngModel)]="task.assignedFunction"
                     required
                   />
-                </div>
+                </div> -->
                 <div class="form-group">
                   <label class="form-control-label" for="order{{ task.id }}"
                     >Ordre</label
@@ -200,7 +210,7 @@
         </div>
       </div>
 
-      <div class="row justify-content-center">
+      <!-- <div class="row justify-content-center">
         <div class="col-2">
           <div class="" id="pointer" style="z-index: 3"></div>
         </div>
@@ -214,7 +224,7 @@
         <div class="col-2">
           <div class="" id="pointer" style="margin-left: 40px"></div>
         </div>
-      </div>
+      </div> -->
     </form>
   </div>
   <!-- </div> -->

@@ -1,5 +1,5 @@
- <div class=" row justify-content-center mt-5">
-  <div class="col-lg-12 ">
+<div class="row justify-content-center mt-5">
+  <div class="col-lg-12">
     <div class="row">
       <div class="card col-lg-11 rounded shadow border-0 mt-2">
         <div class="card-content">
@@ -24,7 +24,9 @@
                 class="Workflows card mt-4 rounded shadow--hover"
                 *ngFor="let workflow of workflowTab"
               >
-                <div class="card-header bg-primary d-flex justify-content-between align-content-start text-white text-darker">
+                <div
+                  class="card-header bg-primary d-flex justify-content-between align-content-start text-white text-darker"
+                >
                   <span class="card-title">{{ workflow.titre }}</span>
                   <span>
                     <a
@@ -49,17 +51,26 @@
                     <span class="text-darker">Statut :</span>
                     {{ workflow.statut }}
                   </div>
+                  <div class="row mt-2 justify-content-end">
+                    <a routerLinkActive="active" [routerLink]="['/workflows/update-flow/:id']">
+                      <i class="fa fa-edit text-primary mr-1" aria-hidden="true"></i>
+                    </a>
+
+                    <div (click)="deleteWorkflow(id)" role="button">
+                      <i class="fa fa-trash text-danger ml-2 mr-4" aria-hidden="true"></i>
+                    </div>
+                    
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
     </div>
   </div>
   <div class="col-lg-12 mt-5">
-    <div class="row ">
+    <div class="row">
       <!-- <div class="col-lg-1"></div> -->
       <div class="card col-lg-11 rounded border-0 shadow mt-2">
         <div class="card-content">
@@ -84,7 +95,9 @@
                 class="Workflows d-block card mt-4 rounded shadow--hover"
                 *ngFor="let workflow of workflowTab"
               >
-                <div class="card-header d-flex justify-content-between align-content-start bg-green text-white text-darker">
+                <div
+                  class="card-header d-flex justify-content-between align-content-start bg-green text-white text-darker"
+                >
                   <span class="card-title">{{ workflow.titre }}</span>
                   <span>
                     <a
@@ -108,6 +121,16 @@
                   <div class="card-text">
                     <span class="text-darker">Statut :</span>
                     {{ workflow.statut }}
+                  </div>
+                  <div class="row mt-2 justify-content-end">
+                    <a routerLinkActive="active" [routerLink]="['/workflows/update-task/:id']">
+                      <i class="fa fa-edit text-success mr-1" aria-hidden="true"></i>
+                    </a>
+
+                    <div (click)="deleteWorkflow(id)" role="button">
+                      <i class="fa fa-trash text-danger ml-2 mr-4" aria-hidden="true"></i>
+                    </div>
+                    
                   </div>
                 </div>
               </div>
