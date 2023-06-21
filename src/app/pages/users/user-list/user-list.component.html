@@ -1,0 +1,62 @@
+<div class="row mt-4 mb-4">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Utilisateurs récemment enregistrés</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom d'utilisateur</th>
+                <th scope="col">Fonction</th>
+                <th scope="col">Equipe(s)</th>
+                <th scope="col">Nbre workflow(s)</th>
+                <th scope="col">Nbre tâche(s)</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let user of users;
+                  let i = index;
+                  paginate: {
+                    itemsPerPage: 5,
+                    currentPage: page,
+                    totalItems: total
+                  }
+                "
+              >
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ user.username }}</td>
+                <td>{{ user.fonction }}</td>
+                <td>{{ user.equipe }}</td>
+                <td>{{ user.taches }}</td>
+                <td></td>
+                <td class="d-flex align-items-center justify-content-around">
+                  <span role="button" (click)="detailUser(user.id)" class="fas fa-eye text-success"></span>
+                  <span role="button" (click)="updateUser(user.id)" class="fa fa-pen text-primary"></span>
+                  <span role="button" (click)="deleteUser(user.id)" class="fa text-danger fa-trash-alt"></span>
+                </td>
+                
+                <style>
+                  .span:hover{
+                    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.12);
+                    cursor: pointer;
+                  }
+                </style>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer py-2">
+          <!-- <pagination-controls
+            (pageChange)="page = $event"
+          ></pagination-controls> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  

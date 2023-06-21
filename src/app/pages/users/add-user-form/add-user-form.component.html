@@ -1,0 +1,54 @@
+<div class="card rounded shadow p-5 border-0">
+  <h1 >Créer un utilisateur</h1>
+  <form class="mt-3" action="" method="post">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nom">Noms</label>
+        <input type="text" name="nom" class="form-control" />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="prenom">Prénoms</label>
+        <input type="text" name="prenom" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Email*</label>
+        <input required type="email" class="form-control" id="email" />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Nom d'uilisateur*</label>
+        <input required type="text" class="form-control" id="username" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="fonction">Fonction*</label>
+        <select required id="fonction" class="form-control">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="equipe">Equipe</label>
+        <select id="equipe" class="form-control">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      
+    </div>
+    <!-- <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" />
+        <label class="form-check-label" for="gridCheck"> Check me out </label>
+      </div>
+    </div> -->
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+    
+  </form>
+</div>

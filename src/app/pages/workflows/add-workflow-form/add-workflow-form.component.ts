@@ -8,35 +8,8 @@ import { ModalAddTaskComponent } from "../modal-add-task/modal-add-task.componen
 import { Workflow } from "src/app/models/workflow.model";
 import { Task } from "src/app/models/tache.model";
 import { User } from "src/app/models/utilisateur.model";
-// export interface Task {
-//   id?: number;
-//   titre?: string;
-//   detail?: string;
-//   statut?: string;
-//   priorite?: string;
-//   echeance?: Date;
-//   user?: User["id"];
-//   document?: Document["name"];
-// }
-
-// interface TaskUser {
-//   id_task: Task["id"];
-//   id_user: User["id"];
-//   //ordre?: number;
-// }
-
-// interface Workflow {
-//   id: number;
-//   titre: string;
-//   detail: string;
-//   priorite: string;
-//   echeance?: Date;
-//   statut: string;
-//   documents?: number[];
-//   users?: number[];
-//   tasks?: number[];
-//   taskUser?: TaskUser[];
-// }
+import { HttpClient } from '@angular/common/http';
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-add-workflow-form",
@@ -90,7 +63,8 @@ export class AddWorkflowFormComponent implements OnInit {
 
   numTasks: number;
 
-  constructor(private modalService: NgbModal) {}
+
+  constructor(private modalService: NgbModal, private http: HttpClient) {}
   ngOnInit(): void {}
 
   createTasks() {
@@ -208,11 +182,11 @@ export class AddWorkflowFormComponent implements OnInit {
           }
         }
       });
-      this.workflowUsers.forEach((user) => {
-        user.taches = this.workflow.tasks
-          .filter((task) => task.users.some(u => u.id === user.id))
-          .map((task) => task.id);
-      });
+      // this.workflowUsers.forEach((user) => {
+      //   user.taches = this.workflow.tasks
+      //     .filter((task) => task.users.some(u => u.id === user.id))
+      //     .map((task) => task.id);
+      // });
     }
   }
 
@@ -238,6 +212,10 @@ export class AddWorkflowFormComponent implements OnInit {
       dueDate: this.echeance,
       status: this.statut,
     };
+    this.http.post(
+      environment.apiBaseUrl+'/workflow/start', 
+      this.workflow
+      )
     console.log(this.workflow);
   }
 

@@ -29,6 +29,12 @@ import { ReadSiteComponent } from './pages/sites/read-site/read-site.component';
 import { AddSiteComponent } from './pages/sites/add-site/add-site.component';
 import { UpdateFlowComponent } from './pages/workflows/update-flow/update-flow.component';
 import { UpdateTaskComponent } from './pages/workflows/update-task/update-task.component';
+import { UsersComponent } from './pages/users/users.component';
+import { UserListComponent } from './pages/users/user-list/user-list.component';
+import { AddUserFormComponent } from './pages/users/add-user-form/add-user-form.component';
+import { ModalDeleteComponent } from './pages/users/user-list/modal-delete/modal-delete.component';
+import { ModalDetailComponent } from './pages/users/user-list/modal-detail/modal-detail.component';
+import { ModalUpdateComponent } from './pages/users/user-list/modal-update/modal-update.component';
 //import { StepsFlowComponent } from './pages/workflows/steps-flow/steps-flow.component';
 //import { DocumentViewFileModalComponent } from './pages/documents/document-view-file-modal/document-view-file-modal.component';
 
@@ -67,6 +73,12 @@ import { UpdateTaskComponent } from './pages/workflows/update-task/update-task.c
     AddSiteComponent,
     UpdateFlowComponent,
     UpdateTaskComponent,
+    UsersComponent,
+    UserListComponent,
+    AddUserFormComponent,
+    ModalDeleteComponent,
+    ModalDetailComponent,
+    ModalUpdateComponent,
     //StepsFlowComponent,
     //DocumentViewFileModalComponent
     //AddWorkflowFormComponent,

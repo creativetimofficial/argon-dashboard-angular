@@ -1,4 +1,5 @@
 import Chart from 'chart.js';
+import { User } from '../models/utilisateur.model';
 //
 // Chart extension for making the bars rounded
 // Code from: https://codepen.io/jedtrow/full/ygRYgo
@@ -429,68 +430,76 @@ export const documents: Document[] = [
   },
 ];
 
-export interface User {
-  id: number,
-  name: string,
-  date_naissance?: Date;
-  sexe?: boolean,
-  email?: string,
-  numero?: number,
-  id_role?: number,
-  id_site?: number,
-  id_sign?: number,
-  taches?: [],
-  workflows?: [],
-  service: string
-}
+// export interface User {
+//   id: number,
+//   name: string,
+//   date_naissance?: Date;
+//   sexe?: boolean,
+//   email?: string,
+//   tel?: number,
+//   id_role?: number,
+//   id_site?: number,
+//   id_sign?: number,
+//   taches?: [],
+//   workflows?: [],
+//   service: string
+// }
 
 export const users: User[] =  [
   {
     id: 1,
-    name: "concepteur JS",
+    username: "concepteur JS",
     service: "RH",
-    numero: 697451979
+    fonction: "front end",
+    tel: 697451979
   },
   {
     id: 2,
-    name: "Armand",
+    username: "Armand",
     service: "RD",
-    numero: 653301329
+    fonction: "back-end",
+    tel: 653301329
   },
   {
     id: 3,
-    name: "aymard",
+    username: "aymard",
     service: "RD",
-    numero: 652341789
+    fonction: "mobile dev",
+    tel: 652341789
   },
   {
     id: 4,
-    name: "Idriss",
-    numero: 685215543,
+    username: "Idriss",
+    tel: 685215543,
+    fonction: "back-end",
     service: "CF"
   },
   {
     id: 5,
-    name: "Joris",
+    username: "Joris",
     service: "IR",
-    numero: 655412682
+    fonction: "admin réseau",
+    tel: 655412682
   },
   {
     id: 6,
-    name: "Nicolette",
-    numero: 697421587,
+    username: "Nicolette",
+    tel: 697421587,
+    fonction: "commerciale",
     service: "MARK"
   },
   {
     id: 7,
-    name: "Sylvie",
-    numero: 654123874,
+    username: "Sylvie",
+    tel: 654123874,
+    fonction: "ressource humaine",
     service: "RH"
   },
   {
     id: 8,
-    name: "Maéva",
-    numero: 692651379,
+    username: "Maéva",
+    tel: 692651379,
+    fonction: "stagiaire",
     service: "RD"
   }
 ]

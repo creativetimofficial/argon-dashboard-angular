@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { NgbActiveModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 import { Task } from "src/app/models/tache.model";
-import { User } from "src/app/variables/charts";
+import { User } from "src/app/models/utilisateur.model";
 
 @Component({
   selector: "app-modal-add-task",

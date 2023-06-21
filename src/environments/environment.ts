@@ -5,7 +5,7 @@ import 'zone.js/dist/zone-error';
 
 export const environment = {
   production: false,
-  apiBasUrl: 'http://10.0.100.111:8080'
+  apiBaseUrl: 'http://10.0.100.111:8080'
 };
 
 /*

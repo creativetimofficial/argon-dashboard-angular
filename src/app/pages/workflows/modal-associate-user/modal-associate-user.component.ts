@@ -1,8 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { users } from 'src/app/variables/charts';
+//import { users } from 'src/app/variables/charts';
 import { User } from 'src/app/models/utilisateur.model';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
  
 @Component({
   selector: 'app-modal-associate-user',
@@ -10,7 +12,7 @@ import { User } from 'src/app/models/utilisateur.model';
   styleUrls: ['./modal-associate-user.component.scss']
 })
 export class ModalAssociateUserComponent implements OnInit{
-  listUsers: User[] = users;
+  listUsers: User[] = [];
   searchResults: User[] = [];
   selectedUsers: User[] = [];
   workflowUsers: User[] = [];
@@ -20,24 +22,27 @@ export class ModalAssociateUserComponent implements OnInit{
 
   @Output() save = new EventEmitter<any>();
 
-  constructor(private formBuilder: FormBuilder, public activeModal: NgbActiveModal) {
+  constructor(private formBuilder: FormBuilder, public activeModal: NgbActiveModal, private http: HttpClient) {
   }
 
   ngOnInit(): void {
+    this.http.get<User[]>(environment.apiBaseUrl+'/users/all').subscribe((users) => this.listUsers = users)
+    console.log(this.listUsers);
+    
     this.searchResults = this.listUsers;
     this.workflowUsers = this.selectedUsers;
   }
 
   searchInput() {
     let results = this.listUsers.filter(userResult => 
-      userResult.service.includes(this.searchUser)
+      userResult.fonction.includes(this.searchUser)
     )
     this.searchResults = results
   }
 
   search() {
     let results = this.listUsers.filter(userResult =>
-      userResult.name.includes(this.searchUser)  
+      userResult.username.includes(this.searchUser)  
     )
     this.searchResults = results
   }
