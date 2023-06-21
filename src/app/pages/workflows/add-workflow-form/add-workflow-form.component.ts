@@ -122,70 +122,28 @@ export class AddWorkflowFormComponent implements OnInit {
     }
   }
 
-  saveTasks() {
-    if (this.workflowTask && this.workflowTask.length > 0) {
-      if (!this.workflow.tasks) {
-        this.workflow.tasks = [];
-      }
-      this.workflowTask.forEach((task: Task, index: number) => {
-        console.log(task);
-        
-        if (
-          task.title &&
-          task.description &&
-          task.users &&
-          task.order
-        ) {
-          console.log(this.workflowUsers);
-          let taskUsers = this.workflowUsers.filter(
-            (user) => task.id === user.id_tache
-          );
-          console.log(taskUsers);
-          
-          task = { ...task, users: taskUsers };
-
-          // const indexs = this.workflow.tasks.findIndex(
-          //   (task) => task.id === this.workflow.tasks[index].id
-          // );
-
-          const existTask = this.workflow.tasks.find((tache) => tache === task);
-
-          if (!existTask) {
-            this.workflow.tasks.push(task);
-            console.log(this.workflow);
-          } else {
-            console.log(`la tache ${existTask.title} existe deja`);
-          }
-        }
-      });
-    }
-  }
-
-  deleteTask(taskId: number) {
-    const index = this.workflowTask.findIndex((task) => task.id === taskId);
-    if (index !== -1) {
-      this.workflowTask.splice(index, 1);
-    }
-
-    const index1 = this.workflow.tasks.findIndex((task) => task.id === taskId);
-    if (index1 !== -1) {
-      this.workflow.tasks.splice(index, 1);
-    }
-  }
-
   openModal(test: string, id_task?: number) {
     if (test === "user") {
       this.modalRef = this.modalService.open(ModalAssociateUserComponent);
       this.modalRef.componentInstance.save.subscribe(
         (workflowUsers: User[]) => {
-          // console.log(workflowUsers);
-          // console.log(this.workflowUsers);
 
           for (let user of workflowUsers) {
-            user = { ...user, id_tache: id_task };
-            this.workflowUsers.push(user);
-            //console.log(this.workflowUsers);
+
+            const existingUser = this.workflowUsers.find(u => u.id === user.id);
+            if(existingUser) {
+              existingUser.taches.push(id_task);
+            } else {
+              this.workflowUsers.push({...user, taches: [id_task]});
+            }
+            //user = { ...user, id_tache: id_task };
+            console.log(this.workflowUsers);
           }
+
+          // for (let user of workflowUsers) {
+          //   user = { ...user, id_tache: id_task };
+          //   this.workflowUsers.push(user);
+          // }
         }
       );
     } else if (test === "file") {
@@ -212,6 +170,62 @@ export class AddWorkflowFormComponent implements OnInit {
         console.log(reason);
       }
     );
+  }
+
+  saveTasks() {
+    if (this.workflowTask && this.workflowTask.length > 0) {
+      if (!this.workflow.tasks) {
+        this.workflow.tasks = [];
+      }
+      this.workflowTask.forEach((task: Task, index: number) => {
+        console.log(task);
+        
+        if (
+          task.title &&
+          task.description &&
+          task.users &&
+          task.order
+        ) {
+          console.log(this.workflowUsers);
+          let taskUsers = this.workflowUsers.filter(
+            (user) => user.taches.includes(task.id)
+          );
+          console.log(taskUsers);
+          
+          task = { ...task, users: taskUsers };
+
+          // const indexs = this.workflow.tasks.findIndex(
+          //   (task) => task.id === this.workflow.tasks[index].id
+          // );
+
+          const existTask = this.workflow.tasks.find((tache) => tache === task);
+
+          if (!existTask) {
+            this.workflow.tasks.push(task);
+            console.log(this.workflow);
+          } else {
+            console.log(`la tache ${existTask.title} existe deja`);
+          }
+        }
+      });
+      this.workflowUsers.forEach((user) => {
+        user.taches = this.workflow.tasks
+          .filter((task) => task.users.some(u => u.id === user.id))
+          .map((task) => task.id);
+      });
+    }
+  }
+
+  deleteTask(taskId: number) {
+    const index = this.workflowTask.findIndex((task) => task.id === taskId);
+    if (index !== -1) {
+      this.workflowTask.splice(index, 1);
+    }
+
+    const index1 = this.workflow.tasks.findIndex((task) => task.id === taskId);
+    if (index1 !== -1) {
+      this.workflow.tasks.splice(index, 1);
+    }
   }
 
   enregistrer() {
@@ -276,3 +290,5 @@ export class AddWorkflowFormComponent implements OnInit {
   //   // Ajouter ici le code pour enregistrer les données dans votre backend
   // }
 }
+
+
