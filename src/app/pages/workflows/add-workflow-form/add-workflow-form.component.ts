@@ -2,11 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 
 import { ModalAssociateUserComponent } from "../modal-associate-user/modal-associate-user.component";
-import { documents, Document, User } from "src/app/variables/charts";
+import { documents, Document } from "src/app/variables/charts";
 import { ModalAddDocumentComponent } from "../modal-add-document/modal-add-document.component";
 import { ModalAddTaskComponent } from "../modal-add-task/modal-add-task.component";
 import { Workflow } from "src/app/models/workflow.model";
 import { Task } from "src/app/models/tache.model";
+import { User } from "src/app/models/utilisateur.model";
 // export interface Task {
 //   id?: number;
 //   titre?: string;
@@ -50,7 +51,7 @@ export class AddWorkflowFormComponent implements OnInit {
   echeance: Date;
   addDocuments: Document[];
   id: number = 0;
-  workflowUsers: User[];
+  workflowUsers: User[] = [];
 
   modalRef: any;
   documents: Document[] = documents;
@@ -63,14 +64,15 @@ export class AddWorkflowFormComponent implements OnInit {
     priority: "",
     dueDate: null,
     tasks: [],
+    documents: []
   };
   task: Task = {
     id: null,
     title: "",
     description: "",
-    statut: "",
+    status: "",
     //assignedFunction: { id: null, title: "" },
-    users: null,
+    users: [],
     order: null,
   };
 
@@ -100,8 +102,8 @@ export class AddWorkflowFormComponent implements OnInit {
             id: i,
             title: "",
             description: "",
-            statut: "",
-            users: null,
+            status: "",
+            users: [],
             order: null,
           });
         }
@@ -111,8 +113,8 @@ export class AddWorkflowFormComponent implements OnInit {
             id: i,
             title: "",
             description: "",
-            statut: "",
-            users: null,
+            status: "",
+            users: [],
             order: null,
           });
         }
@@ -126,12 +128,22 @@ export class AddWorkflowFormComponent implements OnInit {
         this.workflow.tasks = [];
       }
       this.workflowTask.forEach((task: Task, index: number) => {
+        console.log(task);
+        
         if (
           task.title &&
           task.description &&
-          //task.users &&
+          task.users &&
           task.order
         ) {
+          console.log(this.workflowUsers);
+          let taskUsers = this.workflowUsers.filter(
+            (user) => task.id === user.id_tache
+          );
+          console.log(taskUsers);
+          
+          task = { ...task, users: taskUsers };
+
           // const indexs = this.workflow.tasks.findIndex(
           //   (task) => task.id === this.workflow.tasks[index].id
           // );
@@ -161,14 +173,21 @@ export class AddWorkflowFormComponent implements OnInit {
     }
   }
 
-  openModal(test: string) {
+  openModal(test: string, id_task?: number) {
     if (test === "user") {
       this.modalRef = this.modalService.open(ModalAssociateUserComponent);
-      this.modalRef.componentInstance.save.subscribe((workflowUsers )=> {
-        this.workflowUsers = workflowUsers;
-        console.log(this.workflowUsers);
-      });
-        
+      this.modalRef.componentInstance.save.subscribe(
+        (workflowUsers: User[]) => {
+          // console.log(workflowUsers);
+          // console.log(this.workflowUsers);
+
+          for (let user of workflowUsers) {
+            user = { ...user, id_tache: id_task };
+            this.workflowUsers.push(user);
+            //console.log(this.workflowUsers);
+          }
+        }
+      );
     } else if (test === "file") {
       this.modalRef = this.modalService.open(ModalAddDocumentComponent);
     } else if (test === "task") {
@@ -179,7 +198,11 @@ export class AddWorkflowFormComponent implements OnInit {
     document.querySelector<HTMLElement>(".modal-backdrop").style.zIndex = "1";
     document
       .querySelector<HTMLElement>(".modal-dialog")
-      .classList.add("modal-lg", "modal-dialog-scrollable");
+      .classList.add("modal-lg");
+
+    document
+      .querySelector<HTMLElement>(".modal-dialog")
+      .classList.add("modal-dialog-scrollable");
 
     this.modalRef.result.then(
       (result: any) => {
@@ -239,8 +262,6 @@ export class AddWorkflowFormComponent implements OnInit {
   //   console.log(this.taskUser);
 
   // }
-
-  
 
   // sendWorkflow() {}
 

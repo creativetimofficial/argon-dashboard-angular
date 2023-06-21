@@ -149,28 +149,12 @@
 
                 <div class="form-group">
                   <button
-                    (click)="openModal('user')"
+                    (click)="openModal('user', task.id)"
                     class="btn btn-outline-primary form-control"
                   >
                     Ajouter un/des utilisateur(s)
                   </button>
                 </div>
-
-                <!-- <div class="form-group">
-                  <label
-                    class="form-control-label"
-                    for="assignedFunction{{ task.id }}"
-                    >Fonction utilisateur</label
-                  >
-                  <input
-                    class="form-control"
-                    type="text"
-                    id="assignedFunction{{ task.id }}"
-                    name="assignedFunction{{ task.id }}"
-                    [(ngModel)]="task.assignedFunction"
-                    required
-                  />
-                </div> -->
                 <div class="form-group">
                   <label class="form-control-label" for="order{{ task.id }}"
                     >Ordre</label

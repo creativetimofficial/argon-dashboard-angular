@@ -32,7 +32,7 @@ export class ModalAddTaskComponent implements OnInit {
         id: this.id++,
         title: this.titre,
         description: this.detail,
-        statut: this.statut,
+        status: this.statut,
         delay: this.echeance,
         order: this.ordre,
         users: this.workflowUsers

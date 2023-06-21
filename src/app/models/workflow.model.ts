@@ -1,3 +1,4 @@
+import { Document } from "./document.model";
 import { Task } from "./tache.model";
 
 export interface Workflow {
@@ -8,5 +9,6 @@ export interface Workflow {
     priority: string; // priorité du workflow
     dueDate: Date; // date d'échéance du workflow
     tasks: Task[]; // tableau de tâches associées au workflow
+    documents?: Document[]
     //notifications: Notification[]; // tableau de notifications à envoyer
   }

@@ -1,8 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { users, User } from 'src/app/variables/charts';
-
+import { users } from 'src/app/variables/charts';
+import { User } from 'src/app/models/utilisateur.model';
+ 
 @Component({
   selector: 'app-modal-associate-user',
   templateUrl: './modal-associate-user.component.html',
@@ -64,7 +65,7 @@ export class ModalAssociateUserComponent implements OnInit{
     console.log(this.workflowUsers);
     
     this.save.emit(this.workflowUsers);
-    this.activeModal.close()
+    this.activeModal.dismiss()
   }
 }
 
