@@ -20,8 +20,8 @@ import { ModalAddDocumentComponent } from './pages/workflows/modal-add-document/
 import { ModalComponent } from './components/modal/modal.component';
 import { DocumentAddDossierComponent } from './pages/documents/document-add-dossier/document-add-dossier.component';
 import { ModalAddTaskComponent } from './pages/workflows/modal-add-task/modal-add-task.component';
-import { SignatureComponent } from './pages/signature/signature.component';
-import { SignatureListComponent } from './pages/signature/signature-list/signature-list.component';
+//import { SignatureComponent } from './pages/signature/signature.component';
+//import { SignatureListComponent } from './pages/signature/signature-list/signature-list.component';
 import { SitesComponent } from './pages/sites/sites.component';
 import { UpdateSiteComponent } from './pages/sites/update-site/update-site.component';
 import { DeleteSiteComponent } from './pages/sites/delete-site/delete-site.component';
@@ -35,6 +35,7 @@ import { AddUserFormComponent } from './pages/users/add-user-form/add-user-form.
 import { ModalDeleteComponent } from './pages/users/user-list/modal-delete/modal-delete.component';
 import { ModalDetailComponent } from './pages/users/user-list/modal-detail/modal-detail.component';
 import { ModalUpdateComponent } from './pages/users/user-list/modal-update/modal-update.component';
+//import { SignerComponent } from './pages/signature/signer/signer.component';
 //import { StepsFlowComponent } from './pages/workflows/steps-flow/steps-flow.component';
 //import { DocumentViewFileModalComponent } from './pages/documents/document-view-file-modal/document-view-file-modal.component';
 
@@ -64,8 +65,6 @@ import { ModalUpdateComponent } from './pages/users/user-list/modal-update/modal
     ModalComponent,
     DocumentAddDossierComponent,
     ModalAddTaskComponent,
-    SignatureComponent,
-    SignatureListComponent,
     SitesComponent,
     UpdateSiteComponent,
     DeleteSiteComponent,
@@ -79,6 +78,7 @@ import { ModalUpdateComponent } from './pages/users/user-list/modal-update/modal
     ModalDeleteComponent,
     ModalDetailComponent,
     ModalUpdateComponent,
+    //SignerComponent,
     //StepsFlowComponent,
     //DocumentViewFileModalComponent
     //AddWorkflowFormComponent,

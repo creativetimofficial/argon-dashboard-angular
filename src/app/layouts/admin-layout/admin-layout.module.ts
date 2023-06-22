@@ -26,6 +26,9 @@ import { DocumentDossiersComponent } from '../../pages/documents/document-dossie
 import { DocumentAcquisitionComponent } from '../../pages/documents/document-acquisition/document-acquisition.component';
 import { DocumentViewFileModalComponent } from 'src/app/pages/documents/document-view-file-modal/document-view-file-modal.component';
 import { StepsFlowComponent } from 'src/app/pages/workflows/steps-flow/steps-flow.component';
+import { SignerComponent } from 'src/app/pages/signature/signer/signer.component';
+import { SignatureComponent } from 'src/app/pages/signature/signature.component';
+import { SignatureListComponent } from 'src/app/pages/signature/signature-list/signature-list.component';
 
 @NgModule({
   imports: [
@@ -53,7 +56,10 @@ import { StepsFlowComponent } from 'src/app/pages/workflows/steps-flow/steps-flo
     DocumentIndexationComponent,
     DocumentListComponent,
     DocumentViewFileModalComponent,
-    StepsFlowComponent
+    StepsFlowComponent,
+    SignatureComponent,
+    SignatureListComponent,
+    SignerComponent
   ],
   exports: [
     MatDialogModule,

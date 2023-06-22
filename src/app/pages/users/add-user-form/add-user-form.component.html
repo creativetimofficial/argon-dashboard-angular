@@ -32,10 +32,10 @@
         </select>
       </div>
       <div class="form-group col-md-6">
-        <label for="equipe">Equipe</label>
+        <label for="equipe">Rôle</label>
         <select id="equipe" class="form-control">
           <option selected>Choose...</option>
-          <option>...</option>
+          <option *ngFor="role of roles" value="role.id">{{role.titre}}</option>
         </select>
       </div>
       

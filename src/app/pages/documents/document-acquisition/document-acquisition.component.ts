@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DocumentViewFileModalComponent } from '../document-view-file-modal/document-view-file-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from 'src/environments/environment';
 
 declare var window: any;
 @Component({
@@ -22,7 +23,7 @@ export class DocumentAcquisitionComponent implements OnInit {
   formModal: any;
   @Output() viewIconCliked = new EventEmitter<string>();
 
-  private request: string = "http://10.0.100.115:8080";
+  private baseUrl: string = environment.apiBaseUrl;
   //@Input() typeDocArrayLength: number;
 
   constructor(private http: HttpClient, private modalService: NgbModal) {
@@ -100,13 +101,13 @@ export class DocumentAcquisitionComponent implements OnInit {
   }
 
   sendFile(formData: FormData){
-    this.http.post(this.request+"/files/uploadM", formData).subscribe(response => {
+    this.http.post(this.baseUrl+"/files/uploadM", formData).subscribe(response => {
       //console.log(response);
     })
   }
 
   loadFile(fileName: string) {
-    return this.http.get(this.request+"/files/view/"+fileName).subscribe(  //{responseType: "blob"}
+    return this.http.get(this.baseUrl+"/files/view/"+fileName).subscribe(  //{responseType: "blob"}
       (res: any) => {
         this.docPath = res.url
         // const file = new Blob([res], { type: 'application/pdf' });

@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./signature.component.scss']
 })
 export class SignatureComponent {
+  display: boolean = false;
+
+  changeDisplay() {
+    this.display = !this.display
+    console.log(this.display);
+    
+  }
 
 }

@@ -1,0 +1,68 @@
+<div class="drop-zone row-reverse" (drop)="fileDropped($event)" (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave($event)" *ngIf="!displayViewer">
+  <div class="glisser col">
+    Déposez les fichiers ici ou cliquez pour signer
+
+    <div class="button col">
+      <a class="nav-link" class="btn btn-primary" (click)="selectFile()"><i class="fa fa-upload mr-2"></i> Importer</a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="displayViewer" class="d-flex row align-items-start">
+  <!-- visionneuse -->
+  <div class="col-lg-8">
+    <ngx-doc-viewer [url]="docPath" viewer="pdf" style="width: 100%; height: 90vh"
+      (pageRendered)="onPageRendered($event)" (click)="onDocumentClick($event)"></ngx-doc-viewer>
+
+    <div class="selected-area" [style.left.px]="selectedAreaLeft" [style.top.px]="selectedAreaTop"
+      [style.width.px]="selectedAreaWidth" [style.height.px]="selectedAreaHeight"></div>
+  </div>
+
+
+<!-- formulaire d'enregistrement de l'index du document -->
+<form class="col-lg-4">
+  <!-- <canvas #signatureCanvas [ngClass]="{'signature-selected': isSelected}" (click)="handleCanvasClick($event)"></canvas> -->
+  <input class="form-control" type="text" placeholder="nom du fichier" value="{{ name }}" />
+  <!-- <input type="file" accept=".cer,.crt,.pem,.pfx,.p12" (change)="onFileSelected($event)"> -->
+  <!-- <label class="form-label" for="type">Type de document</label>
+    <select class="form-control" name="type" id="type">
+      <option value="contrat">Contrat</option>
+      <option value="facture">Facture</option>
+      <option value="recrutement">Recrutement</option>
+    </select>
+
+    <label class="form-label" for="mot_cle">Mots clés : </label>
+    <input
+      class="form-control"
+      id="mot_cle"
+      name="mot_cle"
+      type="text"
+      placeholder="séparez vos mots d'une virule sans espace."
+    />
+
+    <label class="form-label" for="statut">Statut</label>
+    <select class="form-control" name="staut" id="statut">
+      <option value="nouveau">Nouveau</option>
+      <option value="approuve">Approuvé</option>
+      <option value="archive">Archivé</option>
+      <option value="signe">Signé</option>
+      <option value="finalise">Finalisé</option>
+    </select> -->
+  <div class="form-group">
+    <label for="">Importer une image pour signer</label>
+    <input type="file" class="form-control" name="" id="" placeholder="" aria-describedby="fileHelpId" />
+    <small id="fileHelpId" class="form-text text-muted">Help text</small>
+  </div>
+  <div class="form-group">
+    <label for="">Choisir une signature </label>
+    <select class="form-control" name="" id="">
+      <option>sign 1</option>
+      <option>sign 2</option>
+      <option>sign 3</option>
+    </select>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Signer</button>
+</form>
+</div>

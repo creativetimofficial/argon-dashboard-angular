@@ -108,7 +108,11 @@
                   </div>
                   <div class="form-group col-2 align-self-end">
                     <label class="form-control-label"></label>
-                    <button type="button" class="btn btn-success" (click)="saveTasks()">
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      (click)="saveTasks()"
+                    >
                       Enregistrer
                     </button>
                   </div>
@@ -118,7 +122,18 @@
 
             <div class="row justify-content-center">
               <div *ngFor="let task of workflowTask" class="col-lg-4 mt-4 mb-4">
-                <h3>Tâche {{ task.id }}</h3>
+                <div
+                  class="d-flex justify-content-between"
+                >
+                  <h3>Tâche {{ task.id }}</h3>
+                  <!-- (click)="deleteTask(task.id)" -->
+                  <i
+                    class="fa fa-times-circle fa-lg text-danger align-self-center"
+                    (click)="deleteTask(task.id)"
+                    role="button"
+                  ></i>
+                </div>
+
                 <div class="form-group">
                   <label for="title{{ task.id }}" class="form-control-label"
                     >Titre</label
@@ -168,13 +183,13 @@
                     required
                   />
                 </div>
-                <button
+                <!-- <button
                   class="btn btn-danger"
                   type="button"
                   (click)="deleteTask(task.id)"
                 >
                   Supprimer
-                </button>
+                </button> -->
               </div>
             </div>
           </div>
