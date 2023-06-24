@@ -9,5 +9,5 @@ export interface Task {
     delay?: string // délais d'execution de la tâche
     //assignedFunction: Function; // fonction utilisateur assignée à la tâche
     users: User[];
-    order: number; // ordre d'exécution de la tâche
+    ordre: number; // ordre d'exécution de la tâche
   }

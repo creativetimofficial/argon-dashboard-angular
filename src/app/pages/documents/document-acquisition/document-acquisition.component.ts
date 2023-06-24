@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { DocumentViewFileModalComponent } from '../document-view-file-modal/document-view-file-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from 'src/environments/environment';
+import { DocumentService } from 'src/app/services/document/document.service';
 
 declare var window: any;
 @Component({
@@ -24,9 +25,10 @@ export class DocumentAcquisitionComponent implements OnInit {
   @Output() viewIconCliked = new EventEmitter<string>();
 
   private baseUrl: string = environment.apiBaseUrl;
+  error: string;
   //@Input() typeDocArrayLength: number;
 
-  constructor(private http: HttpClient, private modalService: NgbModal) {
+  constructor(private http: HttpClient, private modalService: NgbModal, private documentService: DocumentService) {
   } 
 
   ngOnInit(): void {
@@ -100,25 +102,24 @@ export class DocumentAcquisitionComponent implements OnInit {
       return formData;
   }
 
-  sendFile(formData: FormData){
-    this.http.post(this.baseUrl+"/files/uploadM", formData).subscribe(response => {
-      //console.log(response);
-    })
+  sendFile(formData: FormData) {
+    this.documentService.uploadFile(formData)
   }
+  
 
   loadFile(fileName: string) {
-    return this.http.get(this.baseUrl+"/files/view/"+fileName).subscribe(  //{responseType: "blob"}
-      (res: any) => {
-        this.docPath = res.url
+    this.documentService.getFileByName(fileName).subscribe((response: any) => 
+      this.docPath = response.url
+    ),
+      (error: any) => {
+      this.error = 'Une erreur s\'est produite lors de la récupération des données de l\'utilisateur.';
+      console.error(error);
+    }
+    //{responseType: "blob"}
         // const file = new Blob([res], { type: 'application/pdf' });
         // const fileURL = URL.createObjectURL(file);
         // this.docPath = fileURL;
-      }
-    );
   }
-    // .subscribe(response => {
-    //   console.log(response);
-    // })
 
   //permet de gerer les fichers importés dans l'application
   async handleFiles(file: File) {
