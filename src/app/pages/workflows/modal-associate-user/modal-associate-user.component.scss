@@ -1,0 +1,16 @@
+.modal {
+    opacity: 1 !important;
+    display: block !important;
+    &.modal-backdrop{
+        background-color: rgb(225, 225, 225) !important;
+        &.fade{
+            opacity: 1;
+        }
+    }
+}
+
+.modal-backdrop{
+    background-color: rgba(136, 136, 136, 0.226) !important;
+    opacity: 0.5;
+    z-index: 2;
+}

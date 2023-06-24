@@ -1,0 +1,29 @@
+#pointer {
+  width: 150px;
+  height: 80px;
+  position: relative;
+  background: rgb(0, 88, 196);
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 40px solid rgb(255, 255, 255);
+    border-top: 40px solid transparent;
+    border-bottom: 40px solid transparent;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    right: -40px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 40px solid rgb(0, 88, 196);
+    border-top: 40px solid transparent;
+    border-bottom: 40px solid transparent;
+  }
+}

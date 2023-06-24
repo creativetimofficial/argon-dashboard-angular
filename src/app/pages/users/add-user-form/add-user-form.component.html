@@ -1,0 +1,54 @@
+<div class="card rounded shadow p-5 border-0">
+  <h1 >Créer un utilisateur</h1>
+  <form class="mt-3">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nom">Noms</label>
+        <input type="text" name="nom" class="form-control" [(ngModel)] = "nom"/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="prenom">Prénoms</label>
+        <input type="text" name="prenom" class="form-control" [(ngModel)] = "prenom"/>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Email*</label>
+        <input required type="email" class="form-control" id="email" [(ngModel)] = "email"/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Nom d'uilisateur*</label>
+        <input required type="text" class="form-control" id="username" [(ngModel)] = "username"/>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="fonction">Fonction*</label>
+        <select required id="fonction" class="form-control" [(ngModel)] = "fonction">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="equipe">Rôle</label>
+        <select id="equipe" class="form-control" [(ngModel)] = "role_id">
+          <option selected>Choose...</option>
+          <option *ngFor=" let role of roles" [value]="role.id">{{role.titre}}</option>
+        </select>
+      </div>
+      
+    </div>
+    <!-- <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" />
+        <label class="form-check-label" for="gridCheck"> Check me out </label>
+      </div>
+    </div> -->
+    <div class="d-flex justify-content-end">
+        <button (click)="enregistrer()" class="btn btn-primary" type="submit">Enregistrer</button>
+    </div>
+    
+  </form>
+</div>

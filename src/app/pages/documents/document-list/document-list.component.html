@@ -1,0 +1,47 @@
+<!-- boutton de retour -->
+<div (click)="changeDisplay()" class="mb-3">
+  <i class="fas fa-arrow-alt-circle-left fa-fw text-primary fa-xl "></i>
+</div>
+
+<!-- LISTE DES FICHIERS -->
+<div
+  class="row"
+  id="filePlusViewer"
+  style="height: 90vh"
+>
+  <div class="file-container col-5">
+    <div class="row">
+      <div class="file col-4" *ngFor="let typeDoc of typeDocArray" >
+        <img
+          (click)="viewFile(typeDoc.docPath)"
+          width="50"
+          height="50"
+          src="https://img.icons8.com/color/96/pdf-2--v1.png"
+          alt="pdf-2--v1"
+        />
+        <br />
+        <span class="fileName" style="font-size: smaller">
+          {{ typeDoc.name }}
+        </span>
+        <!-- <span class="fileSize" style="font-size: smaller;"> {{ dossier.size }} </span> -->
+      </div>
+    </div>
+  </div>
+
+
+<!-- VISIONNEUSE -->
+  <div class="visionneuse col-7 rounded shadow-lg card p--2 m-0">
+    <div class="card-header">
+      <div class="card-title">visionneuse</div>
+    </div>
+     <div class="card body">
+      <ngx-doc-viewer
+      [url]="docPath"
+      viewer="pdf"
+      style="width: 100%; min-height: 90vh"
+    ></ngx-doc-viewer>
+     </div>
+  </div>
+</div>
+
+

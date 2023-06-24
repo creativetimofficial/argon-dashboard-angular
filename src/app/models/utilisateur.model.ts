@@ -1,0 +1,21 @@
+export interface User {
+    id?: number,
+    name?: string,
+    noms?: string,
+    username?: string,
+    pwd?: string,
+    tel?: number,
+    sexe?: boolean,
+    email?: string,
+    fonction?: string,
+    //numero?: number,
+    //user_name?: string,
+    //password?: string, 
+    id_role?: number,
+    id_site?: number,
+    id_sign?: number,
+    //id_tache?: number,
+    taches?: number[],
+    workflows?: [],
+    service?: string
+  }

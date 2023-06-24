@@ -1,4 +1,5 @@
 import Chart from 'chart.js';
+import { User } from '../models/utilisateur.model';
 //
 // Chart extension for making the bars rounded
 // Code from: https://codepen.io/jedtrow/full/ygRYgo
@@ -353,3 +354,152 @@ export const chartExample2 = {
     ]
   }
 }
+
+export interface Document {
+  id?: number;
+  name?: string,
+  type?: string,
+  typeDoc: string,
+  size?: string,
+  statut: string,
+  mot_cles?: string,
+  fileContent?: any,
+  docPath?: string,
+}
+
+export const documents: Document[] = [
+  {
+    id:1,
+    name: "doc1",
+    type: "pdf",
+    typeDoc: "Contrats",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },
+  {
+    id:2,
+    name: "doc2",
+    type: "pdf",
+    typeDoc: "Contrats",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },
+  {
+    id:3,
+    name: "doc3",
+    type: "pdf",
+    typeDoc: "Factures",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },{
+    id:4,
+    name: "doc4",
+    type: "pdf",
+    typeDoc: "Factures",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },{
+    id:5,
+    name: "doc5",
+    type: "pdf",
+    typeDoc: "CV",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },{
+    id:6,
+    name: "doc6",
+    type: "pdf",
+    typeDoc: "Demission",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },{
+    id:7,
+    name: "doc7",
+    type: "pdf",
+    typeDoc: "Recrutement",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },
+  {
+    id:8,
+    name: "doc8",
+    type: "pdf",
+    typeDoc: "Contrats",
+    statut: 'nouveau',
+    //mot_cles: "contrat,directeur,employé"
+  },
+];
+
+// export interface User {
+//   id: number,
+//   name: string,
+//   date_naissance?: Date;
+//   sexe?: boolean,
+//   email?: string,
+//   tel?: number,
+//   id_role?: number,
+//   id_site?: number,
+//   id_sign?: number,
+//   taches?: [],
+//   workflows?: [],
+//   service: string
+// }
+
+export const users: User[] =  [
+  {
+    id: 1,
+    username: "concepteur JS",
+    service: "RH",
+    fonction: "front end",
+    tel: 697451979
+  },
+  {
+    id: 2,
+    username: "Armand",
+    service: "RD",
+    fonction: "back-end",
+    tel: 653301329
+  },
+  {
+    id: 3,
+    username: "aymard",
+    service: "RD",
+    fonction: "mobile dev",
+    tel: 652341789
+  },
+  {
+    id: 4,
+    username: "Idriss",
+    tel: 685215543,
+    fonction: "back-end",
+    service: "CF"
+  },
+  {
+    id: 5,
+    username: "Joris",
+    service: "IR",
+    fonction: "admin réseau",
+    tel: 655412682
+  },
+  {
+    id: 6,
+    username: "Nicolette",
+    tel: 697421587,
+    fonction: "commerciale",
+    service: "MARK"
+  },
+  {
+    id: 7,
+    username: "Sylvie",
+    tel: 654123874,
+    fonction: "ressource humaine",
+    service: "RH"
+  },
+  {
+    id: 8,
+    username: "Maéva",
+    tel: 692651379,
+    fonction: "stagiaire",
+    service: "RD"
+  }
+]

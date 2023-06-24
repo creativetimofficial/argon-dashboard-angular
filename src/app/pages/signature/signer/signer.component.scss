@@ -1,0 +1,24 @@
+.drop-zone {
+    letter-spacing: .3px;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    padding: 100px 50px;
+    text-align: center;
+    font-size: 17px;
+    color: #999;
+    background: #f7f7f7;
+    cursor: pointer;
+    &:hover {
+      background: #eee;
+    }
+    .dragover {
+      background: #f0f0f0;
+    }
+  }
+
+  .selected-area {
+    position: absolute;
+    border: 2px solid red;
+    pointer-events: none;
+    transition: all 0.5s ease-out;
+  }

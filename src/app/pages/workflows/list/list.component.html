@@ -1,0 +1,143 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="card col-lg-11 rounded shadow border-0 mt-2">
+        <div class="card-content">
+          <div
+            class="card-header text-black-50 d-flex justify-content-between align-items-start"
+          >
+            <span class="card-title text-primary font-weight-bold"
+              >Workflows initiés</span
+            >
+            <!-- <span>
+              <a
+                routerLinkActive="active"
+                [routerLink]="['/workflows/inities']"
+              >
+                <button class="btn btn-primary btn-sm">Lister</button>
+              </a>
+            </span> -->
+          </div>
+          <div class="card-body">
+            <div class="">
+              <div
+                class="Workflows card mt-4 rounded shadow--hover"
+                *ngFor="let workflow of workflowTab"
+              >
+                <div
+                  class="card-header bg-primary d-flex justify-content-between align-content-start text-white text-darker"
+                >
+                  <span class="card-title">{{ workflow.titre }}</span>
+                  <span>
+                    <a
+                      routerLinkActive="active"
+                      [routerLink]="['/workflows/inities/:id']"
+                    >
+                      <button class="btn btn-secondary btn-sm">Détails</button>
+                    </a>
+                  </span>
+                </div>
+
+                <div class="card-body text-sm">
+                  <div class="card-text">
+                    <span class="text-darker">Echéance :</span>
+                    {{ workflow.Echeances }}
+                  </div>
+                  <div class="card-text">
+                    <span class="text-darker">Priorité :</span>
+                    {{ workflow.priorite }}
+                  </div>
+                  <div class="card-text">
+                    <span class="text-darker">Statut :</span>
+                    {{ workflow.statut }}
+                  </div>
+                  <div class="row mt-2 justify-content-end">
+                    <a routerLinkActive="active" [routerLink]="['/workflows/update-flow/:id']">
+                      <i class="fa fa-edit text-primary mr-1" aria-hidden="true"></i>
+                    </a>
+
+                    <div (click)="deleteWorkflow(id)" role="button">
+                      <i class="fa fa-trash text-danger ml-2 mr-4" aria-hidden="true"></i>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 mt-5">
+    <div class="row">
+      <!-- <div class="col-lg-1"></div> -->
+      <div class="card col-lg-11 rounded border-0 shadow mt-2">
+        <div class="card-content">
+          <div
+            class="card-header text-black-50 d-flex justify-content-between align-items-start"
+          >
+            <span class="card-title text-green font-weight-bold text-lg-left"
+              >Tâches attribuées</span
+            >
+            <!-- <span>
+              <a
+                routerLinkActive="active"
+                [routerLink]="['/workflows/attribuees']"
+              >
+                <button class="btn btn-success btn-sm">Lister</button>
+              </a>
+            </span> -->
+          </div>
+          <div class="card-body">
+            <div class="d-block">
+              <div
+                class="Workflows d-block card mt-4 rounded shadow--hover"
+                *ngFor="let workflow of workflowTab"
+              >
+                <div
+                  class="card-header d-flex justify-content-between align-content-start bg-green text-white text-darker"
+                >
+                  <span class="card-title">{{ workflow.titre }}</span>
+                  <span>
+                    <a
+                      routerLinkActive="active"
+                      [routerLink]="['/workflows/attribuees/:id']"
+                    >
+                      <button class="btn btn-secondary btn-sm">Détails</button>
+                    </a>
+                  </span>
+                </div>
+
+                <div class="card-body text-sm">
+                  <div class="card-text">
+                    <span class="text-darker">Echéance :</span>
+                    {{ workflow.Echeances }}
+                  </div>
+                  <div class="card-text">
+                    <span class="text-darker">Priorité :</span>
+                    {{ workflow.priorite }}
+                  </div>
+                  <div class="card-text">
+                    <span class="text-darker">Statut :</span>
+                    {{ workflow.statut }}
+                  </div>
+                  <div class="row mt-2 justify-content-end">
+                    <a routerLinkActive="active" [routerLink]="['/workflows/update-task/:id']">
+                      <i class="fa fa-edit text-success mr-1" aria-hidden="true"></i>
+                    </a>
+
+                    <div (click)="deleteWorkflow(id)" role="button">
+                      <i class="fa fa-trash text-danger ml-2 mr-4" aria-hidden="true"></i>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

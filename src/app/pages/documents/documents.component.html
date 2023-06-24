@@ -1,0 +1,48 @@
+<div
+  class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="max-height: 300px; margin-bottom: 10px; font: 15px 'Poppins'"
+>
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-7 col-md-10">
+        <h1 class="display-2 text-white">Salut username</h1>
+        <p class="text-white mt-0 mb-5">
+          Ici vous avez la possibilité de voir tous les documents enregistrés
+          par catégorie; vous pouvez aussi ajouter des documents en cliquant sur
+          le boutton ci-desous.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- [typeDoc]="'Tout'" -->
+
+<app-document-acquisition
+  *ngIf="display"
+  [page]="page"
+  [documents]="documents"
+  [name]="name"
+  [type]="type"
+  [size]="size"
+  [docPath]="docPath"
+  [countDoc]="countDoc()"
+></app-document-acquisition>
+
+<app-document-dossiers
+  *ngIf="display"
+  [dossiers]="dossiers"
+  (folderClicked)="clikedFolder($event)"
+></app-document-dossiers>
+
+<app-document-list
+  *ngIf="displayInnerFolder"
+  [display]="display"
+  [displayInnerFolder]="displayInnerFolder"
+  (modifyDisplays)="display = $event.boolean1; displayInnerFolder=$event.boolean2 "
+  [typeDocArray]="typeDocArray"
+  [docPath]="docPath"
+></app-document-list>

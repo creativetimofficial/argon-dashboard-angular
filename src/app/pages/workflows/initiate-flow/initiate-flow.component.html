@@ -1,0 +1,48 @@
+<div class="header bg-gradient-danger pb-3 pt-5 pt-md-8">
+  <a
+    class="nav-link"
+    class="btn btn-primary ml-3 mt-4"
+    ><img
+      width="25"
+      height="25"
+      src="https://img.icons8.com/ios/25/ffffff/serial-tasks--v1.png"
+      alt="serial-tasks--v1"
+    />
+    Lancer un workflow</a
+  >
+</div>
+<div class="card col-sm col-md rounded shadow border-0 mt-2 mr-2">
+  <div class="card-content">
+    <div class="card-header text-black-50">
+      <span class="card-title text-primary font-weight-bold pointer-event"
+        >Workflows initiés</span
+      >
+    </div>
+    <div class="card-body">
+      <div class="">
+        <div
+          class="Workflows card mt-2 rounded shadow--hover"
+          *ngFor="let workflow of workflowTab"
+        >
+          <div class="card-header bg-primary text-white text-darker">
+            <span class="card-title">{{ workflow.titre }}</span>
+          </div>
+
+          <div class="card-body text-sm">
+            <div class="card-text">
+              <span class="text-darker">Echéance :</span>
+              {{ workflow.Echeances }}
+            </div>
+            <div class="card-text">
+              <span class="text-darker">Priorité :</span>
+              {{ workflow.priorite }}
+            </div>
+            <div class="card-text">
+              <span class="text-darker">Statut :</span> {{ workflow.statut }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

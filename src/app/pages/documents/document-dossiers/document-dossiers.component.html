@@ -1,0 +1,92 @@
+<div class="container-fuild mt-3">
+  <div class="col align-items-center justify-content-center">
+    <div class="row justify-content-around">
+      <div class="col align-self-center">
+        <div class="card shadow m-0 p--2">
+          <div class="card-content">
+            <div
+              class="card-header border-0 d-flex align-items-center justify-content-between"
+            >
+              <h3 class="card-title mb-0">Vos Dossiers</h3>
+              <!-- Button trigger modal -->
+              <button
+                style="font-weight: bolder"
+                class="btn btn-success text-xl text-white pl-2 pr-2 pt-0 pb-0"
+                (click)="openModal()"
+              >
+                +
+              </button>
+            </div>
+
+            <!-- Button trigger modal -->
+
+            <!-- <span (click)="open(content)">
+                <i
+                  class="fas fa-plus-square fa-2x shadow-lg rounded text-success"
+                ></i>
+              </span>
+            </div> -->
+
+            <!-- Modal -->
+
+            <!-- <div #modal class="modal fade" id="createFolder" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <script>
+              $("#exampleModal").on("show.bs.modal", (event) => {
+                var button = $(event.relatedTarget);
+                var modal = $(this);
+                // Use above variables to manipulate the DOM
+              });
+            </script> -->
+
+            <div class="card-body">
+              <div class="row">
+                <div *ngFor="let dossier of dossiers" class="col-12 col-lg-4">
+                  <div
+                    class="card shadow-none border radius-15 p--2 mb-4 ml-0 mr-0"
+                  >
+                    <div class="card-body">
+                      <small class="display-5">{{ dossier.type }}</small>
+                      <div
+                        class="d-flex flex-row align-items-center justify-content-end p--2 ml-0 mr-0 flex-wrap"
+                      >
+                        <div class="font-60 text-primary col">
+                          <div
+                            class="d-flex align-items-center justify-content-start"
+                          >
+                            <img
+                              (click)="clikedFolder(dossier.type)"
+                              width="96"
+                              height="96"
+                              src="https://img.icons8.com/color/96/folder-invoices--v1.png"
+                              alt="folder-invoices--v1"
+                            />
+                            <!-- countDossierType() -->
+                            <small>{{ dossier.numberOfFile }} fichier(s)</small>
+                          </div>
+                        </div>
+
+                        <div class="ms-auto">
+                          <p style="font-size: small">
+                            ici vous avez tous les documents de type
+                            {{ dossier.type }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
