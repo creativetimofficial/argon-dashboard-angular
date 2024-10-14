@@ -1,0 +1,196 @@
+<!-- <nav aria-label="breadcrumb" role="navigation">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page">
+      <a [routerLink]="['../../']">Transaction</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+      <a href="javascript:;">Order Details</a>
+    </li>
+  </ol>
+</nav> -->
+<ngx-spinner size="large" type="ball-scale-multiple" [fullScreen]="true">
+</ngx-spinner>
+<div class="order-details-main-header sticky-top mt--6">
+  @if(transaction !== undefined && order !== undefined && productArr !==
+  undefined) {
+  <div class="order-details font-bold">
+    <div class="card-info">
+      <div class="row">
+        <div class="col">
+          Order No:
+          <u class="ml-2">{{ order.orderNo }}</u>
+        </div>
+        <div class="col d-flex flex-row justify-content-end">
+          Total:
+          <div class="ml-2 total-price">₱ {{ order.totalPrice }}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div
+            class="row ml-1 status"
+            [class.pending-status]="transaction.status.toLowerCase() === 'pending payment'"
+            [class.invalid-payment-status]="transaction.status.toLowerCase() === 'invalid payment'"
+            [class.awaiting-confirmation-status]="transaction.status.toLowerCase() === 'awaiting confirmation'"
+            [class.confirmed-status]="transaction.status.toLowerCase() === 'ready for pick up'"
+          >
+            {{ transaction.status }}
+          </div>
+          @for(product of order.products; track order.idNo) {
+          <div class="row ml-1 mt-3 order-items">
+            {{ product.productName }} - {{ product.variantName }} x{{
+              product.quantity
+            }}
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>
+<div class="container-fluid mt-4">
+  @for(progress of orderProgress; track progress.title; let index = $index) {
+  <div class="card mb-2">
+    <div class="card-body">
+      <div class="row order-progress-header" (click)="toggle(index)">
+        <div
+          class="col"
+          [class.font-bold]="progress.date !== null"
+          [class.font-light]="progress.date === null"
+        >
+          {{ progress.title }}
+        </div>
+        <div class="col d-flex flex-row justify-content-end align-items-center">
+          @if(progress.date !== null){
+          <div class="font-light">
+            {{ progress.date | date : "MMMM d, y" }}
+          </div>
+          }
+          <span class="ml-2" [class.rotate]="isOpen[index]"
+            ><i class="ni ni-bold-up"></i
+          ></span>
+        </div>
+      </div>
+      <!-- Progress Contents -->
+      <!-- First one -->
+      <div
+        class="row order-progress-contents d-flex align-items-center flex-column"
+      >
+        @if(isOpen[0] && index===0) {
+        <div class="row mt-2">
+          <span class="icon-check-background"
+            ><i class="ni ni-check-bold icon-check"></i
+          ></span>
+        </div>
+        <div class="row mt-4 font-bold">Your order has been confirmed!</div>
+        <div class="row mt-2 font-bold">
+          Order No: <u class="ml-2">{{ order.orderNo }}</u>
+        </div>
+        <div class="row mt-2">Payment should be completed within 7 days.</div>
+        <div class="row mt-2">
+          You can pay at the accounting office or online with the following
+          details below:
+        </div>
+        <div class="row mt-2">Bank: Bank of the Philippine Islands</div>
+        <div class="row mt-2">Account Number: 0123456789</div>
+        }
+      </div>
+      <!-- Second -->
+      <div
+        class="row order-progress-contents d-flex align-items-center flex-column"
+      >
+        @if(isOpen[1]&&index===1) { @if(hasDocument){
+        <div class="row mt-2">
+          <div class="col">
+            <div class="row mb-3 justify-content-center">
+              <div class="update-file-input">
+                <label for="formFile" class="form-label">Upload New File</label>
+                <input
+                  class="form-control"
+                  type="file"
+                  id="formFile"
+                  (change)="onFileUpload($event)"
+                  accept="image/*"
+                  multiple
+                />
+              </div>
+            </div>
+            <div class="row justify-content-center p-4">
+              @if(uploadURLs.length > 0) { @for(uploadUrl of uploadURLs; track
+              uploadUrl) {
+              <img [src]="uploadUrl" class="img-thumbnail m-2" />
+              } }
+            </div>
+          </div>
+        </div>
+        } @else {
+        <div
+          class="upload-container"
+          (dragover)="onDragOver($event)"
+          (dragleave)="onDragLeave($event)"
+          (drop)="onDrop($event)"
+        >
+          <div class="upload-icon">
+            <span><i class="ni ni-cloud-upload-96"></i></span>
+          </div>
+          <!-- Upload icon (You can replace this with an SVG) -->
+          <div class="upload-text">Drag and drop file here</div>
+          <div>or</div>
+          <label class="upload-button mt-3" for="file-upload"
+            >Browse Files</label
+          >
+          <input
+            id="file-upload"
+            type="file"
+            (change)="onFileUpload($event)"
+            accept="image/*"
+            multiple
+          />
+        </div>
+        } }
+      </div>
+       <!-- third -->
+       <div
+       class="row order-progress-contents d-flex align-items-center flex-column">
+       @if(isOpen[2]&&index===2) {
+        @if(transaction.comments?.length>0){
+          <div class="container mt-1">
+              <h4>Comments</h4>
+              
+              @for(comment of transaction.comments.slice().reverse(); track comment.user){
+                  <div class="row ml-2 mb-3">
+                  <div class="card col col-auto bg-gradient-lighter p-3">
+                      <div>
+                          <span class="text-primary font-weight-900">{{ comment.user }} </span> 
+                          <span style="font-size: x-small; font-style: italic;" class="ml-1" >{{ comment.commentDate | date: 'MMMM d, y, h:mm a' }}</span>
+                      </div>
+                      <div class="mt-1">
+                          <span class="text-dark" style="font-size: small;">{{comment.comment}}</span>
+                      </div>
+                  </div>
+              </div>
+              }
+          </div>
+       }
+      }
+      </div>
+
+      <!-- fourth -->
+      <div
+      class="row order-progress-contents d-flex align-items-left flex-column">
+      @if(isOpen[3]&&index===3 && transaction.confirmedDate) {
+        <div class="text-left p-3">Please proceed to the custodian's office. Your order is now ready for pick up.</div>
+      }
+      </div>
+       <!-- fifth -->
+      <div
+      class="row order-progress-contents d-flex align-items-left flex-column">
+      @if(isOpen[4]&&index===4 && transaction.dateCompleted) {
+        <div class="text-left p-3">Transaction complete. Your order has been picked up last {{transaction.dateCompleted | date: 'MMMM d, y, h:mm a'}}</div>
+      }
+      </div>
+    </div>
+  </div>
+  }
+</div>

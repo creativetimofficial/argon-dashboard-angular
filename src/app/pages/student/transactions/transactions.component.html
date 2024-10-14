@@ -1,0 +1,66 @@
+<!-- <nav aria-label="breadcrumb" role="navigation">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">
+      <a href="javascript:;">Transaction</a>
+    </li>
+  </ol>
+</nav> -->
+<ngx-spinner size="large" type="ball-scale-multiple" [fullScreen]="true">
+</ngx-spinner>
+@if(orderArr.length > 0 && transactionArr.length > 0){
+
+<div class="container-fluid mt--6">
+  @for(order of orderArr; track order.idNo) {
+  @if(isOrderHasTransaction(order.orderNo)) {
+  <div class="card mb-3" [routerLink]="getTransactionIdByOrderNo()">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <div class="row ml-3 mb-3 date-row">
+            {{ order.orderDate | date : "MMMM d, y" }}
+          </div>
+          <div class="row ml-3 order-row">
+            Order No
+            <u class="ml-2" [state]="setState()"> {{ order.orderNo }}</u>
+            <!-- <u class="ml-2" (click)="selectOrder(order.idNo)">
+                  {{ order.orderNo }}</u
+                > -->
+          </div>
+        </div>
+        <div
+          class="col status-col mr-2 d-flex align-items-center justify-content-end"
+        >
+          <div
+            [class.pending-status]="
+              getTransactionStatusByOrderNo().toLowerCase() == 'pending payment'
+            "
+            [class.confirmed-status]="
+              getTransactionStatusByOrderNo().toLowerCase() ==
+              'ready for pick up'
+            "
+            [class.awaiting-confirmation-status]="
+              getTransactionStatusByOrderNo().toLowerCase() ==
+              'awaiting confirmation'
+            "
+
+            [class.invalid-payment-status]="
+              getTransactionStatusByOrderNo().toLowerCase() ==
+              'invalid payment'
+            "
+            [class.completed-status]="
+              getTransactionStatusByOrderNo().toLowerCase() ==
+              'completed'
+            "
+           
+          >
+            {{ getTransactionStatusByOrderNo() }}
+          </div>
+
+          <i class="ni ni-bold-right ml-3"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  } }
+</div>
+}

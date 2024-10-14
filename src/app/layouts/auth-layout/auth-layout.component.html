@@ -1,9 +1,9 @@
 <div class="main-content">
   <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
     <div class="container px-4">
-      <a class="navbar-brand" routerLinkActive="active" [routerLink]="['/dashboard']">
-        <img src="assets/img/brand/argon-white.png" />
-      </a>
+      <!-- <a class="navbar-brand" routerLinkActive="active" [routerLink]="['/dashboard']">
+        <img src="assets/img/logo/blu_logo.svg" style="width: 150px; height: 80px;" />
+      </a> -->
       <button class="navbar-toggler" type="button" (click)="isCollapsed=!isCollapsed"
          aria-controls="sidenav-collapse-main">
         <span class="navbar-toggler-icon"></span>
@@ -14,7 +14,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <a routerLinkActive="active" [routerLink]="['/dashboard']">
-                <img src="assets/img/brand/blue.png">
+                <img src="assets/img/logo/blu_logo.svg">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -27,37 +27,37 @@
         </div>
         <!-- Navbar items -->
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/dashboard']">
               <i class="ni ni-planet"></i>
               <span class="nav-link-inner--text">Dashboard</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
-            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/register']">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/auth/register']">
               <i class="ni ni-circle-08"></i>
               <span class="nav-link-inner--text">Register</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/login']">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/auth/login']">
               <i class="ni ni-key-25"></i>
               <span class="nav-link-inner--text">Login</span>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/user-profile']">
               <i class="ni ni-single-02"></i>
               <span class="nav-link-inner--text">Profile</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
   </nav>
   <router-outlet></router-outlet>
 </div>
-<footer class="py-5">
+<!-- <footer class="py-5">
   <div class="container">
     <div class="row align-items-center justify-content-xl-between">
       <div class="col-xl-6">
@@ -83,4 +83,4 @@
       </div>
     </div>
   </div>
-</footer>
+</footer> -->

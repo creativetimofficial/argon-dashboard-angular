@@ -1,0 +1,20 @@
+
+
+<div *ngIf="shoppingCartItems.length==0">No items found in shopping cart</div>
+<div *ngIf="shoppingCartItems.length>0" class="mt--6 p-3 mr-4 ml-4" style="min-height: 200px;">
+    <app-shoppingcart-item *ngFor="let item of shoppingCartItems" 
+       [cartItem]="item"  
+        (remove)="openDialog(item)"
+        (selectionChange)="onItemSelectionChange($event)">
+    </app-shoppingcart-item>
+    <div *ngIf="selectedItems.length > 0"  class="d-flex flex-column justify-content-between align-items-end mt-3">
+        <h3 class="mr-2">Total: <span>&#8369;</span>{{ getTotal()  }}</h3>
+        <button class="btn btn-info" (click)="proceedToCheckout()">Proceed to checkout</button>
+    </div>
+</div>
+<app-prompt-dialog
+title="Remove Item from Shopping Cart"
+confirmButtonLabel="Remove"
+message="promptDialog.message"
+buttonColorClass="danger"
+(confirmActionButtonClick)="onConfirmRemove()"></app-prompt-dialog>

@@ -1,0 +1,85 @@
+<app-toast></app-toast>
+<div *ngIf="product" class="card container mt--6" >
+  <div class="row" style="padding: 20px;">
+    <div class="col-md">
+      <img [src]="selectedVariant.imgURL || 'assets/img/logo/b_logo.png'" class="bg-lighter" alt="Product image" style="width: 100%; height: auto; object-fit: cover;">
+    </div>
+
+    <div class="col-md container-fluid">
+      <div class="row pt-2" >
+        <h5 class="card-title">{{ product.name }}</h5>
+      </div>
+
+      <div class="row d-flex flex-wrap mb-3">
+        <div
+          *ngFor="let variant of variants"
+          class="btn btn-outline-info mb-2"
+          [ngClass]="{'active': selectedVariant === variant}" 
+          (click)="selectVariant(variant)">
+          {{ variant.name }}
+        </div>
+      </div>
+
+      <div class="row d-flex flex-wrap mb-3">
+        <h3 *ngIf="selectedVariant"><span>&#8369;</span> {{selectedVariant.price}}</h3>
+      </div>
+
+      <!-- <div class="row d-flex flex-wrap">
+        <div *ngFor="let size of selectedVariant.sizes">
+          {{size.size}}
+        </div>
+      </div> -->
+
+      <div class="d-flex justify-content-start mb-3 ml--3">
+        <ng-container *ngIf="selectedVariant">
+        <span 
+          *ngFor="let size of selectedVariant.sizes" 
+          class="badge badge-pill badge-info mr-2"
+          [ngClass]="{'out-of-stock': size.quantity === 0, 'active': selectedSetSize === size}"
+          (click)="selectSetSize(size)">
+          {{ size.size }}
+        </span>
+      </ng-container>
+      </div>
+
+      
+      <div class="row mb-2" *ngIf="selectedVariant && selectedSetSize">
+        <h3 *ngIf="selectedSetSize.quantity === 0" class="text-danger">Out of stock</h3>
+        <h3 *ngIf="selectedSetSize.quantity > 0" class="text-dark">Available: {{ selectedSetSize.quantity }}</h3>
+      </div>
+
+       <!-- Quantity controls for set variant -->
+       <div class=" row" *ngIf=" selectedVariant &&  selectedSetSize ">
+        <button class="btn btn-info" (click)="decreaseQuantity()" [disabled]="quantity <= 1">-</button>
+        <input class="form-control form-control-alternative quantity-input" type="number" [value]="quantity" [max]="maxQuantity" readonly />
+        <button class="btn btn-info" (click)="increaseQuantity()" [disabled]="quantity >= maxQuantity">+</button>
+      </div>
+
+      
+
+      <div class="row" *ngIf="selectedVariant && !selectedSetSize">
+        <h3 *ngIf="selectedVariant.quantity === 0" class="text-danger">Out of stock</h3>
+        <h3 *ngIf="selectedVariant.quantity > 0" class="text-dark">Available: {{ selectedVariant.quantity }}</h3>
+      </div>
+
+       <!-- Quantity controls for set variant -->
+       <div class=" row" *ngIf="selectedVariant && !selectedSetSize ">
+        <button class="btn btn-info" (click)="decreaseQuantity()" [disabled]="quantity <= 1">-</button>
+        <input class="form-control form-control-alternative quantity-input" type="number" [value]="quantity" [max]="maxQuantity" readonly />
+        <button class="btn btn-info" (click)="increaseQuantity()" [disabled]="quantity >= maxQuantity">+</button>
+      </div>
+      
+      <div class="row mt-5">
+        <button class="btn btn-info" (click)="addToCart()" [disabled]="maxQuantity <= 0">Add to Cart</button>
+        <button class="btn btn-info"(click)="proceedToCheckOut()" [disabled]="maxQuantity <= 0">Check Out</button>
+      </div>
+
+
+
+     
+      
+
+      <!-- You can add additional logic for displaying details based on selectedVariant here -->
+    </div>
+  </div>
+</div>

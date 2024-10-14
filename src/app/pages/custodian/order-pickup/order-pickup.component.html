@@ -1,0 +1,105 @@
+<app-toast></app-toast>
+@if(orderedProducts !== null && transaction !== null) {
+    <div class="container-fluid mt--6  ">
+        <div class="card sticky-top p-3 shadow-lg mb-1">
+            <div class="row  cols-2">
+                <div class="col-sm text-sm-left">
+                    <div class="text-gray font-italic text-xs">{{orderedProducts.orderDate | date: 'MMMM d, y, h:mm a'}}</div>
+                    <div>
+                        <span style="font-weight: bold;" class="font-weight-bold text-gray-dark">Order No: </span> 
+                        <span class="font-weight-bold text-underline text-gray-dark">{{ transaction.orderNo }}</span>
+        
+                    </div> 
+                    <div style="font-weight: bold;" class="text-dark"> {{ userName }}</div>
+                </div>
+                <div class="col-sm text-right">
+                    <p style="font-weight: bold;"
+                    [class.pending-status]="transaction.status.toLowerCase() === 'pending payment'"
+                    [class.invalid-payment-status]="transaction.status.toLowerCase() === 'invalid payment'"
+                    [class.awaiting-confirmation-status]="transaction.status.toLowerCase() === 'awaiting confirmation'"
+                    [class.confirmed-status]="transaction.status.toLowerCase() === 'ready for pick up'"
+                    [class.completed-status]="transaction.status.toLowerCase() === 'completed'">
+                        {{ transaction.status }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card  p-3">
+            <div class="row cols-3">
+                <!-- <div class="col-md-4 text-sm-left">
+                    <p style="font-weight: bold;" class="text-dark">{{ userName }}</p>
+                </div>
+                <div class="col-md-3"></div> -->
+                <div class="col">
+                    @for(product of orderedProducts.products; track product.productCode) {
+                        <div class="row">
+                            <div class="col text-left text-sm font-weight-400"> 
+                                <span>{{ product.productName }} - {{ product.variantName }} X {{ product.quantity }}</span> 
+                            </div>
+                            <div class="col-3 text-right"><span class="text-right">&#8369;{{ product.itemSubtotal }}</span></div>
+                        </div>     
+                    }
+                    <div class="row mt-1">
+                        <!-- <div class="col text-right text-darker" style="font-weight: bold;"> 
+                            Total
+                        </div> -->
+                        <div class="col text-right">
+                            <span  style="font-weight: bold;" class="text-darker mr-3">Total</span>
+                            <span class="text-right text-info" style="font-weight: bold;">&#8369;{{ orderedProducts.totalPrice }}</span>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <div class="container p-3 mt-3 mb-3 bg-gradient-white">
+            <div class="text-left p-3">
+                <h3 class="text-dark" style="font-weight: bold;">Payment Details</h3>
+            </div>
+            @if(transaction.documents?.length > 0) {
+                @for(document of transaction.documents; track document.url) {
+                    <div class="p-3">
+                        <img [src]="document.url" class="bg-lighter" alt="Document image" style="width: 40%; height: auto; object-fit: cover;">
+                    </div>
+                    <div class="p-3">
+                        <p style="font-style: italic; font-size: small;" class="text-gray">{{ document.uploadDate | date: 'MMMM d, y, h:mm a' }}</p>
+                    </div>
+                }
+            }
+            <form #commentForm="ngForm" (ngSubmit)="addComment(commentForm)">
+                <div class="input-group p-3">
+                    <textarea [(ngModel)]="newComment" name="comment" class="form-control" placeholder="Add a comment" aria-label="Comment"></textarea>
+                </div>
+                <div class="p-3 mb-3">
+                    <button class="btn btn-primary btn-sm"  type="submit" >Add Comment</button>
+                </div>
+            </form>
+            
+            @if(transaction.comments?.length>0){
+                <div class="container ">
+                    <h3>Comments</h3>
+                    
+                    @for(comment of transaction.comments.slice().reverse(); track comment.user){
+                        <div class="row ml-2 mb-3">
+                        <div class="card col col-auto bg-gradient-lighter p-3">
+                            <div>
+                                <span class="text-primary font-weight-900">{{ comment.user }} </span> 
+                                <span style="font-size: x-small; font-style: italic;" class="ml-1" >{{ comment.commentDate | date: 'MMMM d, y, h:mm a' }}</span>
+                            </div>
+                            <div class="mt-1">
+                                <span class="text-dark" style="font-size: small;">{{comment.comment}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            }
+    
+            <div class="text-right p-3"> 
+                <!-- <button class="btn btn-danger" (click)="declinePayment()">Decline</button> -->
+                <button class="btn btn-success mr-2" (click)="confirmPickUp()">Confirm Pick Up</button>
+            </div>
+        </div>
+    </div>
+
+    
+}

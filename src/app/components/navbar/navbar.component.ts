@@ -1,7 +1,9 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
-import { ROUTES } from '../sidebar/sidebar.component';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
+// import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { RouteInfo } from 'src/app/models/util/routes.model';
 
 @Component({
   selector: 'app-navbar',
@@ -9,28 +11,60 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  // @Input() routes: RouteInfo[];
+
   public focus;
   public listTitles: any[];
   public location: Location;
-  constructor(location: Location,  private element: ElementRef, private router: Router) {
+  public urlParent: string = '';
+  public fullName: string ='';
+  public initials: string='';
+
+  constructor(location: Location,  private element: ElementRef, private router: Router, private authService: AuthService, private activatedRoute: ActivatedRoute) {
     this.location = location;
   }
+  
 
   ngOnInit() {
-    this.listTitles = ROUTES.filter(listTitle => listTitle);
-  }
-  getTitle(){
-    var titlee = this.location.prepareExternalUrl(this.location.path());
-    if(titlee.charAt(0) === '#'){
-        titlee = titlee.slice( 1 );
-    }
 
-    for(var item = 0; item < this.listTitles.length; item++){
-        if(this.listTitles[item].path === titlee){
-            return this.listTitles[item].title;
-        }
+    this.fullName = this.authService.getUserFullName();
+    this.initials = this.authService.getUserInitials();
+    this.urlParent = this.activatedRoute.parent.toString();
+    console.log(this.urlParent);
+  }
+  
+  // getTitle(){
+  //   const titlee = this.location.prepareExternalUrl(this.location.path()); //eg. /student/dashboard
+  //   const titleArr = titlee.split("/");
+  //   let title = "Dashboard";
+  //   if (titleArr.length > 0) {
+  //     title = titleArr.pop();
+  //   }
+  //   return title; // default  is Dashboard
+  // }
+
+  getTitle() {
+    const titlee = this.location.prepareExternalUrl(this.location.path()); // Get the URL path
+    const titleArr = titlee.split("/").filter(item => item); 
+  
+    let title = "Dashboard"; 
+  
+    if (titleArr.length >= 2) {
+      title = `${titleArr[1]}`; // Start with the third element (e.g., "products")
+      for (let i = 2; i < titleArr.length; i++) {
+        title += ` > ${titleArr[i]}`; // Append the remaining parts (e.g., "wae")
+      }
+    } else if (titleArr.length === 2) {
+      title = titleArr[1]; 
     }
-    return 'Dashboard';
+  
+    return title;
+  }
+ 
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['/auth/login'])
   }
 
 }

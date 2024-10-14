@@ -1,0 +1,42 @@
+<div class="modal fade" #modal tabindex="-1"  aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="staticBackdropLabel">{{title}}</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" (click)="close()">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div [innerHTML]="message"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onCancelButtonActionClick()">{{cancelButtonLabel}}</button>
+          <button type="button" class="btn btn-{{buttonColorClass}}" (click)="onComfirmButtonActionClick()">{{confirmButtonLabel}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+ <div class="modal fade" #modal tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ title }}</h5>
+          <button type="button" class="close" (click)="close()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>{{ message }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="onCancelButtonActionClick()">{{ cancelButtonLabel }}</button>
+          <button type="button" class="btn btn-primary" (click)="onComfirmButtonActionClick()">{{ confirmButtonLabel }}</button>
+        </div>
+      </div>
+    </div>
+  </div> -->

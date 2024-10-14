@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
 
@@ -21,6 +22,13 @@ export class DashboardComponent implements OnInit {
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
+  userRole: string | null = null;
+
+  constructor(private authService:  AuthService) {
+    this.userRole = this.authService.getUserRole();
+    console.log("test get user on dashboard", this.userRole)
+  }
+  
 
   ngOnInit() {
 

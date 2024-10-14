@@ -1,0 +1,9 @@
+.products-container {
+    display: flex; /* Use flexbox for horizontal layout */
+    flex-wrap: wrap; /* Allow items to wrap onto multiple lines if needed */
+    gap:10px; /* Optional: Add spacing between items */
+    padding: 10px;
+  }
+  
+  /* Style for each item to control its size */
+ 

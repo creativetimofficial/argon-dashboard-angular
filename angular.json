@@ -10,13 +10,14 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "sourceMap": true,
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -31,7 +32,12 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/scss/argon.scss"
+              "src/assets/scss/argon.scss",
+              "src/assets/vendor/nucleo/css/nucleo.css",
+              "src/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
+              
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.min.js",
@@ -40,7 +46,8 @@
           },
           "configurations": {
             "production": {
-              "optimization": {
+              "optimization":
+              {
                 "scripts": true,
                 "styles": {
                   "minify": false,
@@ -49,7 +56,7 @@
                 "fonts": true
               },
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -62,34 +69,26 @@
               ]
             },
             "development": {
+              "buildOptimizer": false,
+              "optimization": false,
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true,
-              "buildOptimizer": false,
-              "optimization": {
-                "scripts": true,
-                "styles": {
-                  "minify": false,
-                  "inlineCritical": true
-                },
-                "fonts": true
-              },
-              "outputHashing": "all"
+              "namedChunks": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "argon-dashboard-angular:build"
+            "buildTarget": "argon-dashboard-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "argon-dashboard-angular:build:production"
+              "buildTarget": "argon-dashboard-angular:build:production"
             },
             "development": {
-              "browserTarget": "argon-dashboard-angular:build:development"
+              "buildTarget": "argon-dashboard-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -97,7 +96,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "argon-dashboard-angular:build"
+            "buildTarget": "argon-dashboard-angular:build"
           }
         },
         "test": {
@@ -159,10 +158,9 @@
       }
     }
   },
-  "defaultProject": "argon-dashboard-angular",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     }
   },
   "cli": {

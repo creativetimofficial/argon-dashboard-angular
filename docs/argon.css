@@ -3575,7 +3575,8 @@ fieldset:disabled a.btn
     background-color: transparent;
     background-image: none;
 }
-.btn-outline-info:hover
+.btn-outline-info:hover,
+.btn-outline-info.active
 {
     color: #fff;
     border-color: #11cdef;
@@ -6253,6 +6254,11 @@ input[type='button'].btn-block
     color: #fff;
     background-color: #0da5c0;
 }
+
+/* .badge-info.active {
+    color: #fff !important;
+    background-color: #0da5c0 !important;
+} */
 
 .badge-warning
 {

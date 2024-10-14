@@ -1,0 +1,7 @@
+<div *ngIf="show" class="alert text-white text-lg-center"  role="alerts" [ngClass]="{
+    'bg-success': type === 'success',
+    'bg-danger': type === 'error',
+    'bg-info': type === 'info'
+  }">
+    {{ message }}
+  </div>

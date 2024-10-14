@@ -1,0 +1,9 @@
+:host {
+    position: fixed; /* Ensures the toast is fixed to the viewport */
+    top: 100px; /* Distance from the top of the viewport */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Offset by half its width to center it */
+    z-index: 1050; /* Bootstrap default for modals */
+    pointer-events: none;
+    width: 30%; /* Disable pointer events on the toast host */
+}

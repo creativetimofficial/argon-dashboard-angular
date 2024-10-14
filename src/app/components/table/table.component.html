@@ -1,0 +1,193 @@
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <div class="row mb-3">
+              <div class="col">
+                <h3 class="mt-1">{{ title }}</h3>
+              </div>
+              @if (!useBasicTable) {
+                <div class="col-6 text-right">
+                  <!-- Show Save All button only when there are changes -->
+                  @if(hasChanges) {
+                    <button type="button" class="btn btn-success btn-sm" (click)="saveAll()">Save All</button>
+                   }
+                  <button type="button" class="btn btn-{{theme}} btn-sm" (click)="addRow()"> + Add {{ title }}</button>
+                </div>    
+              }        
+              <!-- <div class="col-4 text-right">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                  </div>
+                  <input class="form-control form-control-alternative" placeholder="Search" type="text">
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <!-- header -->
+                <tr>
+                  @for (col of dataColumns; track $index) {
+                    @if (col.type == ColumnType.image) {
+                      <th scope="col">&nbsp;</th>
+                    } @else {
+                      <th scope="col"> {{ col.Header || col.field }}</th>
+                    }
+                  }
+                  @if (!useBasicTable) {
+                    <!-- actions -->
+                    <th scope="col">&nbsp;</th>
+                  }
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Adding new Row -->
+                <!-- Loop through new rows for input fields -->
+                @for (newRow of newRecords; track $index) {
+                  <tr>
+                    @for (col of dataColumns; track $index) {
+                      <td>
+                        @if (col.type == ColumnType.image) {
+                          <!-- <input class="btn btn-{{theme}} btn-sm w-100" type="file" (change)="onImageChange($event)" /> -->
+                          <label class="btn btn-{{theme}} btn-sm w-100">
+                            <i class="ni ni-upload"></i> Upload Image <!-- Replace with the appropriate Nucleo icon class -->
+                            <input type="file" (change)="onImageChange($event, newRow)" accept="image/*"  name="imageUpload_{{newRow.code}}" style="display: none;" />
+                          </label>
+                          <div class="text-center">
+                            <img [src]="newRow.imgPreviewURL || newRow.imgURL" 
+                            alt="Image" 
+                            *ngIf="newRow.imgPreviewURL || newRow.imgURL" 
+                            style="max-width: 100px; max-height: 100px;" />
+                          </div>
+                        } @else if (col.type == ColumnType.checkbox) {
+                          <label class="custom-toggle">
+                            <input type="checkbox" [(ngModel)]="newRow[col.field]" name="{{ col.field }}">
+                            <span class="custom-toggle-slider rounded-circle"></span>
+                          </label>
+                        } @else {
+                          <div class="form-group">
+                            <input class="form-control"
+                              [type]="col.type" 
+                              [(ngModel)]="newRow[col.field]" 
+                              name="{{ col.field }}" 
+                              placeholder="{{ col.required ? '*': ''}} {{ col.header || col.field }}"
+                              [ngClass]="{'is-invalid': col.required && !newRow[col.field]}"
+                            />
+                          </div>
+                        }
+                      </td>
+                    }
+                    <td>
+                      <!-- <button type="button" (click)="saveRow(newRow)" class="btn btn-success btn-sm">Save</button> -->
+                      <button type="button" (click)="removeNewRow(newRow)" class="btn btn-danger btn-sm btn-icon"><span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span></button>
+                    </td>
+                  </tr>
+                }
+
+                <!-- Showing Records -->
+                @for (item of data; track $index) {
+                  <tr>
+                    @for (col of dataColumns; track $index) {
+                      <td>
+                        @if (item.isEditing) {  <!-- Check if the row is in edit mode -->
+                          @if (col.type == ColumnType.image) {
+                            <label class="btn btn-{{theme}} btn-sm w-100">
+                              <i class="ni ni-upload"></i> Upload Image <!-- Replace with the appropriate Nucleo icon class -->
+                              <input type="file" (change)="onImageChange($event, item)" accept="image/*" name="imageUpload_{{item.code}}" style="display: none;" />
+                            </label>
+                            <!-- <input class="btn btn-{{theme}} btn-sm w-100" type="file" (change)="onImageChange($event, item)" accept="image/*" style="display: none;" /> -->
+                            <div class="text-center">
+                              <img [src]="item.imgPreviewURL || item.imgURL" 
+                                  alt="Image" 
+                                  *ngIf="item.imgPreviewURL || item.imgURL" 
+                                  style="max-width: 100px; max-height: 100px;" />
+                            </div>
+                            
+                          } @else if (col.type == ColumnType.checkbox) {
+                            <label class="custom-toggle">
+                              <input type="checkbox" [(ngModel)]="item[col.field]" name="{{ col.field }}">
+                              <span class="custom-toggle-slider rounded-circle"></span>
+                            </label>
+                          } @else {
+                            <input class="form-control" [type]="col.type" [(ngModel)]="item[col.field]" placeholder="{{ col.header || col.field }}" />
+                          }
+                        } @else {
+                          <!-- Display the existing value -->
+                          @if (col.type == ColumnType.image) {
+                            <div class="avatar-group">
+                              <a href="javascript:void(0)" class="avatar avatar-lg" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                <img alt="product-img placeholder" [src]="item.imgURL || 'assets/img/logo/b_logo.png'" class="rounded-circle">
+                              </a>
+                            </div>
+                          } @else {
+                            {{ item[col.field] }} 
+                          }
+                        }
+                      </td>
+                    }
+                    @if (!useBasicTable) {
+                      <td class="text-right">
+                        <div ngbDropdown [placement]="($index === data.length - 1) ? 'top-right' : 'bottom-right'" class="dropdown">
+                          <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
+                            <i class="fas fa-ellipsis-v"></i>
+                          </a>
+                          <div ngbDropdownMenu class="dropdown-menu-right dropdown-menu-arrow">
+                            @if (!item.isEditing) {
+                              <a class="dropdown-item" (click)="editRow(item)">Edit</a>
+                            }
+                            <a class="dropdown-item" (click)="removeRow(item)">Delete</a>
+                          </div>
+                        </div>
+                      </td>
+                    }
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+          @if(showBottomActionButton){
+          <div class="card-footer py-4">
+            <div class="d-flex flex-column justify-content-between align-items-end mt-3 mr-3 pb-3">
+              @if(bottomActionHTML !==  ""){
+                  <div [innerHTML]="sanitizedBottomActionDescription"></div>
+              }
+              <button class="btn btn-info mr-3" (click)="onBottomActionButtonClick()">{{bottomActionButtonTitle}}</button>
+            </div>
+          </div>
+        }
+          <!-- <div class="card-footer py-4">
+            <nav aria-label="...">
+              <ul class="pagination justify-content-end mb-0">
+                <li class="page-item disabled">
+                  <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                    <i class="fas fa-angle-left"></i>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="javascript:void(0)">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0)">
+                    <i class="fas fa-angle-right"></i>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  

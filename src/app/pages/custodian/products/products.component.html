@@ -1,0 +1,10 @@
+<app-table 
+    title="Products"
+    [useBasicTable] = false
+    [dataColumns]="dataColumns"
+    [data]="products"
+    (saveRecords)="saveProducts($event)" 
+    (deleteRecord)="deleteProduct($event)" 
+    (imageSelected)="handleImageSelection($event)"
+>
+</app-table>

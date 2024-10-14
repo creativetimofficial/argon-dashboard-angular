@@ -108,6 +108,12 @@ $theme-colors: map-merge((
   "darker":       $darker
 ), $theme-colors);
 
+// Define the theme-color function (if not already defined by your theme)
+@function theme-color($color-name) {
+  @return map-get($theme-colors, $color-name);
+}
+
+
 $brand-colors: () !default;
 $brand-colors: map-merge((
   "facebook":     $facebook,

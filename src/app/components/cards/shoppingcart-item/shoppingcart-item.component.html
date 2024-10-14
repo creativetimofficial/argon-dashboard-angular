@@ -1,0 +1,37 @@
+<div class="card shadow-lg--hover mb-3" [ngClass]="{'border border-select': cartItem.selected}">
+    <div class="row container-fluid align-items-center" (click)="toggleCheckbox($event)">
+        <div class="col text-center">
+            <input  class="mr-2" type="checkbox" [(ngModel)]="cartItem.selected" (change)="onCheckboxChange()">
+        </div>
+        <div class="col p-2 ">
+            <img class="bg-lighter " [src]="cartItem.imgURL || 'assets/img/logo/b_logo.png'" alt="Product image" style="width: 100px; height: 100px;">
+        </div>
+        <div class="col-3 justify-content-center">
+            <h3 class="text-darker ">{{cartItem.name}}</h3>
+        </div>
+        <div class="col">
+            <p class="text-lg-right"><span>&#8369;</span>{{cartItem.price}}</p>
+        </div>
+        <div class="col">
+            <p class="">{{cartItem.size}}</p>
+        </div>
+        <div class="col">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-info mr-1" (click)="decreaseQuantity()" [disabled]="cartItem.quantity <= 1">-</button>
+                <input class="form-control form-control-alternative quantity-input text-center" 
+                       type="number" 
+                       [value]="cartItem.quantity" 
+                       [max]="10" 
+                       readonly 
+                       style="width: 60px;" />
+                <button class="btn btn-info ml-1" (click)="increaseQuantity()" [disabled]="cartItem.quantity >= cartItem.maxQuantity">+</button>
+            </div>
+        </div>
+        <div class="col text-right">
+            <h3 class="text-info"><span>&#8369;</span>{{cartItem.totalPrice}}</h3>
+        </div>
+        <div class="col text-right">
+            <i class="ni ni-fat-remove me-2 text-red" style="font-size: xx-large;" (click)="removeItem()"></i>
+        </div>
+    </div>    
+</div>
